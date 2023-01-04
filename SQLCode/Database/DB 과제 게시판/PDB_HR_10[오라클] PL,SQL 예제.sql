@@ -1,0 +1,95 @@
+--2022-11-15
+--[오라클] PL/SQL 예제
+--1. 오라클에서 성적처리 테이블(SUNG)을 생성하라
+CREATE TABLE SUNG(
+    hakbun NUMBER(4) NOT NULL,
+    hakname VARCHAR2(20) NOT NULL,
+    kor NUMBER(4) NOT NULL,
+    eng NUMBER(4) NOT NULL,
+    mat NUMBER(4) NOT NULL,
+    tot NUMBER(4),
+    ave NUMBER(5,1),
+    rank NUMBER(4),
+    CONSTRAINT SUNG_hakbun_PK PRIMARY KEY(hakbun)
+);
+--
+DROP TABLE SUNG;
+--강사님 답안
+CREATE TABLE SUNG(
+    HAKBUN NUMBER(4) NOT NULL,          --학번
+    HAKNAME VARCHAR2(20) NOT NULL,      --학생명
+    KOR NUMBER(4) NOT NULL,             --국어
+    ENG NUMBER(4) NOT NULL,             --영어
+    MAT NUMBER(4) NOT NULL,             --수학
+    TOT NUMBER(4) DEFAULT 0,            --총합
+    AVE NUMBER(5,1) DEFAULT 0,          --평균
+    RANK NUMBER(4),                     --등수
+    CONSTRAINT SUNG_PK PRIMARY KEY(HAKBUN)
+);
+--2.테이블에 학번, 이름, 국어, 영어, 수학 점수를 입력하면 총점과 평균이 자동 계산되어 입력되도록
+-- 프로시저(SUNG_INPUT)를 작성하라.
+--DROP SEQUENCE SUNG_SEQ;
+DROP SEQUENCE SUNG_SEQ;
+--
+CREATE SEQUENCE SUNG_SEQ
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+MAXVALUE 100000
+NOCYCLE
+CACHE 2;
+--
+DROP PROCEDURE SUNG_INPUT;
+--DROP PROCEDURE SUNG_INPUT
+CREATE OR REPLACE PROCEDURE SUNG_INPUT
+(HAKNAME IN SUNG.HAKNAME%TYPE, KOR IN SUNG.KOR%TYPE, ENG SUNG.ENG%TYPE, MAT SUNG.MAT%TYPE)
+IS
+BEGIN
+    INSERT INTO SUNG(HAKBUN, HAKNAME, KOR, ENG, MAT, TOT, AVE)
+    VALUES(SUNG_SEQ.NEXTVAL, HAKNAME, KOR, ENG, MAT, KOR+ENG+MAT, (KOR+ENG+MAT)/3 );
+    COMMIT;
+    
+    DBMS_OUTPUT.PUT_LINE('학생 등록 완료');
+END;
+/
+
+EXECUTE SUNG_INPUT('홍길동', 99, 80, 85);
+EXECUTE SUNG_INPUT('김희진', 95, 84, 79);
+EXECUTE SUNG_INPUT('이현수', 83, 89, 99);
+EXECUTE SUNG_INPUT('김철수', 99, 83, 89);
+EXECUTE SUNG_INPUT('조현정', 80, 75, 88);
+--확인
+SELECT * FROM SUNG;
+-- RANK() : 중복 순위 개수만큼 다음 순위 값을 증가 시킴
+-- 형식 : RANK() OVER(ORDER BY 컬럼명 (ASC|DESC)) (AS 별칭)
+-- DENSE_RANK() : 중복 순위가 존재해도 순차적으로 다음 순위 값을 표시함
+-- ROW_NUMBER() OVER() : 중복값에 관계없이 SEQUENCE(순차적인 순위 값) 값을 반환
+SELECT * FROM SUNG ORDER BY TOT DESC;
+
+SELECT HAKBUN, HAKNAME, KOR, ENG, MAT, TOT, AVE
+    , RANK() OVER (ORDER BY TOT DESC)       RANK
+    , DENSE_RANK() OVER (ORDER BY TOT DESC) DENSE_RANK
+    , ROW_NUMBER() OVER (ORDER BY TOT DESC) ROW_NUMBER
+FROM SUNG
+ORDER BY TOT DESC;
+
+--3. 등수(SUNG_RANK)를 구하는 저장프로시저를 작성하고 이를 호출하여 등수가 제대로 구해지는지 확인하자.
+-- 다음은 등수를 구하는 저장 프로시저 SUNG_RANK가 성공적으로 작성되었다는 가정 하에 실습한 결과이다.
+CREATE OR REPLACE PROCEDURE SUNG_RANK
+IS
+    VSUNG SUNG%ROWTYPE;
+    CURSOR C1
+    IS
+    SELECT HAKBUN, HAKNAME, KOR, ENG, MAT, TOT, AVE,
+    RANK() OVER (ORDER BY TOT DESC) AS RANK
+    FROM SUNG ORDER BY TOT DESC;
+BEGIN
+    FOR VSUNG IN C1 LOOP
+        UPDATE SUNG SET RANK=VSUNG.RANK
+        WHERE HAKBUN=VSUNG.HAKBUN;
+    END LOOP;
+END;
+/
+EXEC SUNG_RANK;
+SELECT * FROM SUNG ORDER BY RANK ASC, KOR DESC, ENG DESC, MAT DESC; --여러 개의 조건을
+-- 맞추어도 가장 첫 번째에 있는 걸 기준으로 한다. 근데 동일 하다면 다음 조건, 다음 조건...

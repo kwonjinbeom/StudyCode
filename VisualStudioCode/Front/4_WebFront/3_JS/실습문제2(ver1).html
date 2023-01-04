@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제2</title>
+    
+    <script>
+        
+        function plus(){
+            
+            const sumFn = function 함수명(n1, n2){ // 익명 함수
+                return n1 + n2;
+            }
+
+            let first = document.getElementById('num1');
+            let second = document.getElementById('num2');
+        
+            first = Number(first.value);
+            second = Number(second.value);
+            result.innerHTML = "";
+            result.innerHTML += sumFn(first, second);
+            
+        }
+
+        function minus(){
+            
+            const minusFn = function 함수명(n1, n2){ // 익명 함수
+                return n1 - n2;
+            }
+
+            let first = document.getElementById('num1');
+            let second = document.getElementById('num2');
+        
+            first = Number(first.value);
+            second = Number(second.value);
+            result.innerHTML = "";
+            result.innerHTML += minusFn(first, second);
+
+        }
+
+        function multiply(){
+            
+            const multiplyFn = function 함수명(n1, n2){ // 익명 함수
+                return n1 * n2;
+            }
+
+            let first = document.getElementById('num1');
+            let second = document.getElementById('num2');
+        
+            first = Number(first.value);
+            second = Number(second.value);
+            result.innerHTML = "";
+            result.innerHTML += multiplyFn(first, second);
+
+        }
+
+        function divide(){
+            
+            const divideFn = function 함수명(n1, n2){ // 익명 함수
+                return n1 / n2;
+            }
+
+            let first = document.getElementById('num1');
+            let second = document.getElementById('num2');
+        
+            first = Number(first.value);
+            second = Number(second.value);
+            result.innerHTML = "";
+            result.innerHTML += divideFn(first, second);
+
+        }
+
+        function mod(){
+            
+            const modFn = function 함수명(n1, n2){ // 익명 함수
+                return n1 % n2;
+            }
+
+            let first = document.getElementById('num1');
+            let second = document.getElementById('num2');
+        
+            first = Number(first.value);
+            second = Number(second.value);
+            result.innerHTML = "";
+            result.innerHTML += modFn(first, second);
+
+        }
+    </script>
+
+</head>
+<body> <!-- internal 방식으로 작성 --> <!-- Number("10")으로 형변환 -->
+    <h1>간이 계산기 만들기</h1>
+
+    첫번째 값 : <input type="text" id ="num1"><br>
+    두번째 값 : <input type="text" id ="num2"><br>
+
+    <button onclick="plus()" class = "bt" >+</button>
+    <button onclick="minus()" class = "bt" >-</button>
+    <button onclick="multiply()" class = "bt" >*</button>
+    <button onclick="divide()" class = "bt" >/</button>
+    <button onclick="mod()" class = "bt" >%</button>
+    <!-- 버튼 -->
+    <br><br>
+    계산 결과 : <span id = "result"></span> 
+</body>
+</html>

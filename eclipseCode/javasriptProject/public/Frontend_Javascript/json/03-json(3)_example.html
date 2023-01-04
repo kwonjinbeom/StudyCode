@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json(3) - 02-json(3)_example.html</title>
+
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel = "shortcut icon" href="../image/icon.png"/>
+    <link rel = "apple-touch-icon" href="../image/icon.png"/>
+    <!-- 모바일 웹 페이지 설정 끝 -->
+
+    <!-- [if lt IE 9] >
+    <script src="../js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+        table{
+            width:500px;
+            border:2px solid black;
+            border-bottom:3px solid black;
+            border-collapse: collapse;
+            
+        }
+        
+        table tr > td, th{
+            border:1px solid black;
+            text-align: center;
+        }
+
+    </style>
+    <script type="text/javascript">
+    
+
+        /* 배열을 선언하고 하위 데이터 요소로서 JSON을 포함 */
+        let keyword_rank = {
+            "title" : "Javascript / jQuery / Ajax",
+            "subtitle" : "클라이언트 프로그래밍 과목을 정리해 놓은 게시판입니다.",
+            "table_num" : "총 게시물의 수 : 4개",
+            
+            "rank" : [
+            {"number" : "번호","title" : "제목","visitNum" : "조회수", "register" : "등록일"},
+            {"number" : "공지","title" : "클라이언트 프로그래밍","visitNum" : "3", "register" : "2017.01.29"},
+            {"number" : "3","title" : "Ajax","visitNum" : "6", "register" : "2018.04.08"},
+            {"number" : "2","title" : "jQuery","visitNum" : "15", "register" : "2017.11.07"},
+            {"number" : "1","title" : "Javascript","visitNum" : "19", "register" : "2017.06.05"},
+
+            ]
+      };
+        // keyword_rank.rank[0].keyword로 접근.
+        let tag = "<h1>" + keyword_rank.title + "</h1>";
+        tag += "<p>" + keyword_rank.subtitle + "</p><table>";
+        tag += "<caption style='text-align:right'>" + keyword_rank.table_num + "</caption>";
+        
+        for(let i  = 0; i < keyword_rank.rank.length; i++){
+            let rank = keyword_rank.rank[i];
+            if(i == 0){
+                tag += "<tr>" ;
+                tag += "<th>" + rank.number + "</th>";
+                tag += "<th>" + rank.title + "</th>";
+                tag += "<th>" + rank.visitNum + "</th>";
+                tag += "<th>" + rank.register + "</th>";
+                tag += "</tr>";
+                continue;
+            }
+            tag += "<tr>"  ;
+            tag += "<td>" + rank.number + "</td>";
+            tag += "<td>" + rank.title + "</td>";
+            tag += "<td>" + rank.visitNum + "</td>";
+            tag += "<td>" + rank.register + "</td>";
+            tag += "</tr>";
+        }
+        tag += "</table>";
+
+        // 구성한 내용을 화면에 출력
+        document.write(tag);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

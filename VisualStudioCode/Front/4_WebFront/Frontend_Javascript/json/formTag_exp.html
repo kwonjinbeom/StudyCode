@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            width:600px;
+        }
+        table{
+            width:100%;
+        }
+        table td{
+            padding:15px;
+            border-bottom: 1px solid #aaa9a9;
+        }
+        #data{
+            display: none;
+        }
+    </style>
+    <script src="../js/jquery-3.6.2.min.js"></script>
+    <script>
+        function init(){
+            let idBoolean = false;
+            let pwBoolean = false;
+
+            // 아이디 정규식 조건 
+            $("#user_id").change(function(){
+                const idRegExp = /^[a-z][a-zA-Z0-9]{5,11}$/;
+                if(! idRegExp.test( $("#user_id").val() )){
+                    alert("아이디 조건에 충족하지 않습니다.");  
+                    $("#user_id").focus();
+                }else{
+                    idBoolean = true;
+                }
+            });
+            
+
+            // 비밀번호 정규식 조건 
+            $("#user_pw").change(function(){
+                const pwRegExp = /^[a-zA-Z0-9`~!@#$%^&*()-_=+\|\[\]{};:'",.<>/?]{8,32}$/
+                if(!pwRegExp.test($("#user_pw").val())){
+                    alert("비밀번호 조건에 충족하지 않습니다."); 
+                    $("#user_pw").focus(); 
+                }else{
+                    pwBoolean = true;
+                }
+            });
+
+           // 이메일
+           $("#emailAddress").change(function(){
+                console.log($("#emailAddress option:selected").text());
+                if($("#emailAddress option:selected").text() == "네이버"){
+                    $("#emailDomain").val("naver.com")
+                }else if($("#emailAddress option:selected").text() == "다음"){
+                    $("#emailDomain").val("daum.com");
+                }
+                else if($("#emailAddress option:selected").text() == "직접입력"){
+                    $("#emailDomain").val("");
+                    $("#emailDomain").attr("disabled",false);
+                }
+            });
+
+            
+
+
+            // 제출 시 조건
+            $("#join").submit(function(event){
+                if($("#user_id").val().length == 0) {      
+                    alert("아이디를 입력해주세요.");
+                    $("#user_id").focus();
+                    return false;
+                }else if(idBoolean == false){
+                    alert("아이디 조건에 충족하지 않습니다.");
+                }
+                else if(pwBoolean == false){
+                    alert("비밀번호 조건에 충족하지 않습니다.");
+                }
+                else if($("#user_pw").val().length == 0){
+                    alert("비밀번호를 입력해주세요.");
+                    $("#user_pw").focus();
+                    return false;
+                }
+                else if($("#user_name").val().length == 0){
+                    alert("이름을 입력해주세요.");
+                    $("#user_name").focus();
+                    return false;
+                }
+                else if($("#birth").val().length == 0){
+                    alert("생년월일을 입력해주세요.");
+                    $("#birth").focus();
+                    return false;
+                }
+                else if(!($("input[name=gender]")[0].checked || $("input[name=gender]")[1].checked)){
+                    alert("성별을 선택해주세요.");
+                    return false;
+                }
+                else if($("#email").val().length == 0 || $("#emailDomain").val().length == 0){
+                    alert("이메일을 입력해주세요.");
+                    $("#email").focus();
+                    return false;
+                }
+                else if($("#hpno").val().length == 0){
+                    alert("핸드폰번호를 입력해주세요.");
+                    $("#hpno").focus();
+                    return false;
+                }
+                else if(!($(".hobby_check")[0].checked || $(".hobby_check")[1].checked
+                    ||$(".hobby_check")[2].checked || $(".hobby_check")[3].checked
+                    || $(".hobby_check")[4].checked || $(".hobby_check")[5].checked)
+                ){
+                    alert("취미를 선택해주세요.");
+                    return false;
+                }
+
+                else{
+                    alert("가입이 완료되었습니다.")
+                    // event.preventDefault();
+                    formData();
+                    return false;
+                }
+
+            });
+
+            function formData(){
+                let hobbyStr = "";
+                if ($("#data").css("display") == "none") {
+                    $("#data").css("display","block");
+                }
+                $("#id_").text($("#user_id").val());
+                $("#pw_").text($("#user_pw").val());
+                $("#name_").text($("#user_name").val());
+                $("#birth_").text($("#birth").val());
+                $("#gender_").text($("input[name=gender]:checked").val());
+                $("#email_").text($("#email").val()+$("#emailDomain").val());
+                $("#phone_").text($("#hpno").val());
+                for(let i = 0; i < $("input[name=hobby]:checked").length; i++){
+                    hobbyStr += $($("input[name=hobby]:checked")[i]).val();
+                    hobbyStr += " ";
+                }
+                $("#hobby_").text(hobbyStr);
+                $("#job_").text($('#job option:selected').val());
+            }
+            }
+
+            window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>회원가입</h1>
+        <form  name ="join" id = "join" type="submit">
+            <fieldset>
+            <table>
+                <tr>
+                    <td><label>아이디</label></td>
+                    <td><input type="text" name = "user_id" id = "user_id"></td>
+                </tr>
+                
+                <tr>
+                    <td><label>비밀번호</label></td>
+                    <td><input type="text" name = "user_pw" id = "user_pw"></td>
+                </tr>
+                <tr>
+                    <td><label>이름</label></td>
+                    <td><input type="text" name = "user_name" id = "user_name"></td>
+                </tr>
+                <tr>
+                    <td><label>생년월일</label></td>
+                    <td><input type="text" name = "birth" id = "birth"></td>
+                </tr>
+                <tr>
+                    <td><label>성별</label></td>
+                    <td><input type="radio" name = "gender" value="남자"><span>남자</span>
+                        <input type="radio" name = "gender" value="여자"><span>여자</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>이메일</label></td>
+                    <td><input type="text" name = "email" id = "email">
+                        @<input type="text" name = "emailDomain" id = "emailDomain" disabled="disabled">
+                        <select name = "emailAddress" id= "emailAddress">
+                            <option>선택</option>
+                            <option>네이버</option>
+                            <option>다음</option>
+                            <option>직접입력</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>핸드폰번호</label></td>
+                    <td><input type="text" name = "hpno" id = "hpno"></td>
+                </tr>
+                <tr>
+                    <td><label>취미<input type="checkbox"></label></td>
+                    <td>
+                        <input type="checkbox" name = "hobby" class = "hobby_check" value="걷기">걷기
+                        <input type="checkbox" name = "hobby" class = "hobby_check" value="축구">축구
+                        <input type="checkbox" name = "hobby" class = "hobby_check" value="농구">농구
+                        <input type="checkbox" name = "hobby" class = "hobby_check" value="야구">야구
+                        <input type="checkbox" name = "hobby" class = "hobby_check" value="여행">여행
+                        <input type="checkbox" name = "hobby" class = "hobby_check" value="영화">영화
+                    
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>직업</label></td>
+                    <td>
+                        <select name="job" id="job">
+                            <option>----- 선택하세요 -----</option>
+                            <option>학생</option>
+                            <option>회사원</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align:center;padding-right: 100px;">
+                        <button>회원가입</button>
+                        <button>다시작성</button></td>
+                </tr>
+            </table>
+            
+            
+        </fieldset>
+    </form>
+
+    <fieldset id = "data">
+        <legend style="font-size:30px;">데이터</legend>
+    <table id = "d">
+        <tr>
+            <td>아이디: </td>
+            <td><span id = "id_"></span></td>
+        </tr>
+        <tr>
+            <td>비밀번호: </td>
+            <td><span id = "pw_"></span></td>
+        </tr>
+        <tr>
+            <td>이름: </td>
+            <td><span id = "name_"></span></td>
+        </tr>
+        <tr>
+            <td>생년월일: </td>
+            <td><span id = "birth_"></span></td>
+        </tr>
+        <tr>
+            <td>성별: </td>
+            <td><span id = "gender_"></span></td>
+        </tr>
+        <tr>
+            <td>이메일: </td>
+            <td><span id = "email_"></span></td>
+        </tr>
+        <tr>
+            <td>핸드폰번호: </td>
+            <td><span id = "phone_"></span></td>
+        </tr>
+        <tr>
+            <td>취미: </td>
+            <td><span id = "hobby_"></span></td>
+        </tr>
+        <tr>
+            <td>직업: </td>
+            <td><span id = "job_"></span></td>
+        </tr>
+
+    </table>
+    </fieldset>
+</body>
+</html>

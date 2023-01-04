@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* 초기화 */
+header, section, footer, aside, nav, article, figure, figcaption {
+	display: block;
+}
+
+.wrapper{
+	width:80%;
+	margin:0px auto;
+	background-color: #333;
+}
+
+header{
+	background-color: #069;
+	width:100%;
+	padding:15px 20px;
+	box-sizing: border-box;
+}
+
+h1{
+	display:inline-flex;
+	width: 200px;
+}
+nav{
+	display:inline-flex;
+}
+nav ul{
+	display:inline-flex;
+	width:100%;
+}
+nav li{
+	list-style:none;
+	display:inline;
+	margin-right:30px;
+}
+nav li a{
+	text-decoration: none;
+	color: white;
+}
+nav li a:hover{
+	color: yellow;
+}
+nav li a.current{
+	color: black;
+}
+
+
+section.breeds{
+	width:99%;
+	background-color: white;
+	margin:3px auto;
+}
+.breeds-article{
+	height:620px;
+	width:30%;
+	border:1px dotted black;
+	display:inline;
+	margin: 5px;
+	padding: 5px;
+	float:left;
+	overflow:auto;
+}
+.breeds-article dt{
+	color:purple;
+}
+.breeds .notation{
+	display: inline-block;
+    width: 99%;
+    background-color: #99cc33;
+    padding: 20px 0px 15px 10px;
+    margin: 4px;
+    box-sizing: border-box;
+}
+h2{display:inline;}
+
+footer{
+	color:white;
+	font-size: 80%;
+	text-align:center;
+	padding: 20px 0px 15px 0px
+}

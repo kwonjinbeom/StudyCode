@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>테이블 스타일 속성</title>
+		<style>
+			table{
+				width: 100%;
+				border-collapse: collapse;
+				text-align: center;
+				/* 테이블 테두리 사이의 간격을 없애기 */
+			}
+			table > caption{
+				font-size: 20px;
+				font-weight: bold;
+			}
+			table > th, td{
+				padding: 8px 5px;
+			}
+			.blue{
+				color: white; background-color: #43cbff;
+			}
+			.green{
+				color: white; background-color: #81d733;
+			}
+			.red{
+				color: white; background-color: red;
+			}
+			.orange{
+				background-color: orange;
+			}
+			.yellow{
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+	<table border = "1">
+			<caption>미세먼지 농도</caption>
+			<tr>
+				<th colspan ="2">예보구간</th>
+				<th class = "blue">좋음</th>
+				<th class = "green">보통</th>
+				<th class = "yellow">약간나쁨</th>
+				<th class = "orange">나쁨</th>
+				<th colspan = "2" class = "red">매우나쁨</th>
+			</tr>
+			<tr>
+				<td colspan ="2">예측 농도</td>
+				<td>0~30</td>
+				<td colspan = "2">31~80      81~120</td>
+				<td>121~200</td>
+				<td>201~300</td>
+				<td>301~</td>
+			</tr>
+			<tr>
+				<td rowspan ="2" >행동 요령</td>
+				<td >노약자</td>
+				<td></td>
+				<td colspan = "2">장시간 실외 활동 가급적 자제</td>
+				<td>무리한 실외활동 자제요청 (특히 호흡기, 심질환자, 노약자)</td>
+				<td>실외활동 제한</td>
+				<td>실내활동</td>
+			</tr>
+			<tr>
+				<td>일반</td>
+				<td></td>
+				<td colspan = "2"></td>
+				<td>장시간 무리한 실외활동 자제</td>
+				<td>실외활동 자제</td>
+				<td>실외활동 자제</td>
+			</tr>
+		</table>
+	</body>
+</html>

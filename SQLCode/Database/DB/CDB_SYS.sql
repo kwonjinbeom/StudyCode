@@ -1,0 +1,1 @@
+select * from v$instance; --처리문은 대소문자를 구별하지 않는다, 바로 윗줄 (깡통 초록체크)Commit

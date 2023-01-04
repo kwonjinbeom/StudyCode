@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제1</title>
+    <script src="js/jquery-3.6.2.min.js"></script>
+    
+    <style>
+
+        .a{
+            width: 150px;
+            margin-right: 10px;
+            float:left;
+        }
+        .b{
+            width:1000px;
+            overflow: auto;
+        }
+        #c{
+            width: 150px;
+            
+        }
+        .box{
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+        }
+        input{
+            margin-top: 5px;
+            width: 144px;
+        }
+        button{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "c">
+        <div id = "boxx" class="box">
+        </div>
+
+        <input type="text" id ="i1">
+        <button id="btn1">색 변경</button>
+    </div>
+    <hr>
+
+    <div class="b">
+        <div class="a">
+            <div id = "box0" class="box">
+            </div>
+
+            <input type="text" class ="i2">
+            <button id="btn2">색 변경</button>
+        </div>
+        <div class="a">
+            <div id = "box1" class="box">
+            </div>
+
+            <input type="text" class ="i2">
+        </div>
+        <div class="a">
+            <div id = "box2" class="box">
+            </div>
+
+            <input type="text" class ="i2">
+        </div>
+        <div class="a">
+            <div id = "box3" class="box">
+            </div>
+
+            <input type="text" class ="i2">
+        </div>
+        <div class="a">
+            <div id = "box4" class="box">
+            </div>
+
+            <input type="text" class ="i2">
+        </div>
+        <div class="a">
+            <div id = "box5" class="box">
+            </div>
+
+            <input type="text" class ="i2">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="b">
+        <div class="a">
+            <div id = "bo0" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+            
+        </div>
+        <div class="a">
+            <div id = "bo1" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo2" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo3" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo4" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo5" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        
+    </div>
+
+    
+
+    <!-- <script src="js/실습문제1.js"></script> -->
+    <script>
+        $("#btn1").on("click",function(){
+            const colorVal = $("#i1").val();
+            console.log(colorVal);
+            $("#boxx").css("backgroundColor", colorVal);
+        })
+
+        $("#btn2").on("click",function(){
+            const arr = document.getElementsByClassName("i2");
+            for(let i=0; i < arr.length; i++){
+                $("#box"+i).css("backgroundColor", $(arr[i]).val());
+            }
+        })
+        $(".i3").on("input",function(){
+            const ar = document.getElementsByClassName("i3");
+            for(let i=0; i < ar.length; i++){
+                $("#bo"+i).css("backgroundColor", $(ar[i]).val());
+                $(ar[i]).css("border", "3px solid "+$(ar[i]).val() +"").css("color",$(ar[i]).val());
+
+            }
+        })
+    </script>
+</body>
+</html>

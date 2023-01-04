@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>신청서 작성</title>
+		<Style type="text/css">
+			#info{margin-bottom: 20px;} /*아래 요소와 거리를 띄우기 위해 div info의 margin-bottom에 공간 줌  */
+			table{border-collapse: collapse;} /*테이블 테두리선 통합*/
+			#course {border-top:1px solid #000;
+					border-bottom:1px solid #000;}
+			#course th, #course td{border-bottom:1px dotted #000;}
+									
+			#lecture tr th{background-color: lightyellow;}
+			#lecture th, #lecture td{border:1px solid #000;}
+		
+			fieldset{width:400px;
+			}
+			#name{border-width: 0px;
+				border-bottom: 2px dashed black;
+			}
+			/* #이라고 사용하려면 id를 붙인 것들만 사용 가능. id는 현재 문서 안에서 유일한 값을 가짐.*/
+			/* 복수의 요소에 적용하려면 class 선택자를 사용해야 함 */
+			
+		
+		</Style>
+	</head>
+	<body>
+	<form>
+		<div id="info">
+		<h3>강좌 소개</h3>
+		<table id="course">
+		<tr>
+			<th>번호</th>
+			<th>프로그래밍</th>
+			<th>접수기간<br />교육기간</th>
+			<th>교육동</th>
+			<th>교육장소</th>
+			<th>수강료</th>
+			<th>선정방법</th>
+			<th>정원/대기/접수</th>
+			<th>접수상태</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2022년 성인기초영어교육 1기</td>
+			<td>2022-04-15 ~ 2022-04-28<br />2022-05-03 ~ 2022-07-19</td>
+			<td>평생학습센터 마포구</td>
+			<td>평생학습센터 제2강의실</td>
+			<td>15,000원</td>
+			<td>선착순</td>
+			<td>20/20/0</td>
+			<td><input type="button" id=reg1 value="접수예정" /></td>		
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>파크골프교실(1기)</td>
+			<td>2022-04-01 ~ 2022-04-10<br />2022-05-10 ~ 2022-06-09</td>
+			<td>생활체육교실</td>
+			<td>노을공원 파크골프장</td>
+			<td>무료</td>
+			<td>무작위추첨</td>
+			<td>20/40/0</td>
+			<td><input type="button" id=reg2 value="접수마감" /></td>
+		</tr>		
+		<tr>
+			<td>3</td>
+			<td>[기초]재미있는 세상을 여는 창, 윈도우</td>
+			<td>2022-03-28 ~ 2022-03-31 <br />2022-04-05 ~ 2022-0428</td>
+			<td>정보화교육</td>
+			<td>실시간 온라인 강의</td>
+			<td>무료</td>
+			<td>선착순</td>
+			<td>30/50/8</td>
+			<td><input type="button" id=reg3 value="교육중" /></td>
+		</tr>
+		</table>
+		</div>
+	</form>
+		
+	<fieldset>
+		<legend> 수강 신청서 작성 </legend>
+		<form>
+			<!--<h3>수강 신청서 작성</h3>  -->
+			<table id="lecture">
+				<colgroup>
+					<col width="20%">
+					<col width="80%">
+				</colgroup>
+				<tr>
+					<th colspan="2" align="center">인적사항</th>
+				</tr>
+				<tr>
+					<td>성명</td>
+					<td><input type="text" name="name" id="name"/></td> <!-- 성명과 주소의 text를 구별하기 위해 id를 준것 -->
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td><input type="text" name="address" id="address"/></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><input type="radio" name="gender" value="male" checked="checked" /><label>남성</label>
+						<input type="radio" name="gender" value="female" /><label>여성</label></td>	
+						<!-- radio는 식별할게 없으니까 name을 같게 줘도 되고 값을 받을 수 있게 value 명시 필요  -->	
+				</tr>
+				<tr>
+					<td>강좌명</td>
+					<td><select name="lecture">
+					<option value="2022년 성인기초영어교육 1기">2022년 성인기초영어교육 1기</option>
+					<option value="파크골프교실(1기)" selected="selected">파크골프교실(1기)</option>
+					<option value="[기초]재미있는 세상을 여는 창, 윈도우">[기초]재미있는 세상을 여는 창, 윈도우</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td>비고</td>
+					<td><textarea name="comments" rows="4" cols="40"></textarea></td>
+					<!-- textarea 여러줄 입력 받을 거니까 높이와 넓이가 필요함 rows(행):대략 몇줄 입력받을지 cols(열):너비 한라인에 입력받을 수 있는  텍스트 수-->
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+					<input type="submit" value="신청" />
+					<input type="reset" value="취소" /></td>
+				</tr>
+			</table>
+		</form>
+	
+	</fieldset>
+	</body>
+</html>

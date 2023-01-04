@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카카오 프렌즈샵</title>
+    
+    <!-- 캐러셀 부트스트랩 -->
+    <link rel="stylesheet"
+		    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script
+		    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script
+		    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script
+		    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- css연결 -->   
+    <link rel = "stylesheet" href ="main.css">    
+
+</head>
+<body id = "body">
+    <img src="image/heart.jpg" id ="heart1">
+    <img src="image/heart2.jpg" id ="heart2">
+    <img src="image/heart3.jpg" id ="heart3">
+    <header>
+        <img src="image/rion.png" id ="logoEvent">
+        <div id = "divHeader">
+            <!-- 로고 -->
+            <div id = "divLogo">
+                <div>
+                    <a href="#" onclick="sidebar()"><img src="image/logo_menu1.jpg" style="width:24px;height:24;margin-right: 5px;"></a>
+                    <img src="image/logo_menu2.jpg" style="width:24px;height:24;">
+                </div>
+                <div>
+                    <a onclick="logoEvent()"><img src ="image/logo.gif" id = "logo" style="width:167px;height:46;"></a>
+                </div>
+                <div>
+                    <img src="image/logo_menu3.jpg" style="width:24px;height:24;">
+                </div>
+            </div>
+            <!-- 네비게이션바 -->
+            <nav id = "navList">
+                <ul>
+                    <li class="current"><a href="#">홈</a></li>
+                    <li class="current"><a href="#">베스트</a></li>
+                    <li class="current"><a href="#">콘텐츠</a></li>
+                    <li class="current"><a href="#">마이</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div id = "divMain">
+            <!-- 첫번째 상단 슬라이드 -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="image/main_first_slide/p1.webp" style="width: 640px;height: 512px;">
+                        <div id ="carFont">
+                            <span style="color:white;font-size:32px;font-weight: bold;">커다란 토끼가 된 어피치</span><br>
+                            <span style="color:white;font-size:18px;">다가오는 새해 프렌즈샵에서</span><br>
+                            <span style="color:white;font-size:18px;">뉴이어 라인업을 미리 만나보세요.</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/main_first_slide/p2.webp" style="width: 640px;height: 512px;">
+                        <div id ="carFont">
+                            <span style="color:white;font-size:32px;font-weight: bold;">행운의 황금 당근인형</span><br>
+                            <span style="color:white;font-size:18px;">라이언과 황금 당근 뽑고</span><br>
+                            <span style="color:white;font-size:18px;">새해 기운 듬뿍 받아가요!</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/main_first_slide/p3.webp" style="width: 640px;height: 512px;">
+                        <div id ="carFont">
+                            <span style="color:white;font-size:32px;font-weight: bold;">마음의 이너 피스</span><br>
+                            <span style="color:white;font-size:18px;">지치고 힘들 때 인센스 스틱으로</span><br>
+                            <span style="color:white;font-size:18px;">평화를 되찾아보세요.</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next"> 
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+
+            <!-- 슬라이드 밑에 9개 박스 -->
+            <div id = "nineBox">
+                <ul>
+                    <li><a href="#"><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221213230347_50dfb72c4de04972b061d0f26c48f791.png"><p>신상품</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221213230405_51f63b744d0f4e5d9d4441bb88a4463d.png"><p>할인상품</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221213231749_24980ef340a24053bf11851c3ae081f1.png"><p>다이어리</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221219093856_d41e4e40d1dd46a7874165bb3d6007bf.png"><p>선물 추천</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221214181233_a1d4fb7ef677415995c3d259b4d8d3a8.gif"><p>캐릭터관</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221213231916_bfaa8c48c54c42bcad29a2b16cf780d9.png"><p>인형</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221213232518_eaf8a60367c1457d96700c5b31d41ee0.png"><p>차량용품</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221220143716_8dbfbefd2fe746b4b5bc901303d7bfe6.png"><p>문구</p></a></li>
+                    <li><a><img src="https://img1.kakaocdn.net/thumb/R55x55@2x.q100/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fnew_store%2Fprod%2Fhome_tab%2Flink-shortcut%2Flink_shortcut_20221213232747_39824c8ee40e4eca8eb6c4dee900e12a.png"><p>휴대용 용품</p></a></li>
+                </ul>
+            </div>
+            <div id = "nineBoxNumber">
+                <span>
+                    <a><img src="image/main_nineBox/nineBoxNumber1.jpg"></a>
+                    <span>1 / 2</span>
+                    <a><img src="image/main_nineBox/nineBoxNumber2.jpg"></a>
+                </span>
+            </div>
+            
+            <!-- 새로나왔어요 창 -->
+            <div id ="newProduct">
+                <div id ="comment">
+                    <span>새로 나왔어요</span>
+                    <a href="#">더보기<img src="image/main_newProduct/newProduct_more.jpg" style="width: 14px; height: 14px;"></a>
+                </div>
+                <div class = "product">
+                    <div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221219170454925_8809814929437_AW_00.jpg" ></div>
+                    <span>행운을전하는신년봉투세트</span>
+                    <span>4,000</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221214134551159_8809814929451_AW_00.jpg" ></div><span>[온라인 전용] 메가바디필로우_토끼어피치</span><span>99,000</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221214134325316_8809814928492_AW_00.jpg" ></div><span>인센스 스틱홀더_춘식이</span><span>27,000</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221215104947712_8809790654620_AW_00.jpg" ></div><span>패브릭 슬리퍼 라이언</span><span>17,900</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221215104044200_8809790654637_AW_00.jpg" ></div><span>패브릭 슬리퍼 어피치</span><span>17,900</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221215103345308_8809790654644_AW_00.jpg" ></div><span>춘식이 패브릭 슬리퍼</span><span>17,900</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221123132143965_8809814928553_AW_00.jpg" ></div><span>스텐머그컵_레이지 라이언&춘식이</span><span>29,000</span>원
+                </div>
+                <div class = "product"><div><img src="https://img1.kakaocdn.net/thumb/R142x142@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fproduct%2F20221213223940053_8809922501143_20221206113519745_5714693186822_5787.jpeg" ></div><span>루이스폴센 판텔라 포터블_라이언 에디션</span><span>568,000</span>원
+                </div>
+            </div>
+            <!-- 곧 만나요 창 -->
+            <div id ="commingSoon">
+                <div id ="comment">
+                    <span>곧 만나요</span>
+                </div>
+                <div class = "commingProduct">
+                    <div>
+                        <img src="https://img1.kakaocdn.net/thumb/R162x162@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fhome_tab%2Freserve%2Fproduct%2Fproduct_20221213224453_47a173cb27a243f1b87111afaa633629.jpeg" >
+                        <button class = "shareBtn"><img src="image/commingSoon_share_logo.jpg"  class = "share"></button>
+                        <a href="https://www.kakaocorp.com/page/" class = "shareImg"><img src="image/share_icon.jpg"  style="width:120px; height:40px;"></a>
+                    </div>
+                    <span>춘식이 팝콘메이커</span>
+                    <span><span id = "commingNum1" style="font-weight: bold;">1,304</span>명이 알림을 신청했어요</span>
+                    <button id = "alarmBtn"><div id ="alarm">출시 알림 신청하기<img src = "image/commingSoon_alarm_logo.jpg" style="width: 13px;height:13px;margin-left: 5px;margin-bottom: 5px;"></div></button>
+                </div>
+                <div class = "commingProduct">
+                    <div>
+                        <img src="https://img1.kakaocdn.net/thumb/R162x162@2x.q82.fwebp/?fname=https%3A%2F%2Ft1.kakaocdn.net%2Ffriends%2Fprod%2Fhome_tab%2Freserve%2Fproduct%2Fproduct_20221219170615_b0f167e4654c4103a1b4b5ef026f3eb2.jpg" >
+                        <button class = "shareBtn"><img src="image/commingSoon_share_logo.jpg"  class = "share"></button>
+                        <a href="https://www.kakaocorp.com/page/" class = "shareImg"><img src="image/share_icon.jpg"  style="width:120px; height:40px;"></a>
+                    </div>
+                    <span>드레스업인형_춘식이</span>
+                    <span><span id = "commingNum2" style="font-weight: bold;">603</span>명이 알림을 신청했어요</span>
+                    <button id = "alarmBtn"><div id ="alarm">출시 알림 신청하기<img src = "image/commingSoon_alarm_logo.jpg" style="width: 13px;height:13px;margin-left: 5px;margin-bottom: 5px;"></div></button>
+                </div>
+            </div>
+            <div id = "commingNumber">
+                <span>
+                    <a><img src="image/main_nineBox/nineBoxNumber1.jpg"></a>
+                    <span>1 / 1</span>
+                    <a><img src="image/main_nineBox/nineBoxNumber2.jpg"></a>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="divFooter">
+            <span>제휴문의 | 고객문의 | 이용약관 | <span style="font-weight: bold;">개인정보처리방침</span> | 지식재산권보호센터</span>
+            <div><img src="https://st.kakaocdn.net/commerce_ui/front-friendsshop/real/20221216/130751/assets/images/m960/logo_foot_kakao.png" style="width:36px; height: 12px;"><img src="https://st.kakaocdn.net/commerce_ui/front-friendsshop/real/20221216/130751/assets/images/m960/familymark.png" style="width: 100px; height: 28px;"></div>
+            <table id = "footerTable">
+                <tr>
+                    <td>(주)카카오</td>
+                    <td>대표이사 홍은택</td>
+                </tr>
+                <tr>
+                    <td>주소</td>
+                    <td>제주특별자치도 제주시 첨단로 242</td>
+                </tr>
+                <tr>
+                    <td>사업자등록번호</td>
+                    <td>120-81-47521 등록정보확인</td>
+                </tr>
+                <tr>
+                    <td>통신판매업신고번호</td>
+                    <td>제2015 - 제주아라 - 0032호</td>
+                </tr>
+                <tr>
+                    <td>호스팅서비스사업자</td>
+                    <td>(주)카카오</td>
+                </tr>
+                <tr>
+                    <td>구매안전서비스</td>
+                    <td>신한은행 구매안전서비스 확인</td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>friends.cs@kakaocorp.com</td>
+                </tr>
+                <tr>
+                    <td>고객센터</td>
+                    <td>1577-6263 (통화료발생)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>전화상담 (평일 09:00~18:00)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>카카오톡 상담 (평일 09:00~18:00)</td>
+                </tr>
+            </table>
+        </div>
+    </footer>
+
+    <aside>
+        <div>
+            <div id ="comment">
+                <span style="font-size:16px;font-weight: bold;"><span style="text-decoration: underline;text-underline-position: under;">로그인</span>이 필요해요!</span>
+                <a href="#" style="font-size:14px;color:black;">더보기<img src="image/main_newProduct/newProduct_more.jpg" style="width: 14px; height: 14px;"></a>
+            </div>
+            
+            <ul>
+                <li><a>장바구니 내역</a></li>
+                <li><a>주문, 배송 내역</a></li>
+                <hr>
+                <li><a>캐릭터</a></li>
+                <li><a>카테고리</a></li>
+                <hr>
+                <li><a>프렌즈 별다꾸</a></li>
+                <li><a>배경화면</a></li>
+                <hr>
+                <li><a>공지사항</a></li>
+                <li><a>고객센터</a></li>
+                <li><a>기프트카드 조회, 환불</a></li>
+                <hr>
+                <li><a>카카오프렌즈샵 안내</a></li>
+                <li><a><img src="https://st.kakaocdn.net/commerce_ui/front-friendsshop/real/20221216/130751/assets/images/m960/bn_addtalk.png" style="width: 272px; height: 66px;"></a></li>
+                <hr>
+                <img src="image/loginLogo.jpg" style="margin-left: 150px">
+
+            </ul>
+        </div>
+    </aside>
+
+    <script src="personalProject.js"></script>
+</body>
+</html>

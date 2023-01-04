@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제 4</title>
+    <style>
+        fieldset{
+            width: 400px;
+        }
+        #idCheck{
+            margin-left: 5px;
+        }
+        #reset{
+            margin: 8px 0px 8px 150px;
+        }
+        table tr td{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <fieldset>
+            <legend>회원 가입 양식</legend>
+            <table>
+                <tr>
+                    <td><label>아이디</label></td>
+                    <td><input type="text" id = "id" name="title" ></td>
+                    <td><button id = "idCheck">중복확인</button></td>
+                </tr>
+                <tr>
+                    <td><label>비밀번호</label></td>
+                    <td><input type="password" id="pw" name="content" ></td>
+                </tr>
+                <tr>
+                    <td><label>비밀번호확인</label></td>
+                    <td><input type="password" name="title" ></td>
+                </tr>
+                <tr>
+                    <td><label>이름</label></td>
+                    <td><input type="text" id="name" name="title" ></td>
+                </tr>
+                <tr>
+                    <td><label>성별</label></td>
+                    <td><input type="radio" name="title" >남
+                        <input type="radio" name="title" >여
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>전화번호</label></td>
+                    <td><input type="text" name="title" ></td>
+                </tr>
+                <tr>
+                    <td><label>이메일</label></td>
+                    <td><input type="text" name="title" ></td>
+                </tr>
+                
+        </table>
+        <button id="reset">초기화</button>
+        <button type="submit" id="write">회원가입</button>
+        </fieldset>
+    </form>
+
+
+
+    <script src="JS/실습문제4(회원가입양식).js"></script>
+</body>
+</html>
