@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간2 계산기 만들기</title>
+    
+    <script>
+        
+        function cal(btn){
+            /* 함수정의 */
+            const Fnp = function 함수명(n1, n2, op){
+                // return eval(n1 + op + n2); 얘는 보안 이슈 땜에 밑에 껄로 대체
+                return new Function("return " + n1 + op + n2)();
+                }
+            
+            const first = Number(document.getElementById('num1').value);
+            const second = Number(document.getElementById('num2').value);
+            const op = btn.innerText;
+
+            result = document.getElementById("result");
+            result.innerHTML = "";
+            result.innerHTML = Fnp(first,second,op);
+
+            /* eval("코드 형식 문자열")
+                -> 작성된 문자열을 JS 코드로 해석하는 함수
+                -> 속도 + 보안 이슈가 있어서 사용 지양(사용X) */
+            // document.getElementById("result").innerText = new Function("return " + num1 + op + num2)();
+
+        }
+
+       
+    </script>
+
+</head>
+<body> <!-- internal 방식으로 작성 --> <!-- Number("10")으로 형변환 -->
+    <h1>간이 계산기 만들기</h1>
+
+    첫번째 값 : <input type="text" id ="num1"><br>
+    두번째 값 : <input type="text" id ="num2"><br>
+    <!-- 함수 호출 시 매개변수 this
+     -> 이벤트가 발생한 요소 자체를 의미한다. -->
+
+     <!-- btn에는 this(클릭된 버튼 요소)가 전달되어짐 -->
+    <button onclick="cal(this)" class = "bt">+</button>
+    <button onclick="cal(this)" class = "bt">-</button>
+    <button onclick="cal(this)" class = "bt">*</button>
+    <button onclick="cal(this)" class = "bt">/</button>
+    <button onclick="cal(this)" class = "bt">%</button>
+    <!-- 버튼 -->
+    <br><br>
+    계산 결과 : <span id = "result"></span> 
+</body>
+</html>

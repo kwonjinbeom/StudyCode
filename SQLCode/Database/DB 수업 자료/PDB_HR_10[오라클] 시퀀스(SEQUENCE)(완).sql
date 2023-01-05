@@ -1,0 +1,23 @@
+--2022-11-08
+--[오라클] 시퀀스(?SEQUENCE)
+--(1) 시퀀스 생성 
+--시퀀스는 유일(UNIQUE)한 값을 생성해주는 오라클 객체이다.
+--시퀀스를 생성하면 기본 키와 같이 순차적으로 증가하는 칼럼을 자동적으로 생성할 수 있게 된다.
+CREATE TABLE TEST(
+    NO NUMBER NOT NULL PRIMARY KEY
+);
+-- 시퀀스 TEST_SEQ 생성
+CREATE SEQUENCE TEST_SEQ
+START WITH 1 
+INCREMENT BY 1 
+MINVALUE 1
+MAXVALUE 100000
+NOCYCLE
+CACHE 2;
+--
+INSERT INTO TEST(NO) 
+VALUES(TEST_SEQ.NEXTVAL);
+--
+SELECT * FROM TEST;
+--
+SELECT TEST_SEQ.CURRVAL FROM DUAL;

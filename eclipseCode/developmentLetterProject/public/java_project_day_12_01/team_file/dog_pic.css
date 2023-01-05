@@ -1,0 +1,198 @@
+@charset "UTF-8";
+
+/* 초기화 */
+header, section, footer, aside, nav, article, figure, figcaption {
+	display: block;
+}
+
+.wrapper{
+	background-color:#333;
+	width:80%;
+	margin:0px auto;
+}
+
+header{
+	background-color: #069;
+	width:100%;
+	padding:15px 20px;
+	box-sizing: border-box;
+}
+
+h1{
+	display:inline-flex;
+	width: 200px;
+}
+nav{
+	display:inline-flex;
+}
+nav ul{
+	display:inline-flex;
+	width:100%;
+}
+nav li{
+	list-style:none;
+	display:inline;
+	margin-right:30px;
+}
+nav li a{
+	text-decoration: none;
+	color: white;
+}
+nav li a:hover{
+	color: yellow;
+}
+nav li a.current{
+	color: black;
+}
+
+
+
+.breeds-article{
+	height:620px;
+	width:30%;
+	border:1px dotted black;
+	display:inline;
+	margin: 5px;
+	padding: 5px;
+	float:left;
+	overflow:auto;
+}
+.breeds-article dt{
+	color:purple;
+}
+.breeds .notation{
+	display: inline-block;
+    width: 99%;
+    background-color: #99cc33;
+    padding: 20px 0px 15px 10px;
+    margin: 4px;
+    box-sizing: border-box;
+}
+h2{display:inline;}
+
+footer{
+	color:white;
+	font-size: 80%;
+	text-align:center;
+	padding: 20px 0px 15px 0px;
+	clear: both;
+}
+/* footer{
+	background-color:#333;
+	color: #ffffff;
+	font-size: 50%;
+	padding: 7px 0px 0px 20px;
+	text-align: center;
+	height:40px;
+	margin-top:4px;
+	clear:both;
+} */
+
+/* section */
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+section{
+	float:left;
+	height: 950px;
+	padding-top:40px;
+	width:65%;
+	background-color: white;
+	margin:5px 0px 0px 15px;
+}
+section h2{
+	text-align:center;
+	margin:50px 0px 20px 30%;
+
+	border-bottom: 2px solid #FFCD00;
+	font-family: 'NanumSquareNeo-Variable';
+	width: 175px;
+}
+div.dog{
+	margin: 5px;
+	margin-left:40px;
+	/* border: 1px solid #ccc; */
+	float: left;
+	width: 130px;
+	box-sizing: border-box;
+	/* background-color:black; */
+	
+}
+div.dog img{
+	width: 130px;
+	height: 130px;
+	text-align:center;
+	
+	
+}
+div.desc{
+	font-size:13px;
+	padding: 5px;
+	text-align: center;
+	font-family: 'NanumSquareNeo-Variable';
+}
+div.dog img:hover{
+	opacity: 0.3;
+}
+
+#dog_box1{
+	/* border: 1px dotted; */
+	margin:25px 0px 25px 10px;
+	width:80%;
+	overflow:hidden;
+	
+	/* 하위 클래스가 float:left를 가져서 높이를 인식하지 못하여
+	부모클래스가 될 수 없었음 그래서 overflow를 주었다. */
+	/* background-color:black; */
+}
+#dog_box1 p{
+	font-size:15px;
+	font-weight:bold;
+	font-family: 'NanumSquareNeo-Variable';
+}
+#dog_box1 hr{
+	width : 85%;
+	height: 2px;
+	background-color: #FFCD00;
+	border:0px;
+}
+#dog_box1 a{
+	text-decoration-line: none;
+	color:black;
+}
+
+/* aside */
+aside{
+	float:left;
+	width:33%;
+	height:950px;
+	margin-top:5px;
+	background-color:#ffffff;
+	padding-top:40px;
+}
+#sidebar .side{
+	overflow:auto;
+	margin-top:100px;
+}
+#sidebar h2{
+	text-align:center;
+	margin:50px 0px 20px 30%;
+
+	border-bottom: 2px solid #FFCD00;
+	font-family: 'NanumSquareNeo-Variable';
+	width: 175px;
+}
+aside .sidebox{
+	width:35%;
+	float:left;
+	
+}
+aside .desc{
+	width:60%;
+	float:right;
+	
+}

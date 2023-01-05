@@ -1,0 +1,394 @@
+/* 폰트 */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}  
+
+a, span{
+    font-family: 'Pretendard-Regular';
+}
+header{
+    display: flex;
+    justify-content: center;
+}
+/* body 하트 */
+#heart1{
+    width:25px;
+    height: 25px;
+    z-index: 100;
+    position: absolute;
+    transition-duration: 0.5s;
+    display: none;
+}
+#heart2{
+    width:25px;
+    height: 25px;
+    z-index: 100;
+    position: absolute;
+    transition-duration: 0.5s;
+    display: none;
+}
+#heart3{
+    width:25px;
+    height: 25px;
+    z-index: 100;
+    position: absolute;
+    transition-duration: 0.5s;
+    display: none;
+}
+/* body 하트 끝 */
+/* 헤더 --------------------------------- */
+#divHeader{
+    width: 640px;
+    height: 89px;
+    position:fixed; /* 스크롤 중 상단바 header 고정 */
+    z-index:20; /* 스크롤 시 가려짐 방지 */
+    background-color: white;
+}
+/* 로고 */
+#logo{
+    width: 167px;
+    height: 46px;
+    margin: 0px 150px;
+}
+/* 로고 이벤트 */
+#logoEvent{
+    width:500px;
+    height: 500px;
+    top: 880px;
+    left: 580px;
+    z-index: 1000;
+    position:absolute;
+    display: none;
+    transform: translateY(10px);
+}
+#divLogo{
+    width: 640px;
+    height: 46px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+/* 로고 끝*/
+/* 네비게이션바 */
+#navList{
+    width: 640px;
+    height: 43px;
+    display: flex;          /* body칸에 맞추기 */
+    align-items: center;
+}
+#navList > ul{
+    list-style: none;
+    display: flex; /* li 가로 정렬 */
+    padding-left: 0;
+}
+.currentApply{
+    padding-bottom: 13px;
+    border-bottom: 4px solid black;
+    font-weight: bold;
+}
+#navList > ul > li > a{
+    display: block;
+    width: 160px;
+    height: 43px;
+    font-size: 16px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-decoration: none; /* 밑줄 제거 */
+}
+/* 네비게이션바 끝 */
+/* 헤더 끝 --------------------------------- */
+
+/* 메인 --------------------------------- */
+main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+/* 첫번째 상단 슬라이드 */
+#divMain{
+    width: 640px;
+    height: 2000px;
+    padding-top: 89px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 영역 벗어날 시 줄바꿈 */
+    align-content: flex-start; /* 줄바꿈 시 바로 아래 줄에 붙게 */
+}
+#myCarousel{width: 640px;height: 512px;}
+
+#carFont{
+    font-family: 'Pretendard-Regular';
+    width:400px;
+    height: 100px;
+    position: relative;
+    top:-130px;
+    left: 15px;
+    
+}
+/* 첫번째 상단 슬라이드 끝 */
+/* 슬라이드 밑에 9개 박스 */
+#nineBox{
+    width: 640px;
+    height: 90px;
+    display: flex; /* ul 가운데 정렬을 위한 flex 사용 */
+    justify-content: center; /* ul 가운데 정렬 */
+}
+#nineBox > ul{
+    list-style: none;
+    display: flex; /* li 가로 정렬 */
+    padding-left: 0; /* list 앞에 점 없앤 여백 지우기 */
+}
+#nineBox > ul > li{padding: 15px 6px;}
+#nineBox > ul > li > a{
+    width: 55px;
+    height: 74px;
+    text-decoration: none; /* 밑줄 제거 */
+    color:#757575;
+}
+#nineBox > ul > li > a > p{
+    font-size: 11px;
+    text-align: center;
+    margin-top: 2px;
+}
+#nineBox > ul > li > a > img{
+    width: 55px;
+    height: 55px;
+    border-radius: 30%;
+}
+#nineBoxNumber{
+    width: 640px;
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+#nineBoxNumber > span > a{padding: 0px 15px;}
+#nineBoxNumber > span > a > img{width: 24px;height: 24px;}
+#nineBoxNumber > span > span{font-size: 14px;}
+/* 슬라이드 밑에 9개 박스 끝 */
+/* 새로나왔어요 창 */
+#newProduct{
+    width: 640px;
+    height: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#newProduct > #comment{
+    width: 640px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+#newProduct > #comment > a{
+    font-size: 14px;
+    text-decoration: none; /* 밑줄 제거 */
+    color: #747475;
+}
+#newProduct > #comment > span{
+    font-size: 20px;
+    font-weight:bold;
+    color: #000;
+}
+#newProduct > .product{
+    width: 152.5px;
+    height: 200px;
+    margin: 20px 0px;
+}
+#newProduct > .product > span:nth-child(2){
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    /* 말 줄임표를 위해 사용 */
+    width: 142px;
+    height: 17px;
+    color: #616161;
+    font-size: 14px;
+}
+#newProduct > .product > span:nth-child(3){
+    color: #222222;
+    font-size: 15px;
+    font-weight: bold;
+}
+#newProduct > .product > div{
+    width:150px;
+    height:150px;
+    background-color: #00000005;
+    text-align: center;
+}
+#newProduct > .product > div > img{
+    width:142px;
+    height:142px;
+    margin: 5px 0;
+}
+/* 새로나왔어요 창 끝 */
+/* 곧 만나요 창 */
+#commingSoon{
+    width: 640px;
+    height: 456px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+#commingSoon > #comment{
+    width: 640px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+#commingSoon > #comment > span{
+    font-size: 20px;
+    font-weight:bold;
+    color: #000;
+}
+#commingSoon > .commingProduct{
+    width: 172px;
+    height: 294px;
+    margin: 0px 5px;
+}
+#commingSoon > .commingProduct > div{
+    width:170px;
+    height:210px;
+    background-color: #00000005;
+    text-align: center;
+}
+#commingSoon > .commingProduct > div > img{
+    width:162px;
+    height:202px;
+    margin: 5px 0;
+}
+#commingSoon > .commingProduct > div > .shareBtn{
+    background-color: white;
+    outline:none;
+    border: 0;
+    width:25px;
+    height: 25px;
+    position: relative; /* 사진속에 포함되기 위해 relateive */
+    top:-50px;
+    left: 60px;
+}
+#commingSoon > .commingProduct > div > .shareBtn > img{width:25px;height: 25px;}
+#commingSoon > .commingProduct > span:nth-child(2){
+    display: block;
+    color: #222222;
+    font-size: 14px;
+}
+#commingSoon > .commingProduct > span:nth-child(3){
+    display: block;
+    color: #ff6644;
+    font-size: 12px;
+}
+#commingSoon > .commingProduct > span >.commingNum{
+    font-weight: bold;
+}
+#commingSoon > .commingProduct > #alarmBtn{
+    border: 0;
+    background-color: white;
+    outline:none;
+}
+#commingSoon > .commingProduct > #alarmBtn > #alarm{
+    width:162px;
+    height: 32px;
+    border: 1px solid #e0e0e0;
+    font-size: 13px;
+    font-weight: bold;
+    color: #252525;
+    font-family: 'Pretendard-Regular';
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#commingNumber{
+    width: 640px;
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+#commingNumber > span > {padding: 0px 15px;}
+#commingNumber > span > a > img{width: 24px;height: 24px;}
+#commingNumber > span > span{font-size: 14px;}
+
+.shareImg{
+    position: relative;
+    top: 65px;
+    right:170px;
+    width: 500px;
+    height: 10px;
+    display:none;
+}
+
+/* 곧 만나요 창 끝 */
+/* 메인 끝 ---------------------------------*/
+/* footer */
+footer{
+    display: flex;
+    justify-content: center;
+}
+footer > #divFooter{
+    width: 640px;
+    height: 300px;
+}
+footer > #divFooter > div{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+footer > #divFooter > span{
+    font-size: 12px;
+    color:#666666;
+}
+#footerTable{
+    font-size: 11px;
+    color:#999999;
+}
+/* footer 끝 */
+/* aside */
+aside{
+    height: 100%;
+    width:400px;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    transform: translateX(-400px);
+   
+    /* visibility:hidden은 화면에 보이지 않지만 공간이 존재하지 않고 */
+    /* display:none은 보이지도 않고, 해당 공간도 존재하지 않게 된다. */
+}
+aside > div{
+    width: 100%;
+    height: 100%;
+}
+/* aside 끝 */
+
+aside > div > #comment{
+    padding: 30px;;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+.boxShadowCode{
+    
+    box-shadow : rgba(0,0,0,0.5) 0 0 0 9999px, rgba(0,0,0,0.5) 2px 2px 3px 3px;
+    z-index : 100;
+}
+aside > div >  ul {
+    list-style: none;
+    padding-left: 0;
+}
+aside > div >  ul > li {
+    margin: 24px 0;
+    padding: 0 24px;
+    color:#000000;
+}

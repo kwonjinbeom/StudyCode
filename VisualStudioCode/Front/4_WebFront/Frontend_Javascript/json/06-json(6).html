@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 모바일 웹 페이지 설정 -->
+    <link rel = "shortcut icon" href="../image/icon.png"/>
+    <link rel = "apple-touch-icon" href="../image/icon.png"/>
+    <!-- 모바일 웹 페이지 설정 끝 -->
+
+    <!-- [if lt IE 9] >
+    <script src="../js/html5shiv.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        function init(){
+            let user = {
+                "name" : 'javauser',
+                "email" : 'javauser@naver.com',
+                phone : '02-506-3536'
+            };
+            // stringify() : JSON 객체를 String으로 변환해 준다
+            let userStr = JSON.stringify(user);
+            console.log(typeof(userStr));
+            document.getElementById("string").innerHTML = userStr;
+
+            let userJson = "";
+            console.log(typeof(JSON.parse(userStr)));
+
+            // parse() : userSTR, function(key, value){
+            JSON.parse(userStr, function(key, value){
+                if(key!= ""){
+                    userJson += key + " : " + value + "<br />";
+                }
+            });
+            document.getElementById("json").innerHTML = userJson;
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h3>stringify 메서드 - JSON 객체를 String 으로 변환해 준다</h3>
+    <p id = "string"></p>
+
+    <h3>parse 메서드 - String 객체를 JSON으로 변환해 준다</h3>
+    <p id="json"></p>
+    
+</body>
+</html>

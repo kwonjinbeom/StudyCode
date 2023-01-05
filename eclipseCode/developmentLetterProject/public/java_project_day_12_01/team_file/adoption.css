@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.adoption{
+    width: 99%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 5px solid  #333;
+    padding: 5px;
+    overflow: hidden;
+    background-color: white;
+    box-sizing: border-box;
+}
+.adoption-article{
+    width: auto;
+    height: auto;
+    float: none;
+    margin: 5px;
+    padding: 5px;
+    border: 1px dotted #333;
+    box-sizing: border-box;
+}	
+
+.adoption-article h2{
+    font-weight: bold;
+    background: url(../image/bg_layout.png) no-repeat left center;
+    padding-left: 30px;
+}
+.adoption-article dt{
+	color: purple;
+	font-weight: bold;
+}
+
+aside{
+    float: none;
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: left;
+    background-color: lightyellow;
+    box-sizing: border-box;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>margin 속성 확인</title>
+		<style>
+			div:nth-child(1){
+				box-sizing: border-box; /* 크기 450px */ /* content-box(기본값), border-box */
+				/* box-sizing 구문을 이용하면 width에 명시한 450px가 전체의 값이 되고,
+				구문을 이용하지 않으면 padding, margin, border을 더한 550px 가 전체가 된다. */
+				/* box-sizing: content-box; */ /* 크기 550px */
+				background-color: darkgray;
+				color: white;
+				width:450px;
+				padding: 30px;
+				border: 20px solid teal;
+				margin: 50px;
+				box-shadow: 10px 10px 5px 5px #666666;
+			}
+			div:nth-child(2){
+				box-sizing: content-box;
+				background-color: darkgray;
+				color: white;
+				width:600px;
+				padding: 30px;
+				border: 20px solid yellow;
+				margin: 50px;
+				box-shadow: 10px 10px 1px 1px #666666;
+			}
+			div:nth-child(3){
+				background-color: orange;
+				color: white;
+				width:200px;
+				padding: 30px;
+				border: 20px solid blue;
+				margin: 50px;
+				text-shadow: 1px 1px 2px black;
+			}
+			div:nth-child(4){
+				text-shadow: 0px 0px 3px red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id= "nth-child(1)">Alice in Wonderland<br><br>
+			When Alice follows the White Rabbit down a rabbit hole, she finds herself in 
+a land where she can change her size. She meets a Duchess with a pig for a baby, a Cook that throws 
+spoons, a wise but mad Cheshire cat, the March Hare, Mad Hatter and a Dormouse. A Caterpillar 
+shows her how to adjust her height by eating from the right and left sides of a mushroom.
+		</div>
+		<div id= "nth-child(2)">Alice in Wonderland<br><br>
+			When Alice follows the White Rabbit down a rabbit hole, she finds herself in 
+a land where she can change her size. She meets a Duchess with a pig for a baby, a Cook that throws 
+spoons, a wise but mad Cheshire cat, the March Hare, Mad Hatter and a Dormouse. A Caterpillar 
+shows her how to adjust her height by eating from the right and left sides of a mushroom.
+		</div>
+		<div id= "nth-child(3)">Alice in Wonderland<br><br>
+			When Alice follows the White Rabbit down a rabbit hole, she finds herself in 
+a land where she can change her size. She meets a Duchess with a pig for a baby, a Cook that throws 
+spoons, a wise but mad Cheshire cat, the March Hare, Mad Hatter and a Dormouse. A Caterpillar 
+shows her how to adjust her height by eating from the right and left sides of a mushroom.
+		</div>
+		<div id= "nth-child(4)">
+		When Alice follows the White Rabbit down a rabbit hole, she finds herself in 
+a land where she can change her size. She meets a Duchess with a pig for a baby, a Cook that throws 
+spoons, a wise but mad Cheshire cat, the March Hare, Mad Hatter and a Dormouse. A Caterpillar 
+shows her how to adjust her height by eating from the right and left sides of a mushroom.
+		</div>
+	</body>
+</html>

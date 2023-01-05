@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<title>event - 10-event.html</title>
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel ="shortcut icon" href="../image/icon.png" />
+		<link rel ="apple-touch-icon" href="../image/icon.png" />
+		<!-- 모바일 웹 페이지 설정 끝 -->
+		
+		<!-- [if lt IE 9]>
+		<script src="../js/html5shiv.js"></script>
+		<![endif]-->
+		<style type = "text/css">
+			a{text-decoration: none;}
+			div{margin-top:20px;}
+			
+			#question{
+				display:inline-block;
+				width:200px; color:red; font-size:38px; height:80px;
+				}
+			#answer{height:80px;}
+			
+			div#target{width:500px; height: 150px; margin-bottom:10px;}
+			#form1 input[type="text"]{width:60px; height:1.5em}
+			#form3 input[type="password"]{width:30px;height:1.5em}
+			
+			iframe{width:900px; height:400px;}
+			#tagExercise{width:900px; overflow:auto; }
+			#tagExercise form{width:48%; float:left; margin-right:5px;}
+			#tagExercise form > button{width:100px;}
+			#tagExercise #resultArea{width:48%; float:left; margin-top:0px; overflow:auto; height:265px;}
+
+			div#calculator form{width: 260px; padding:5px;}
+			div#calculator form input[type="text"]{width:253px; text-align:right;}
+			div#calculator form input[type="button"]{width:60px;text-align:center;}
+			div#calculator form input[type="button"].zero{width:191px;}
+			div#calculator form input[type="button"].setSize{width:126px; }
+		
+		</style>
+		<script type="text/javascript">
+			// 아래 내용을 함수로 변경해서 코딩해 주세요.
+			function pageColor(color){
+				document.bgColor = color;
+			}
+			
+			// 두 수를 더한 값을 리턴하여 주는 함수
+			function sum(x, y) {
+				let z = x + y;
+				return z;
+			}
+			
+			function showResult() {
+				//let result = sum(10, 50);
+				let num1 = parseInt(document.getElementById("number1").value);
+				let num2 = parseInt(document.getElementById("number2").value);
+				//if(isNaN(num1)==false && isNaN(num2)==false){
+				if(!isNaN(num1) && !isNaN(num2)){ // !(부정연산자) false->true true->false
+					let result = sum(num1, num2);
+					document.getElementById("question").innerHTML = result;
+				} else {
+					document.getElementById("question").innerHTML = "숫자입력";
+				}
+			}
+			
+			function hideResult() {
+				document.getElementById("number1").value ="";
+				document.getElementById("number2").value = "";
+				document.getElementById("question").innerHTML = "?";
+			}
+			
+			function answerCheck(data){
+				let answer = document.getElementById("answer")
+				answer.style.color = "#b90000";
+				answer.style.fontSize = "36px";
+				answer.innerHTML = data;
+			} 
+			
+			let cnt = 0; // 전역변수
+			function imageChange(){
+				if(cnt == 0 ){
+					document.getElementById("quiz").src = "../image/quiz2_2.png";
+					cnt = 1;
+				} else {
+					document.getElementById("quiz").src = "../image/quiz2.png";
+					cnt = 0;
+				}
+			}
+			
+			function changeColor(c) {
+	            document.getElementById("target").style.backgroundColor = c;
+			}
+			
+			function juminFocus(){
+				let jumin1 = document.getElementById("jumin1").value;
+				if(jumin1.length == 6){
+					document.getElementById("jumin2").focus();
+				}
+			}
+			
+			function showMessage(message){
+				document.getElementById("msg").innerHTML = message;
+			}
+			
+			function dataChange(){
+				let data = document.getElementById("id");
+				data.value = data.value.toLowerCase(); // 입력 데이터 소문자 변환
+			}
+			
+			function page(){
+				document.getElementById("pArea").innerHTML = "오늘 하루도 최선을 다해...";
+			}
+			
+			function tagCheck(){
+				let data = document.getElementById("resultArea");
+				data.innerHTML = document.getElementById("tag").value;
+			}
+			
+			let expression="";
+            function add(character) {
+                expression = expression + character;
+                document.getElementById("display").value = expression;
+            }
+            function compute() {
+             	// isFinite(123.123) 123.123은 유한한 숫자이므로 true를 반환합니다.
+    			// isFinite(5/0) Infinity는 무한한 숫자이므로 false를 반환합니다.
+    			let result = eval(expression);
+    			if(!isFinite(result)){
+    				document.getElementById("display").value = "0으로 나눌 수 없습니다";
+            		return;
+    			}
+            	document.getElementById("display").value = result;
+            }
+            function clearDisplay() {
+                expression = "";
+                document.getElementById("display").value = "0";
+            }
+			
+		</script>
+	</head>
+	<body onload="page()">
+	<h1>onmouseover / onmouseout 이벤트 핸들러1</h1>
+		<!-- pageColor()로 정의 -->
+		<!-- <a href="#" onmouseover="document.bgColor='green'" onmouseout="document.bgColor='white'">안</a>
+		<a href="#" onmouseover="document.bgColor='pink'" onmouseout="document.bgColor='white'">녕</a>
+		<a href="#" onmouseover="document.bgColor='blue'" onmouseout="document.bgColor='white'">하</a>
+		<a href="#" onmouseover="document.bgColor='red'" onmouseout="document.bgColor='white'">세</a>
+		<a href="#" onmouseover="document.bgColor='yellow'" onmouseout="document.bgColor='white'">요</a> -->
+
+		<a href="#" onmouseover="pageColor('green')" onmouseout="pageColor('white')">안</a>
+		<a href="#" onmouseover="pageColor('pink')" onmouseout="pageColor('white')">녕</a>
+		<a href="#" onmouseover="pageColor('blue')" onmouseout="pageColor('white')">하</a>
+		<a href="#" onmouseover="pageColor('red')" onmouseout="pageColor('white')">세</a>
+		<a href="#" onmouseover="pageColor('yellow')" onmouseout="pageColor('white')">요</a> 
+		
+		<h1>onmouseover / onmouseout 이벤트 핸들러2</h1>
+		<form  name="form1" id="form1">
+			<input type="text" id="number1" name="number1" placeholder="숫자입력" />
+			<label>+</label>
+			<input type="text" id="number2" name="number2" placeholder="숫자입력" />
+			<label>=</label>		
+			<span id="question" onmouseover="showResult()" onmouseout="hideResult()">?</span>
+			<p>결과를 보시려면 수식(?) 위에 마우스를 올리세요.</p>
+		</form>
+		
+		<h1>넨센스 퀴즈</h1>
+		<!-- answerCheck()로 정의 -->
+		<ul>
+			<li onmouseover="answerCheck('꿈을 갖기 위해서')" onmouseout="answerCheck('')">우리가 수업시간에 자는 이유는?</li>
+			<li onmouseover="answerCheck('교도소')" onmouseout="answerCheck('')">도둑이 없는 도둑마을은 어딘가?</li>
+			<li onmouseover="answerCheck('오목')" onmouseout="answerCheck('')">다섯 그루의 나무를 심으면?</li>
+			<li onmouseover="answerCheck('독수리 오형제')" onmouseout="answerCheck('')">콩쥐의 깨진 독을 수리해 준 사람은?</li>
+		</ul>
+		<div id="answer">정답보여주기</div>
+		
+		<h1>onclick 이벤트 핸들러1</h1>
+		<!-- imageChange()로 정의 -->
+		<img id="quiz" src="../image/quiz2.png" onclick="imageChange()" />
+		
+		<h1>onclick 이벤트 핸들러2</h1>
+		<!-- changeColor()로 정의 -->
+		<div id="target">
+		    <form name="form2">
+				<input type="radio" name="color" value="lightblue" onclick="changeColor(this.value)"><label>파랑색</label>
+				<input type="radio" name="color" value="lightgreen" onclick="changeColor(this.value)"><label>녹색</label>
+		    </form>
+		</div>    
+		
+		<h1>keyup 이벤트 핸들러</h1>
+		<form name="form3" id="form3">
+			<label>주민등록번호: </label>
+			<input type="text" name="jumin1" id="jumin1" maxlength="6" onkeyup="juminFocus()" />
+			<label>-</label>
+			<input type="password" name="jumin2" id="jumin2" maxlength="1" />******
+		</form> 
+		
+		<h1>onfocus와 onblur 이벤트 핸들러</h1>
+		<form name="form4" id="form4">
+			<label>아이디 </label>
+			<input type="text" name="id" id="id" maxlength="12" onfocus="showMessage('아이디 입력해 주세요')" 
+			onblur="showMessage('사용 가능한 아이디입니다.')" onchange="dataChange()" />
+			<span id="msg"></span>
+		</form> 
+		
+		<h1>onload 이벤트 핸들러</h1>
+		<p id="pArea"></p>
+	
+		<h1>태그 연습</h1>
+		<div id="tagExercise">
+			<form>
+<textarea rows="15" cols="55" id="tag">
+<html>
+	<head></head>
+	<body>
+		<h1>안녕하세요.</h1>
+	</body>
+</html>
+</textarea><br />
+				<button type="button" onclick="tagCheck()">태그 확인</button>
+			</form>
+			<div id="resultArea"></div>
+		</div>
+		
+		<h1>간단한 계산기 예제</h1>
+    	<div id="calculator">
+    	    <form>
+		        <input type="text" id="display" value="0" readonly="readonly"/>
+		        <br />
+		        <input type="button" value="7" onclick="add(this.value)" />
+		        <input type="button" value="8" onclick="add('8')" />
+		        <input type="button" value="9" onclick="add('9')" />
+		        <input type="button" value="/" onclick="add('/')" />
+		        <br />
+		        <input type="button" value="4" onclick="add('4')" />
+		        <input type="button" value="5" onclick="add('5')" />
+		        <input type="button" value="6" onclick="add('6')" />
+		        <input type="button" value="*" onclick="add('*')" />
+		        <br />
+		        <input type="button" value="1" onclick="add('1')" />
+		        <input type="button" value="2" onclick="add('2')" />
+		        <input type="button" value="3" onclick="add('3')" />
+		        <input type="button" value="-" onclick="add('-')" />
+		        <br />
+		        <input type="button" value="0" class="zero" onclick="add('0')" />
+		        <input type="button" value="+" onclick="add('+')" />
+		        <br />
+		        <input type="button" value="Clear" class="setSize" onclick="clearDisplay()" />
+		        <input type="button" value="Enter" class="setSize" name="enter" onclick="compute()" />
+		    </form>
+    	</div>
+	</body>
+</html>

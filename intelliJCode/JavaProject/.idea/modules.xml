@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaProject.iml" filepath="$PROJECT_DIR$/.idea/JavaProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codingTest/codingTest.iml" filepath="$PROJECT_DIR$/codingTest/codingTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_05/java_project_day_09_05.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_05/java_project_day_09_05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_06/java_project_day_09_06.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_06/java_project_day_09_06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_07/java_project_day_09_07.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_07/java_project_day_09_07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_08/java_project_day_09_08.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_08/java_project_day_09_08.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_13/java_project_day_09_13.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_13/java_project_day_09_13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_14/java_project_day_09_14.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_14/java_project_day_09_14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_15/java_project_day_09_15.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_15/java_project_day_09_15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_16/java_project_day_09_16.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_16/java_project_day_09_16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_19/java_project_day_09_19.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_19/java_project_day_09_19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_20/java_project_day_09_20.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_20/java_project_day_09_20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_21/java_project_day_09_21.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_21/java_project_day_09_21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_22/java_project_day_09_22.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_22/java_project_day_09_22.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_23/java_project_day_09_23.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_23/java_project_day_09_23.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_26/java_project_day_09_26.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_26/java_project_day_09_26.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_27/java_project_day_09_27.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_27/java_project_day_09_27.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_28/java_project_day_09_28.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_28/java_project_day_09_28.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_29/java_project_day_09_29.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_29/java_project_day_09_29.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_09_30/java_project_day_09_30.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_09_30/java_project_day_09_30.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_04/java_project_day_10_04.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_04/java_project_day_10_04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_05/java_project_day_10_05.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_05/java_project_day_10_05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_06/java_project_day_10_06.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_06/java_project_day_10_06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_07/java_project_day_10_07.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_07/java_project_day_10_07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_11/java_project_day_10_11.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_11/java_project_day_10_11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_12/java_project_day_10_12.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_12/java_project_day_10_12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_13/java_project_day_10_13.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_13/java_project_day_10_13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_14/java_project_day_10_14.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_14/java_project_day_10_14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_17/java_project_day_10_17.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_17/java_project_day_10_17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_18/java_project_day_10_18.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_18/java_project_day_10_18.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_19/java_project_day_10_19.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_19/java_project_day_10_19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_20/java_project_day_10_20.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_20/java_project_day_10_20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_21/java_project_day_10_21.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_21/java_project_day_10_21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_10_24/java_project_day_10_24.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_10_24/java_project_day_10_24.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_11_15/java_project_day_11_15.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_11_15/java_project_day_11_15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_day/java_project_day_11_17/java_project_day_11_17.iml" filepath="$PROJECT_DIR$/java_project_day/java_project_day_11_17/java_project_day_11_17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_project_phone/java_project_phone.iml" filepath="$PROJECT_DIR$/java_project_phone/java_project_phone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_testORexample/java_testORexample.iml" filepath="$PROJECT_DIR$/java_testORexample/java_testORexample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jbPractice/jbPractice.iml" filepath="$PROJECT_DIR$/jbPractice/jbPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/univer_project/univer_project.iml" filepath="$PROJECT_DIR$/univer_project/univer_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/use_of_programming_languages/use_of_programming_languages.iml" filepath="$PROJECT_DIR$/use_of_programming_languages/use_of_programming_languages.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제2</title>
+    <script src="js/jquery-3.6.2.min.js"></script>
+    
+    <style>
+
+        .a{
+            width: 150px;
+            margin-right: 10px;
+            float:left;
+        }
+        .b{
+            width:1100px;
+            overflow: auto;
+        }
+
+        .box{
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+        }
+        input{
+            margin-top: 5px;
+            width: 144px;
+        }
+        button{
+            position: relative;
+            top: 152px;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="b">
+        <div class="a">
+            <div id = "bo0" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+            
+        </div>
+        <div class="a">
+            <div id = "bo1" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo2" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo3" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo4" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <div class="a">
+            <div id = "bo5" class="box">
+            </div>
+
+            <input type="text" class ="i3">
+        </div>
+        <button id = "btn3">리셋</button>
+        
+    </div>
+
+    
+
+    <!-- <script src="js/실습문제1.js"></script> -->
+    <script>
+        $("#btn3").on("click",function(){
+            const ar = document.getElementsByClassName("i3");
+            
+            for(let i=0; i < ar.length; i++){
+                $("#bo"+i).css("backgroundColor", "");
+                $(ar[i]).css("border", "");
+                $(ar[i]).val('');
+                
+
+            }
+        })
+
+        $(".i3").on("input",function(){
+            const ar = document.getElementsByClassName("i3");
+            for(let i=0; i < ar.length; i++){
+                $("#bo"+i).css("backgroundColor", $(ar[i]).val());
+                $(ar[i]).css("border", "3px solid "+$(ar[i]).val() +"").css("color",$(ar[i]).val());
+
+            }
+        })
+    </script>
+</body>
+</html>

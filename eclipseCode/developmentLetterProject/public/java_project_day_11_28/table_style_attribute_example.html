@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>테이블 스타일 속성</title>
+		<style type = "text/css">
+			table{
+				width: 100%;
+				border-collapse: collapse;
+				/* border-spacing: 0px; */
+				font-size: 14px; text-align: center;
+			}
+			table > caption{
+				font-size: 20px; font-weight: 700;
+				margin-botton: 10px;
+			}
+			table td, table th{
+				padding: 8px 5px;
+				border: 1px solid #ccc;
+			}
+			.blue{
+				color: white; background-color: #43cbff;
+			}
+			.green{
+				color: white; background-color: #81d733;
+			}
+			.yellow{
+				background-color: yellow;
+			}
+			.orange{
+				background-color: orange;
+			}
+			.red{
+				color: white;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<table border = "1">
+			<caption>미세먼지 농도</caption>
+			<tr>
+				<th>예보구간</th>
+				<th class = "blue">좋음</th>
+				<th class = "green">보통</th>
+				<th class = "yellow">약간나쁨</th>
+				<th class = "orange">나쁨</th>
+				<th class = "red">매우나쁨</th>
+			</tr>
+			<tr>
+				<td>예측 농도</td>
+				<td>0~30</td>
+				<td colspan = "2">31~80      81~120</td>
+				<!-- <td>81~120</td> -->
+				<td>121~200</td>
+				<td>201~300</td>
+				<td>301~</td>
+			</tr>
+		</table>
+	</body>
+</html>

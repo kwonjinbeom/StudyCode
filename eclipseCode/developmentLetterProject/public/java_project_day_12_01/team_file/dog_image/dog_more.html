@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>애완견</title>
+		<style>
+			div.gallery{
+				margin: 5px;
+				border: 1px solid #ccc;
+				float: left;
+				width: 300px;
+				box-sizing: border-box;
+			}
+			div.gallery img{
+				width: 100%;
+				height: auto;
+			}
+			div.desc{
+				padding: 15px;
+				text-align: center;
+			}
+			div.gallery img:hover{
+				opacity: 0.3;
+			}
+		
+			body{
+				width: 80%;
+			}
+			#box{
+				border-top: 3px solid #333;
+				border: 3px solid;
+				background-color: black;
+			}
+			header{
+				width: 100%;
+				background-color: #069;
+				color:white;
+				float: left;
+			}
+			header div{
+				float:left;
+			}
+			header ul{
+				list-style:none;
+				
+			}
+			header li{
+				margin-left: 10px;
+				float: left;
+			}
+			header li a {
+				color:#ffffff;
+				text-decoration-line: none;
+			}
+			header #logo{
+				margin-left: 10px;
+				width:20%;
+			}
+			header #menubar{
+				float: right; /* div를 오른쪽 정렬 시 align아니고 이거 */
+				margin-right:80px;
+				margin-top:10px;
+				width:60%;
+
+			}
+			footer{
+				background-color:#333;
+				color: #ffffff;
+				font-size: 50%;
+				padding: 7px 0px 0px 20px;
+				text-align: center;
+				height:40px;
+				margin-top:4px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id ="logo">
+			<h2>애완견 종류</h2>
+			</div>
+			<nav id = "menubar">
+				<ul>
+					<li><a href="layout.html">애완견 종류</a></li>
+					<li><a href="#">입양하기</a></li>
+					<li><a href="dog_more.html">애완견 더 알아보기</a></li>
+					<li><a href="#">더불어살기</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id ="box">
+		<section>
+			<div class="gallery">
+			<a target="_black" href="../image/01.jpg">
+				<img src="../image/01.jpg" alt= "evenig glow"/>
+			</a>
+			<div class = "desc">Evening Glow</div>
+		</div>
+		<div class="gallery">
+			<a target="_black" href="../image/02.jpg">
+				<img src="../image/02.jpg" alt= "lake side"/>
+			</a>
+			<div class = "desc">Lake Side</div>
+		</div>
+		<div class="gallery">
+			<a target="_black" href="../image/03.jpg">
+				<img src="../image/03.jpg" alt= "sea"/>
+			</a>
+			<div class = "desc">Southern Sea</div>
+		</div>
+		<div class="gallery">
+			<a target="_black" href="../image/04.jpg">
+				<img src="../image/04.jpg" alt= "coast road"/>
+			</a>
+			<div class = "desc">Coast Road</div>
+		</div>
+		</section>
+		<footer>
+			Copyright &copy; 1998-2022 KH Information Educational Institute 
+			All Right Reserved.
+		</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+    <style>
+        body{
+            text-align: center;
+            margin: 20px auto;
+            width:700px;
+            color:pink;
+            
+        }
+        .circle{
+            float:left;
+            width:100px;
+            height:100px;
+            border: 2px solid pink;
+            border-radius: 50%;
+            margin: 5px;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 90px;
+            font-size: 30px;
+        }
+        #createLotto{
+            width: 200px;
+            height: 50;
+            margin: 20px auto;
+            font-size: 20px;
+            background-color: pink;
+            color:white;
+            border-style: none;
+        }
+        /* 강사님 css
+            #container > div{
+                width: 50px;
+                height: 50px;
+                border: 1px solid black;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size:24px;
+                font-weight:bold;
+                font-weight:궁서체;
+            }
+        */
+    </style>
+    
+</head>
+<body>
+    <div id ="container">
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+        <div class = "circle"></div>
+    </div>
+
+    <button id= "createLotto">로또 번호 생성</button>
+
+
+    <script>
+        
+        document.getElementById("createLotto").addEventListener("click",function(){
+            const arr2 = new Array(6);
+            const circle = document.getElementsByClassName("circle");
+
+            for(let i = 0; i < arr2.length; i++){
+                arr2[i] = Math.floor(Math.random()*45)+1;
+                //중복처리
+                for(let j = 0; j < i; j++){
+                    if(arr2[i] == arr2[j]){
+                        i--;
+                    }
+                }
+            }
+
+            arr2.sort(  function(a,b){ return a-b; }  ); //정렬
+            
+            for(let z = 0; z < arr2.length; z++){
+                circle[z].innerHTML = arr2[z];
+            }
+        })
+        /* 강사님 답안
+        
+        */
+    //    document.getElementById("createLotto").addEventListener("click",function(){
+    //     //#container 자식 div 6개 선택
+    //     const numbers = document.querySelectorAll("#container > div");
+    //     // 로또 번호를 저장할 배열 선언
+    //     const lotto = [];
+    //     while(lotto.length < 6){ // lotto 배열에 저장된 값이 6개가 안되면 반복
+    //         // 1~45 난수 생성
+    //         const ran = Math.floor(Math.random() * 45 + 1);
+
+    //         // 생성된 난수가 배열이 있는 지 검사
+    //         if(lotto.indexOf(ran) == -1 ){ // 중복 x
+    //             // 배열에 난수 추가
+    //             lotto.push(ran);
+
+    //         }
+    //     }
+    //     // lotto에 저장된 난수 오름차순 정렬
+    //     lotto.sort(function(a,b){return a-b;})
+
+    //     // numbers의 인덱스별로 lotto 인덱스에 저장된 값 출력
+    //     for(let i=0; i<lotto.length; i++){
+    //         numbers[i].innerHTML = lotto[i];
+    //     }
+    //    })
+    </script>
+</body>
+</html>

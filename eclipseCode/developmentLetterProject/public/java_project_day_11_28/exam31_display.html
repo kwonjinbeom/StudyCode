@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>display - 블록과 라인</title>
+		<style type = "text/css">
+			span{
+				width: 100px; height: 100px;
+				/* display: none; */
+				/* display: inline; */
+				/* display: block; */
+				display: inline-block;
+			}
+/* span과 div의 차이 즉 인라인 요소(span), 블록요소(block)의 차이는
+인라인요소는 모든 공간을 사용하지 않고 예를 들어 img에 사진이 갖고 있는 크기만큼만 
+공간을 활용하고, 블록요소는 할당된 모든 공간을 사용 */ 
+			#html{
+				background-color: #FFE400;
+			}
+			#css{
+				background-color:#B5B2FF;
+				/* visibility:hidden; */
+			}
+			#js{
+				background-color:#D9418C;
+			}
+		
+		</style>
+	</head>
+	<body>
+		웹 표준은 <span id= "html">HTML</span>구조,
+		<span id ="css">CSS</span>디자인,
+		<span id= "js">JavaScript</span>동작이 있습니다.
+	
+	</body>
+</html>

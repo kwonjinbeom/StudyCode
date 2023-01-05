@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+.together{
+	width:99%;
+	background-color: white;
+	margin:3px auto;
+}
+.together-article{
+	height:620px;
+	width:99%;
+	border:1px solid black;
+	margin: 4px;
+	padding: 5px;
+	display: none;
+	overflow: auto;
+	box-sizing: border-box;
+	background-color: #fffcea;
+}
+.together-article img.whatneeddog{
+	width: 45%;
+	border: 1px solid black;
+	margin: 20px auto;
+	display: inline-block;
+	box-sizing: border-box;
+	box-shadow: 3px 3px 5px black;
+}
+.together-article h2{
+	display:inline;
+	line-height:40px;
+}
+
+.together-article-text{
+	width: 50%;
+	height: 90%;
+	margin: 20px 0px 20px 20px;
+	padding: 10px;
+	display: inline-block;
+	vertical-align:top;
+	box-sizing: border-box;
+	border: 2px dotted black;
+	background-color: white;
+}
+#article1{
+	display: block;
+}
+.together input[type="radio"]{
+	display: none;	
+}
+#controler{
+	width:100%;
+	margin: 0px auto;
+	text-align: center;
+	padding: 10px 0px;
+	height: 30px;
+}
+.page-control{
+	display: none;
+}
+.page-control label{
+	width:80px;
+	border:2px double black;
+	cursor:pointer;
+	position:absolute;
+	background-color:#e2e2e2;
+}
+.page-control label:hover{
+	background-color: gray;
+	color: white;
+}
+.page-control label:active{
+	background-color: darkgray;
+	color: white;
+}
+.left{
+	left: 30%;
+}
+.right{
+	right: 30%;
+}
+#control1{
+	display: block;
+}
+.together .notation{
+	display: inline-block;
+    width: 99%;
+    background-color: #99cc33;
+    padding: 20px 0px 15px 10px;
+    margin: 4px;
+    box-sizing: border-box;
+}

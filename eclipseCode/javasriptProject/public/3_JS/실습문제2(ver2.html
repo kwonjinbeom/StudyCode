@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제2</title>
+    
+    <script>
+        
+        function cal(op){
+            /* 함수정의 */
+            const Fnp = function 함수명(n1, n2){
+                return n1 + n2;
+                }
+            const Fnn = function 함수명(n1, n2){ 
+                return n1 - n2;
+                }
+            const Fnm = function 함수명(n1, n2){ 
+                return n1 * n2;
+                }
+            const Fnd = function 함수명(n1, n2){ 
+                return n1 / n2;
+                }
+            const Fno = function 함수명(n1, n2){ 
+                return n1 % n2;
+                }
+            
+
+        
+            const first = Number(document.getElementById('num1').value);
+            const second = Number(document.getElementById('num2').value);
+            result = document.getElementById("result");
+            
+            result.innerHTML = "";
+            let res = 0;
+            switch(op){
+                case "+":
+                res = Fnp(first, second);
+                break;
+                case "-":
+                res = Fnn(first, second);
+                break;
+                case "*":
+                res = Fnm(first, second);
+                break;
+                case "/":
+                res = Fnd(first, second);
+                break;
+                case "%":
+                res = Fno(first, second);
+                break;
+            }
+            
+            result.innerHTML += res;
+
+
+        }
+
+       
+    </script>
+
+</head>
+<body> <!-- internal 방식으로 작성 --> <!-- Number("10")으로 형변환 -->
+    <h1>간이 계산기 만들기</h1>
+
+    첫번째 값 : <input type="text" id ="num1"><br>
+    두번째 값 : <input type="text" id ="num2"><br>
+
+    <button onclick="cal('+')" class = "bt">+</button>
+    <button onclick="cal('-')" class = "bt">-</button>
+    <button onclick="cal('*')" class = "bt">*</button>
+    <button onclick="cal('/')" class = "bt">/</button>
+    <button onclick="cal('%')" class = "bt">%</button>
+    <!-- 버튼 -->
+    <br><br>
+    계산 결과 : <span id = "result"></span> 
+</body>
+</html>
