@@ -34,11 +34,15 @@ i를 누른다 (commit message를 입력하기 위해)
 
 merge에 대한 message를 입력한다.
 
-@ 저장소 연결
-git remote add -f origin <remote url>
 
 esc를 누른다.
 
 :wq를 입력한다.
 
 enter를 누른다.
+
+@ 저장소 연결
+git remote add -f origin <remote url>
+
+@ pull 안될 때
+git pull origin (branchname) --allow-unrelated-histories (어찌저찌 풀)
