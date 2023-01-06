@@ -20,17 +20,57 @@ h2{
 h3{
     font-size: 21px;
     color:white;
+    font-weight: 100;
 }
-/* 홈 */
+body{
+    width:100vw;
+    height: 100vh;/* vw와 vh는 뷰포트를 고려한 100퍼센트 */
+    margin:0;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* 스크롤 */
+.scroll_hidden{
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+.scroll_hidden::-webkit-scrollbar{
+    display:none;
+}
+
+/* 헤더 nav*/
+nav{
+    position:fixed; /* 스크롤 중 상단바 header 고정 */
+    z-index:20; /* 스크롤 시 가려짐 방지 */
+}
+nav > ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    height:30px;
+    
+}
+nav > ul > li {
+    color: white;
+    margin-right: 30px;
+    font-size: 20px;
+    transition-duration: 0.2s;
+    
+}
+
+/* Home */
 #home{
-    width:1310px;
-    height: 745.6px;
-    padding: 1px 100px;
+    width:100%;
+    height: 100%;
+    padding: 0px 200px;
     background-color: #7FC4F8;
+    display: flex;
+    flex-wrap: wrap;
+
 }
 #home_main{
     width:100%;
-    height: 710px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,18 +88,44 @@ h3{
     width: 600px;
     height: 470px;
 }
-/* 헤더 */
-nav > ul {
-    list-style: none;
+
+/* About me */
+#aboutMe{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: yellowgreen;
     display: flex;
-    padding-left: 0;
-    height:30px;
-    
+    flex-wrap: wrap;
+
 }
-nav > ul > li {
-    color: white;
-    margin-right: 30px;
-    font-size: 20px;
-    transition-duration: 0.5s;
-    
+/* About me */
+#skills{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: burlywood;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+/* About me */
+#projects{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: violet;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+/* About me */
+#career{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: tomato;
+    display: flex;
+    flex-wrap: wrap;
+
 }

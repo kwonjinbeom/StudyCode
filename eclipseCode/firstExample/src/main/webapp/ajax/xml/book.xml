@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+	<book>
+		<title>어린왕자</title>
+		<writer>셰익스피어</writer>
+		<price>300000</price>
+	</book>
+	<book>
+		<title>자바야놀자</title>
+		<writer>권진범</writer>
+		<price>1000000</price>
+	</book>
+	<book>
+		<title>ㅋㅋ</title>
+		<writer>이상한사람</writer>
+		<price>1000</price>
+	</book>
+</bookstore>

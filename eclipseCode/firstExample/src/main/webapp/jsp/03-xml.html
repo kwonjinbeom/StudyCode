@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+<title>03-text(3).html</title>
+
+
+<link rel ="stylesheet" type="text/css" href="../css/reset.css"/>
+<link rel ="stylesheet" type="text/css" href="../css/common.css">
+<!-- jQuery Framework 참조하기 -->
+<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+
+<!-- 사용자 스크립트 블록 -->
+<script type="text/javascript">
+	$(function(){
+		// 버튼의 클릭 이벤트
+		$("#mybtn").click(function(){
+			$.ajax({
+				url : "/firstExample/ajax/xml/03.xml",
+				type : "get",
+				dataType: "xml",
+				timeout : 30000,
+				cache : false,
+				/* 파일 읽기에 성공한 경우 */
+				success : function(data){
+					// 읽어온 XML파일안에 포함된 데이터를 추출
+					let title = $(data).find("title").text();
+					let time = $(data).find("time").text();
+					let teacher = $(data).find("teacher").text();
+					
+					// 추출된 데이터를 화면에 출력하기 위한 HTML요소를 동적으로 생성
+					let div = $("<div>");  $("div");
+					let p1 = $("<p>").html(title);
+					let p2 = $("<p>").html(time);
+					let p3 = $("<p>").html(teacher);
+					
+					// 메서드 체인을 사용한 동적 요소의 결합. <div><p></p><p></p><p></p></div>
+					div.append(p1).append(p2).append(p3);
+					
+					// 화면에 표시
+					$("#result").html(div);
+				},
+				error : function(xhr, textStatus, errorThrown){
+					$("#result").html(textStatus + " (HTTP=)" + xhr.status + " / " + errorThrown + ")");
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 class = "title">$.ajax() 함수를 사용한 XML데이터 읽기</h1>
+	<div class = "exec">
+			<input type="button" value = "xml데이터 가져오기" id = "mybtn"/>
+	</div>
+	<div class = "console" id = "result"></div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+<title>02-text(2).html</title>
+
+
+<link rel ="stylesheet" type="text/css" href="../css/reset.css"/>
+<link rel ="stylesheet" type="text/css" href="../css/common.css">
+<!-- jQuery Framework 참조하기 -->
+<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+
+<!-- 사용자 스크립트 블록 -->
+<script type="text/javascript">
+	$(function(){
+		// 버튼의 클릭 이벤트
+		$("#mybtn").click(function(){
+			$.ajax({
+				url : "/firstExample/ajax/txt/textdata.jsp",
+				type : "get",
+				data : "keyword="+$("#keyword").val(), // name = value
+				// data : $("#폼 이름의 셀렉터").serialize(), // 폼 전체 데이터 전송
+				dataType: "text",
+				timeout : 30000,
+				cache : false,
+				/* 파일 읽기에 성공한 경우 */
+				success : function(data){
+					// dataType값이 text일 경우에는 단순히 내용에 대한 문자열이므로, 직접 HTML요소에 출력할 수 있다.
+					$("#result").html(data);
+				},
+				/* 파일 읽기에 실패한 경우 (주소 오타, 웹서버 중지 등) */
+				error : function(xhr, textStatus, errorThrown){
+					$("#result").html(textStatus + " (HTTP=)" + xhr.status + " / " + errorThrown + ")");
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 class = "title">$.ajax() 함수를 사용한 HTML소스 읽기</h1>
+	<div class = "exec">
+		<form name = "form1" id="form1">
+			<input type="text" name = "keyword" id = "keyword"/>
+			<input type="button" value = "데이터 전송" id = "mybtn"/>
+		</form>
+	</div>
+	<div class = "console" id = "result"></div>
+
+</body>
+</html>
