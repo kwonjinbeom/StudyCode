@@ -5,23 +5,10 @@
     font-weight: 400;
     font-style: normal;
 }
-a, li, span, h1, h2, h3{
+a, li, span, h1, h2, h3, td{
     font-family: 'Pretendard-Regular';
 }
-h1{
-    font-size: 64px;
-    color:#F5F765;
-    /* F7DB65 보류 */
-}
-h2{
-    font-size: 28px;
-    color:#F5F765;
-}
-h3{
-    font-size: 21px;
-    color:white;
-    font-weight: 100;
-}
+
 body{
     width:100vw;
     height: 100vh;/* vw와 vh는 뷰포트를 고려한 100퍼센트 */
@@ -66,21 +53,34 @@ nav > ul > li {
     background-color: #7FC4F8;
     display: flex;
     flex-wrap: wrap;
-
 }
-#home_main{
+#homeMain > h1{
+    font-size: 64px;
+    color:#F5F765;
+    /* F7DB65 보류 */
+}
+#homeMain > h2{
+    font-size: 28px;
+    color:#F5F765;
+}
+#homeMain > h3{
+    font-size: 21px;
+    color:white;
+    font-weight: 100;
+}
+#homebox1{
     width:100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#introduction{
+#homeMain{
     width: 600px;
     height: 470px;
     margin-bottom: 50px;
 }
-#introduction > a{
+#homeMain > a{
     color:#F5F765;
     text-decoration: none;
 }
@@ -89,17 +89,49 @@ nav > ul > li {
     height: 470px;
 }
 
-/* About me */
-#aboutMe{
+/*  me */
+#Me{
     width: 100%;
     height: 100%;
     padding: 0px 200px;
-    background-color: yellowgreen;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: center;
 }
-/* About me */
+#MeSubTitle{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#MeSubTitle > h1{
+    font-size: 64px;
+    /* F7DB65 보류 */
+}
+#MeMain{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+#MeMain > table{
+    width: 800px;
+    height: 300px;
+}
+#MeMain > table tr:nth-child(1),tr:nth-child(3){
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#MeMain > table tr td{
+    text-align: center;
+    width:70px;
+    color:black;
+}
+/*  skills */
 #skills{
     width: 100%;
     height: 100%;
@@ -109,7 +141,7 @@ nav > ul > li {
     flex-wrap: wrap;
 
 }
-/* About me */
+/*  projects */
 #projects{
     width: 100%;
     height: 100%;
@@ -119,7 +151,7 @@ nav > ul > li {
     flex-wrap: wrap;
 
 }
-/* About me */
+/*  career */
 #career{
     width: 100%;
     height: 100%;
