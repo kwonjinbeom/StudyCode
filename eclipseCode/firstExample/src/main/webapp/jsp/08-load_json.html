@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+<title>06-json.html</title>
+
+
+<link rel ="stylesheet" type="text/css" href="../css/reset.css"/>
+<link rel ="stylesheet" type="text/css" href="../css/common.css">
+<!-- jQuery Framework 참조하기 -->
+<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+
+<!-- 사용자 스크립트 블록 -->
+<script type="text/javascript">
+	$(function(){
+		$.ajax("/firstExample/ajax/json/book.json",function(data){
+			let book = data.books.book;
+			
+			for(let i = 0; i < book.length; i++){
+				let title = book[i].title;
+				let author = book[i].author;
+				let price = book[i].price;
+				
+				let li = $("<li>").html( title + ", " + author + ", " + price);
+				$("#view").append(li);
+			}
+		}).fail(function(xhr, status, errorThrown){
+			$("#result").html("오류가 발생했습니다.<br />").append("오류명: " + error + "<br />").append("상태: " + status);
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 class = "title">$.ajax() 함수를 사용한 XML데이터 읽기 (2)</h1>
+	<div class = "exec">
+	</div>
+	<div class = "console" id = "result"></div>
+
+</body>
+</html>

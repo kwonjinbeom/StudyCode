@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+<title>team_p_board.json</title>
+
+
+<link rel ="stylesheet" type="text/css" href="../css/reset.css"/>
+<link rel ="stylesheet" type="text/css" href="../css/common.css">
+<style>
+	#result{
+		width:600px;
+		height:500px;
+		
+	}
+	#table{
+		width:600px;
+		height:200px;
+	}
+	#id{
+		border:1px solid gray;
+		width:600px;
+		height:30px;
+	}
+	#content{
+		border:1px solid gray;
+		width:600px;
+		height:100px;
+	}
+	body{
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+	#main{
+		width:700px;
+		height:1000px;
+		display:flex;
+		justify-content: left;
+		align-items: flex-end;
+		flex-wrap: wrap;
+		}
+	#main > table  {
+		width:600px;		
+	}
+	#main > table > tr {
+		width:600px;		
+	}
+	#delete{
+		margin-left:50px;
+		background-color:black;
+		color:white;
+	}
+	#submit{
+		background-color:black;
+		color:white;
+	}
+	
+</style>
+<!-- jQuery Framework 참조하기 -->
+<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+
+<!-- 사용자 스크립트 블록 -->
+<script type="text/javascript">
+
+	$(function(){
+		/* 댓글창 DOM 생성 */
+		function createCommentBox(id, date, content){
+			let ul = $("<ul>");
+			let li1 = $("<li>").html(id + "  " +date +"<button id = 'delete'>삭제하기</button>");
+			let li2 = $("<li>").html(content);
+			
+			let data = ul.append(li1).append(li2);
+			$("#result").append(ul);
+			$("#result").append("<hr />");
+		}
+		
+		$.ajax({
+			url: "/firstExample/ajax/json/team_p_board.json",
+			type: "get",
+			dataType: "json",
+			cache:false,
+			timeout: 30000,
+			success:function(json){
+				let comment = json.board.comment; 
+				for(let i = 0; i < comment.length; i++){
+				let id = json.board.comment[i].id;
+				let date = json.board.comment[i].date;
+				let content = json.board.comment[i].content;
+				
+				/* 요소의 동적 생성 및 데이터 출력 구현 */
+				createCommentBox(id, date, content);
+				}
+			},
+			error: function(xhr, textStatus, errorThrown){
+				$("#result").html(textStatus + " (HTTP=" + xhr.status + " / " + errorThrown + ")" );
+			}
+		});
+
+	$("#submit").click(function(){
+		var d = new Date();
+		const id = $("#id").val();
+		let date = d.getFullYear() +
+		'-' + ( (d.getMonth()+1) < 9 ? "0" + (d.getMonth()+1) : (d.getMonth()+1) )+
+		'-' + ( (d.getDate()) < 9 ? "0" + (d.getDate()) : (d.getDate()) )+" "+
+		d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+		const content = $("#content").val();
+		
+		/* id 공백여부 */
+		let regId = /\s/g;
+		if(id.length == 0){
+			alert("이름을 입력해주세요.");
+			return
+		}else if(regId.test(id)){
+			alert("공백은 들어갈 수 없습니다.");
+			return
+		}
+		
+		createCommentBox(id, date, content);
+		$("#id").val("");
+		$("#content").val("");
+		
+	})
+	
+	$(document).on("click","#delete",function(){
+		$(this).parents("ul").css("display","none");
+		$(this).parents("ul").next().css("display","none");
+	})
+});
+	
+</script>
+</head>
+<body>
+	
+	<div id="main">
+		<div class = "console" id = "result"></div>
+		<div id = "table">
+			<table>
+				<tr>
+					<td>
+						<input placeholder="이름" id = "id" name = "id">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<textarea id = "content" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td><button id ="submit">등록</button></td>
+				</tr>
+				
+			</table>
+		</div>
+	</div>
+	
+	
+
+</body>
+</html>
+
+
+

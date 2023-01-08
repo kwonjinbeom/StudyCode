@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-<title>05-json.html</title>
+<title>team_p_board.json</title>
 
 
 <link rel ="stylesheet" type="text/css" href="../css/reset.css"/>
@@ -18,25 +18,28 @@
 	$(function(){
 		$("#mybtn").click(function(){
 			$.ajax({
-				url: "/firstExample/ajax/json/05.json",
+				url: "/firstExample/ajax/json/team_p_board.json",
 				type: "get",
 				dataType: "json",
 				cache:false,
 				timeout: 30000,
 				success:function(json){
+					let comment = json.board.comment; 
+					for(let i = 0; i < comment.length; i++){
 					//파라미터로 전달되는 객체는 JSON 자체이다. 그래서 계층구조로 접근
-					let title = json.school.subject.title;
-					let time = json.school.subject.time;
-					let teacher = json.school.subject.teacher;
+					let id = json.board.comment[i].id;
+					let date = json.board.comment[i].date;
+					let content = json.board.comment[i].content;
 					
 					/* 요소의 동적 생성 및 데이터 출력 구현 */
 					let ul = $("<ul>");
-					let li1 = $("<li>").html(title);
-					let li2 = $("<li>").html(time);
-					let li3 = $("<li>").html(teacher);
+					let li1 = $("<li>").html(id + "  " +date);
+					let li2 = $("<li>").html(content);
 					
-					let data = ul.append(li1).append(li2).append(li3);
-					$("#result").append(data)
+					let data = ul.append(li1).append(li2);
+					$("#result").append(ul);
+					$("#result").append("<hr />");
+					}
 				},
 				error: function(xhr, textStatus, errorThrown){
 					$("#result").html(textStatus + " (HTTP=" + xhr.status + " / " + errorThrown + ")" );
