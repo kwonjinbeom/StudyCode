@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +20,7 @@ public class getData extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String paramName = request.getParameter("name");
-		String paramAddress= request.getParameter("Address");
+		String paramAddress= request.getParameter("address");
 		
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE html><html>");
@@ -31,7 +30,7 @@ public class getData extends HttpServlet {
 		out.println("window.onload=function(){");
 		out.println("let backPage = document.getElementById('btn')");
 		out.println("backPage.onclick=function(){");
-		out.println("history.back()};");
+		out.println("history.back() };");
 		out.println("};");
 		out.println("</script></head>");
 		out.println("<body>");
