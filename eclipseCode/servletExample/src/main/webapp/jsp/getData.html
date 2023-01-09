@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	$(function(){
+		$("input[type='button']").click(function(){
+			regName = /\s/g;
+			if(regName.test($("name").val()) || $("name").val() == 0){
+				alert("이름을 입력해주세요.")
+				$("name").val("");
+				$("name").focus();
+				return;
+			}else if($("#address").val().replace(/\s/g,"")==""){
+				alert("주소를 입력해주세요.");
+				$("#address").val("");
+				$("#address").focus();
+				return;
+			}
+			
+			/* 폼에 속성을 추가하는 작업 - 1 */
+			/* $("#dataForm").attr("method","post");
+			$("#dataForm").attr("action","/setvletExample/getData");
+			$("#dataForm").submit(); */
+			
+			/* $("#dataForm").attr("method","post").attr("action","/setvletExample/getData");
+			$("#dataForm").submit(); */
+			
+			
+			
+			// 형식 :  $("선택자").attr({"속성":"값", "속성":"값"});
+			$("#dataForm").attr({
+				"method" : "post",
+				"action" : "/servletExample/getData"
+			});
+			$("#dataForm").submit();
+		})
+	})
+</script>
+</head>
+
+<body>
+	<form name = "dataForm" id="dataForm" >
+		<label>이름 : </label>
+		<input type="text" placeholder="이름 입력" name = "name" id = "name"/><br/>
+		<label>주소 : </label>
+		<input type="text" placeholder="주소 입력" name = "address" id = "address"/><br/>
+		
+		<input type="button" value="전송">전송</input>&nbsp;&nbsp;
+		<input type="reset" value="취소">취소</input>
+		
+	</form>
+</body>
+</html>
