@@ -34,4 +34,20 @@
 	  <servlet-name>getData</servlet-name>
 	  <url-pattern>/getData</url-pattern>
   </servlet-mapping>
+  <servlet>
+	  <servlet-name>CalcServlet</servlet-name>
+	  <servlet-class>com.example.calcServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>CalcServlet</servlet-name>
+	  <url-pattern>/calcServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+	  <servlet-name>calcServlet2</servlet-name>
+	  <servlet-class>com.example.CalcServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	  <servlet-name>calcServlet2</servlet-name>
+	  <url-pattern>/calcServlet2</url-pattern>
+  </servlet-mapping>
 </web-app>

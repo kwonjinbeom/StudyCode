@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Get Data - GetData.html</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../image/icon.png" />
+		<link rel="apple-touch-icon" href="../image/icon.png" />
+		<!-- 모바일 웹 페이지 설정 끝 -->
+
+		<!--[if lt IE 9]>
+		<script src="../js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style type="text/css">
+			#sendData{margin:5px;}
+		</style>
+		<!-- jQuery Framework 참조하기 -->
+		<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#sendData").click(function(){
+					let menu = $("#lunch>option:selected");
+					if(menu.length==0){
+						alert("점심 메뉴를 선택해 주세요");
+						return;
+					}else if(menu.length<2){
+						alert("점심 메뉴는 2개이상 선택해야 합니다.")
+						return;
+					}
+                    $("#dataForm").attr({
+                      	 "method":"post",
+                      	 "action":"/servletExample/todayMenu"
+                      })
+                      $("#dataForm").submit();     
+				})
+            })
+		</script>
+	</head>
+	<body>
+		<p> [코딩시 요구사항] <br/>
+		lunch.html ==> 요청 url: /servletExample/todayMenu<br/>
+		method: post방식/ 입력 양식의 이름 lunch
+		서블릿 name : TodayMenu 생성</p>
+		<form id="dataForm" name="dataForm">
+		 	<h2>오늘 점심은 무엇을 먹을까? (2개 이상 선택)</h2>
+			<select id="lunch" name="lunch" multiple size="4">
+				<option value="떢볶이">떢볶이</option>
+				<option value="칼국수">칼국수</option>
+				<option value="비빔밥">비빔밥</option>
+				<option value="순대국">순대국</option>
+				<option value="라면">라면</option>
+			</select>
+			<br/>
+			<input type="button" id="sendData" value="전송">
+		</form>
+	</body>
+</html>
