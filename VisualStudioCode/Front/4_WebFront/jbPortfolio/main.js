@@ -22,9 +22,28 @@ navLi[1].addEventListener("click",function(){
     }
     this.style.color = "yellow"
 })
-navLi[2].addEventListener("click",function(){window.scrollTo({left:0, top:navClickArray[2], behavior:"smooth"})})
-navLi[3].addEventListener("click",function(){window.scrollTo({left:0, top:navClickArray[3], behavior:"smooth"})})
-navLi[4].addEventListener("click",function(){window.scrollTo({left:0, top:navClickArray[4], behavior:"smooth"})})
+navLi[2].addEventListener("click",function(){
+    window.scrollTo({left:0, top:navClickArray[2], behavior:"smooth"})
+    for(let i = 0; i < navLi.length; i++){
+        navLi[i].style.color = "black"
+    }
+    this.style.color = "yellow"
+})
+navLi[3].addEventListener("click",function(){
+    window.scrollTo({left:0, top:navClickArray[3], behavior:"smooth"})
+    for(let i = 0; i < navLi.length; i++){
+        navLi[i].style.color = "black"
+    }
+    this.style.color = "yellow"
+    
+})
+navLi[4].addEventListener("click",function(){
+    window.scrollTo({left:0, top:navClickArray[4], behavior:"smooth"})
+    for(let i = 0; i < navLi.length; i++){
+        navLi[i].style.color = "black"
+    }
+    this.style.color = "yellow"
+})
 /* 메뉴 선택 시 스크롤 이동 끝*/
 
 /* 스크롤 상단 시 스크롤 숨기기 및 편하게 스크롤 */

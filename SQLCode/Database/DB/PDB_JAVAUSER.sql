@@ -1,3 +1,5 @@
+create user javauser identified by java1234;
+
 CREATE TABLE subject(
     no NUMBER(4), --일련번호
     s_num CHAR(2) NOT NULL, --학과번호
