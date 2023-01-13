@@ -20,6 +20,7 @@ public class ChungnamDAO {
 	private static final String PASSWD = "java1234";
 	// 클래스 자신의 타입으로 정적 필드 선언
 	private static ChungnamDAO instance = null;
+	public ArrayList<Integer> arr = new ArrayList<Integer>();
 	// 외부에서 호출할 수 있는 정적 메소드인 getInstance() 선언하여 인스턴스를 반환.
     public static ChungnamDAO getInstance() {
     	if(instance == null) {
@@ -29,7 +30,7 @@ public class ChungnamDAO {
     }
     // 외부에서 new 연산자로 생성자를 호출할 수 없도록 막기 위해 접근 제한자(private)로 명시. private 생성자(){}선언.
 	private ChungnamDAO(){
-		try{
+		try{ 
 			Class.forName("oracle.jdbc.OracleDriver"); 
 		}catch(ClassNotFoundException cnfe){
 			cnfe.printStackTrace();
@@ -94,18 +95,15 @@ public class ChungnamDAO {
 	* @param ChungnamVO. 
 	* @return int 자료형 리턴.
 	***********************************************************/
-	public int chungnamInsert(ChungnamVO vo, String searchValue) {	
+	public int chungnamInsert(ArrayList<Integer> Al, String searchValue) {	
 		int findValue = 0;
-		try {
-			int intseachValue = Integer.parseInt(searchValue);
-	        if (vo.getMng_no()== intseachValue ) {
-	        	findValue = vo.getNm().indexOf(intseachValue);
-	        }
-	        
-		}
-		
-        catch(NumberFormatException n){
-        	n.getMessage();
+		if(searchValue != null) {
+			for(int i = 0; i < Al.size(); i++) {
+		        if (Al.get(i)== Integer.parseInt(searchValue)) {
+		        	
+		        	findValue = Al.indexOf(Al.get(i));
+		        }
+			}
 		}
 
 		return findValue;
@@ -118,7 +116,35 @@ public class ChungnamDAO {
 	* @return int 자료형 리턴.
 	***********************************************************/
 	public int chungnamDelete(ChungnamVO vo) {	
-        
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from chungnam ");
+		sql.append("where mng_no = ?");
+		
+		try {
+			con=getConnection();
+			pstmt = con.prepareStatement(sql.toString());
+		
+			pstmt.setInt(1, vo.getMng_no());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return 0;
 	}
 }

@@ -94,7 +94,7 @@ public class ChungnamVO {
 	}
 
 	public double getLng() {
-		return lng;
+		return lng; 
 	}
 
 	public void setLng(double lng) {
