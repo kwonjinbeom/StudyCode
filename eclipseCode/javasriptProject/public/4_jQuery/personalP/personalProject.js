@@ -95,8 +95,8 @@ alarmArr[0].addEventListener("click",function(){
 
     
     const num = document.getElementById("commingNum1");
-    const numSplit = num.innerHTML.split(",");
-    const toStringSplit =  String(Number(numSplit[0]+numSplit[1]) + 1);
+    //const numSplit = num.innerHTML.split(",");
+    //const toStringSplit =  String(Number(numSplit[0]+numSplit[1]) + 1);
     num.innerHTML = toStringSplit[0]+","+toStringSplit.substring(1,);
 });
 alarmArr[1].addEventListener("click",function(){
