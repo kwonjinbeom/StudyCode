@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table{
+		border:1px solid black;
+		border-collapse: collapse;
+		}
+	table tr td{
+		border:1px solid black;
+		padding:5px;
+	}
+	#platform{
+		width:120px;
+		height:70px;
+		border:1px solid gray;
+		overflow:scroll;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#sendBtn").click(function(){
+		/* const regName = /\s/g; */
+		if($("#name").val() == 0){
+			alert("이름을 입력해주세요.")
+			$("#mng_no").val("");
+			$("#mng_no").focus();
+			return;
+		}
+		// 형식 :  $("선택자").attr({"속성":"값", "속성":"값"});
+		$("#dataForm").attr({
+			"method" : "post",
+			"action" : "request.jsp"
+		}); 
+		$("#dataForm").submit();
+	})
+	$("#resetBtn").click(function(){
+		$("#dataForm").each(function(){
+			this.reset();
+		});
+	});
+	
+	
+	$("input[name=scholarship]").click(function(){
+		if($("input[name=scholarship]")[0].checked){
+			for(let i = 0; i < 3; i++){
+			$("#major option:eq("+i+")").css('display','none');}
+			for(let i = 3; i < $("#major option").length; i++){
+				$("#major option:eq("+i+")").css('display','block');}
+		}else{
+			for(let i = 0; i < 3; i++){
+				$("#major option:eq("+i+")").css('display','block');}
+			for(let i = 3; i < $("#major option").length; i++){
+				$("#major option:eq("+i+")").css('display','none');}
+		}
+	})
+	
+});
+</script>
+</head>
+<body>
+	<form name = "dataForm" id="dataForm">
+		<table>
+			<tr>
+				<td><label>이름</label></td>
+				<td><input type="text" name = "name" id = "name"/></td>
+			</tr>
+			<tr>
+				<td><label>생년월일</label></td>
+				<td><input type="date" name = "birth" id = "birth"/></td>
+			</tr>
+			<tr>
+				<td><label>학력</label></td>
+				<td>
+					<input type="radio" value="고졸" name = "scholarship" id = "scholarship"/>고졸
+					<input type="radio" value="대졸" name = "scholarship" id = "scholarship"/>대졸
+					<input type="radio" value="대학원졸" name = "scholarship" id = "scholarship"/>대학원졸
+				</td>
+			</tr>
+			<tr>
+				<td><label>학과(전공) : </label></td>
+				<td><select name = "major" id = "major">
+					<option value = "일반고">일반고</option>
+					<option value = "특목고">특목고</option>
+					<option value = "특성화고">특성화고</option>
+					<option value = "전산과">전산과</option>
+					<option value = "국문과">국문과</option>
+					<option value = "기계공학과">기계공학과</option>
+					<option value = "회계학과">회계학과</option>
+					<option value = "전기전자학과">전기전자학과</option>
+					<option value = "경영학과">경영학과</option>
+					<option value = "법학과">법학과</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td class="t1">사용가능 플랫폼</td>
+					<td class="t2">
+						<select name="platform" size="4" multiple>
+							<option value="Window 계열 PC" selected="selected">Window 계열 PC</option>
+							<option value="Window 계열 서버">Window 계열 서버</option>
+							<option value="UNIX">UNIX</option>
+							<option value="IBM OS/390">IBM OS/390</option>
+							<option value="리눅스">리눅스</option>
+					  	</select>
+					  </td>
+			</tr>
+			<tr>
+				<td><label>사용가능 언어 : </label></td>
+				<td>
+					<input type="checkbox" value="C" name = "language" id = "language"/>C
+					<input type="checkbox" value="C+" name = "language" id = "language"/>C++
+					<input type="checkbox" value="JAVA" name = "language" id = "language"/>JAVA
+					<input type="checkbox" value="C#" name = "language" id = "language"/>C#
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input type="button" id  = "sendBtn" value="보내기">
+					<input type="reset" id = "resetBtn" value="다시작성">
+				</td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

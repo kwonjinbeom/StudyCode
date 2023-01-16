@@ -1,0 +1,4 @@
+eXERD
+http://exerd.com/update/exerd/3.x/
+
+이클립스로 데이터베이스 물리적 논리적 모델링하는 프로그램

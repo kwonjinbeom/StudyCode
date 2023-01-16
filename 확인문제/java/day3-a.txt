@@ -1,0 +1,7 @@
+1. 4
+2. 2, 3 ,6 ,7
+3. boolean(1byte), char(2byte),byte(1byte), short(2byte) , int(4byte), long(8byte), float(4byte), double(8byte)
+4.
+타입: int, double
+변수 이름: age, price
+리터럴: 10, 3.14 

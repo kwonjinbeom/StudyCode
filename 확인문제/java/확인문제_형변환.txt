@@ -1,0 +1,66 @@
+1. 다음 자동 타입 변환에서 컴파일 에러가 발생하는 것을 선택하세요. 
+byte byteValue = 10;
+char charValue = 'A';
+
+➊ int intValue1 = byteValue;
+➋ int intValue2 = charValue;
+➌ short shortValue = charValue; 
+➍ double doubleValue = byteValue;
+
+2. 다음 강제 타입 변환에서 컴파일 에러가 발생하는 것을 선택하세요. 
+int intValue = 10;
+char charValue = 'A';
+double doubleValue = 5.7;
+String strValue = "A";
+
+➊ double var1 = (double) intValue;
+➋ byte var2 = (byte) intValue;
+➌ int var3 = (int) doubleValue;
+➍ char var4 = (char) strValue; 
+
+
+3. 변수를 잘못 초기화한 것은 무엇입니까? 
+➊ int var1 = 10;
+➋ long var2 = 10000000000L;
+➌ char var3 = ''; //작은따옴표 두 개가 붙어 있음. 
+➍ float var4 = 10;
+➎ String var5 = “abc\ndef”;
+
+4. 콘솔에 값을 입출력하는 방법에 대해 잘못 설명한 것을 선택하세요. 
+➊ System.out.print(변수)는 변수값을 출력시키고 행을 바꾸지 않는다.
+➋ System.out.println(변수)는 변수값을 출력시키고 행을 바꾼다.
+➌ System.out.printf(“형식”, 변수)는 주어진 형식대로 변수값을 바꾼다.
+➍ Scanner의 nextLine() 메소드는 콘솔에 입력된 내용을 문자열로 읽는다.
+
+5. 연산식의 타입 변환 중에서 컴파일 에러가 발생하는 것을 선택하세요. 
+byte byteValue = 10;
+float floatValue = 2.5F;
+double doubleValue = 2.5;
+
+➊ byte result1 = byteValue + byteValue;
+➋ int result2 = 5 + byteValue;
+➌ float result3 = 5 + floatValue;
+➍ double result4 = 5 + doubleValue;
+
+6. 다음 코드를 실행했을 때 출력 결과를 작성해보세요. 
+int x = 10;
+int y = 20;
+int z = (++x) + (y--);
+System.out.println(z);
+
+
+7. 다음 코드를 실행했을 때 출력 결과를 작성해보세요. 
+int score = 85;
+String result = (!(score>90))? "가":"나";
+System.out.println(result)
+
+
+8. 다음 코드는 비교 연산자와 논리 연산자의 복합 연산식입니다. 연산식의 출력 결과를 작성해보세요.
+int x = 10;
+int y = 5;
+System.out.println( (x>7) && (y<= 5) );
+System.out.println( (x%3 == 2) || (y%2 != 1) )
+
+
+
+

@@ -1,0 +1,6 @@
+20221025서버클라이언트 문제
+1. 4 > 2 ip와 포트가 필요하다.
+2. 2, 4
+3. new Sokcet("localhost",5001);
+serverSocket.accept()
+4. 왼쪽 위 InputStream, 왼밑 OutputStream, 오위 OutputStream, 오 아래 InputStream
