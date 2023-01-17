@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.subject.SubjectDAO, com.subject.SubjectVO" %>
+<%@ page import="java.util.ArrayList, com.subject.SubjectVO" %>
 <%	
-	SubjectDAO dao = SubjectDAO.getInstance();
-	ArrayList<SubjectVO> list = dao.getSubjectTotal(null);
+	ArrayList<SubjectVO> list = (ArrayList<SubjectVO>)request.getAttribute("list");
 	int counter = list.size();
 %>
 <!DOCTYPE html>
@@ -31,15 +30,24 @@
 			
 			.tc{text-align:center;}
 			.tl{text-align:left;}
-			.tr{text-align:right;}         
+			.tr{text-align:right;}
 
 		</style>
-		<script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
+		<script type="text/javascript" src="/scriptTag/js/jquery-3.6.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				// 학과 정보 등록 버튼 제어 
+				$("#subjectInsert").click(function(){
+					location.href="<%=request.getContextPath()%>/jdbc/subjectForm.jsp";
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<h3> 자바 빈즈 SubjectDAO를 통해 subject 테이블 조회 프로그램 </h3>
 		<hr />
 		<div id="subjectList">
+			<div class="tr"><input type="button" value="학과정보등록" id="subjectInsert" /></div>
 			<table>
 				<thead>
 					<tr>

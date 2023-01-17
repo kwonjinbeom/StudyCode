@@ -2,6 +2,8 @@ package com.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class JDBCTemplate {
@@ -35,6 +37,46 @@ public class JDBCTemplate {
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
+    }
+    
+    public static void rollback(Connection conn) {
+    	try {
+    		if(conn != null && !conn.isClosed()) {
+    			conn.rollback();
+    		}
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    public static void close(Connection conn) {
+    	try {
+    		if(conn != null && !conn.isClosed()) {
+    			conn.close();
+    		}
+    	}catch (Exception e) {
+    		e.printStackTrace();
+		}
+    }
+    
+    public static void close(PreparedStatement pstmt) {
+    	try {
+    		if(pstmt != null && !pstmt.isClosed()) {
+    			pstmt.close();
+    		}
+    	}catch (Exception e) {
+    		e.printStackTrace();
+		}
+    }
+    
+    public static void close(ResultSet rset) {
+    	try {
+    		if(rset != null && !rset.isClosed()) {
+    			rset.close();
+    		}
+    	}catch (Exception e) {
+    		e.printStackTrace();
+		}
     }
 
 }
