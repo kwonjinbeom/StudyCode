@@ -23,13 +23,28 @@
 <script type="text/javascript" src="../js/jquery-3.6.2.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	
+	$("input[name='scholarship']:eq(0)").prop("checked", "true");
+	$("input[name='scholarship']:eq(0)").click();
+	
 	$("#sendBtn").click(function(){
 		/* const regName = /\s/g; */
-		if($("#name").val() == 0){
-			alert("이름을 입력해주세요.")
-			$("#mng_no").val("");
-			$("#mng_no").focus();
-			return;
+		if($("#name").val().replace(/\s/g, "")== ""){
+			alert("이름을 입력해 주세요");
+			$("#name").val("");
+			$("#name").focus();
+			return
+		}
+		if($("#birth").val().replace(/\s/g, "")== ""){
+			alert("생년월일을 입력해 주세요");
+			$("#birth").val("");
+			$("#birth").focus();
+			return
+		}
+		if($("#input[name='language']").is(":checked")){
+			alert("사용가능 언어를 입력해 주세요");
+			$("#input[name='language']:eq(0)").val("");
+			return
 		}
 		// 형식 :  $("선택자").attr({"속성":"값", "속성":"값"});
 		$("#dataForm").attr({
@@ -38,15 +53,47 @@ $(function(){
 		}); 
 		$("#dataForm").submit();
 	})
+	
+	
+	
+	
 	$("#resetBtn").click(function(){
 		$("#dataForm").each(function(){
 			this.reset();
 		});
+		$("input[name='scholrship']:eq(0)").prop("checked", "true");
+		$("input[name='scholrship']:eq(0)").click();
 	});
 	
 	
+	
+	
+	let hship = ["일반고", "특목고", "특성화고"];
+	let ship = ["정보톻신학과", "국문학과", "기계공학과", "회계학과", "전기전자학과", "경영학과", "사회복지학과"]
 	$("input[name=scholarship]").click(function(){
-		if($("input[name=scholarship]")[0].checked){
+		$("#major").empty(); //학과(전공) select 초기화 작업.
+		if($(this).val() == "고졸"){ // 이벤트 발새한 요소의 값(val())이 "고졸"과 같다면
+			for(i=0; i<hship.length; i++){
+				option = $("<option>"); // option태그 생성
+				option.attr("value", hship[i]);
+				option.append(hship[i]); // <option value="일반고">일반고</option>
+				$("#major").append(option);
+			}
+		}else{
+			for(i=0; i<ship.length;i++){
+				option = $("<option>");
+				option.attr("value", ship[i]); // attr은 값이 정확할 때 주로 사용하고
+				option.append(ship[i]);
+				if(i==1){
+					option.prop("seleted", "true"); // prop는 값이 다소 정확하지 않으므로 prop를 더 지향. 근데 둘다 기능은 같다.
+				}
+				$("#major").append(option);
+			}
+		}
+		
+		
+		
+		/* if($("input[name=scholarship]")[0].checked){
 			for(let i = 0; i < 3; i++){
 			$("#major option:eq("+i+")").css('display','none');}
 			for(let i = 3; i < $("#major option").length; i++){
@@ -56,8 +103,10 @@ $(function(){
 				$("#major option:eq("+i+")").css('display','block');}
 			for(let i = 3; i < $("#major option").length; i++){
 				$("#major option:eq("+i+")").css('display','none');}
-		}
+		} */
 	})
+	
+	
 	
 });
 </script>
