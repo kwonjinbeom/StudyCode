@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.subject.SubjectDAO;
 import com.subject.SubjectVO;
 
 
@@ -26,7 +27,9 @@ public class SubjectInsert extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		SubjectVO vo = new SubjectVO();
-		vo.setS_num(request.getParameter("s_num"));
+		SubjectDAO dao = new SubjectDAO();
+//		vo.setS_num(request.getParameter("s_num"));
+		vo.setS_num(dao.getSubjectNum());
 		vo.setS_name(request.getParameter("s_name"));
 		
 		SubjectService subjectService = SubjectService.getInstance();
