@@ -73,3 +73,5 @@ select * from board;
 insert into board( num, author, title, content, reproot, repstep, repindent, passwd )
 values ( board_seq.nextval , '홍길동', '노력에 관련된 명언' , 
 '중요한 것은 목표를 이루는 것이 아니라 그 과정에서 무엇을 배우며 얼마나 성장했느냐이다 - 앤드류 매튜스' ,board_seq.currval, 0,0, '1234' );
+
+commit;

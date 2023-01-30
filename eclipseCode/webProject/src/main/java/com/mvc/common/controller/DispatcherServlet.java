@@ -42,6 +42,7 @@ public class DispatcherServlet extends HttpServlet {
 		
 		// 요청 URL에서 http://localost:8080/board/getBoardList.do 
 		String path = request.getRequestURI(); // path = /board/getBoardList.do 
+		System.out.println(path);
 		
 		// 2. HandlerMapping을 통해 path에 해당하는 Controller를 검색한다.
 		Controller ctrl = handlerMapping.getController(path); // handlerMapping.getController("/board/getBoardList.do")
