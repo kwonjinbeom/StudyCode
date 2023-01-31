@@ -15,6 +15,7 @@
 --comment on column board.boardcontent is '게시판 내용';
 --comment on column board.boarddate is '게시판 작성일';
 drop table board;
+drop sequence board_seq;
 
 -- board 게시판 테이블
 create table board(
@@ -55,6 +56,7 @@ comment on column board.repindent is '게시판 답변글(답변글의 계층번호 지정)';
 comment on column board.passwd is '게시판 비밀번호';
 
 -- board 게시판 테이블에 저장할 글번호 시퀀스 (증가값: 시퀀스명.nextval / 현재값: 시퀀스명.currval)
+
 create sequence board_seq start with 1
 increment by 1
 minvalue 1

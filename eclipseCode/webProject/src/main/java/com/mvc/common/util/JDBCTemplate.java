@@ -19,7 +19,7 @@ public class JDBCTemplate {
 		}
 		return instance;
 	}
-	
+	 
 	private JDBCTemplate() {}
 	
 	public static Connection getConnection() throws Exception {

@@ -32,7 +32,7 @@ public class BoardDAO {
 		Connection conn = null; 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		try{
+		try{ 
 			conn = getConnection();
 			StringBuffer query = new StringBuffer();
 			query.append("SELECT  num, author, title,  ");
@@ -208,9 +208,10 @@ public class BoardDAO {
 	 * boardDelete() 메서드: 게시물 삭제 처리 메서드.
 	 * @param 게시물 번호, 비밀번호. 
 	 ***********************************************************/
-	public void boardDelete(String num){
+	public boolean boardDelete(String num){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		boolean success = false;
 		try{
 			conn = getConnection();
 			StringBuffer query = new StringBuffer();
@@ -225,5 +226,6 @@ public class BoardDAO {
 			close(pstmt);
 			close(conn);
 		}
+		return success;
 	}//end delete
 }

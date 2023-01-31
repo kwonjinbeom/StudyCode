@@ -15,4 +15,4 @@ public class ViewResolver {
 	public String getView(String viewName) { // viewName = /board/getBoardList이면 prefix = /WEB-INF , suffix = .jsp 
 		return prefix + viewName + suffix;   // /WEB-INF/board/getBoardList.jsp를 반환.
 	}
-}
+} 

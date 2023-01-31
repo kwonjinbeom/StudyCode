@@ -23,7 +23,7 @@ public class BoardVO{
 			int repIndent) {
 		this.num = num;
 		this.author = author;
-		this.title = title;
+		this.title = title; 
 		this.content = content;
 		this.readcnt = readcnt;
 		this.writeday = writeday;
