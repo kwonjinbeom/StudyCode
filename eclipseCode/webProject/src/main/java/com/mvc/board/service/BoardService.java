@@ -49,4 +49,19 @@ public class BoardService {
 		boolean result = dao.boardDelete(num);
 		return result;
 	}
+	
+	public int boardPasswdChk(String num, String passwd) {
+		int result = dao.boardPasswdChk(num, passwd);
+		return result;
+	}
+	
+	public BoardVO replyForm(String num) {
+		BoardVO vo = dao.boardDetail(num);
+		return vo;
+	}
+
+	public boolean replyInsert(BoardVO vo) {
+		boolean result = dao.replyInsert(vo);
+		return result;
+	}
 }

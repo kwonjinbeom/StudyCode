@@ -42,7 +42,16 @@
 								<c:forEach var="vo" items="${list}">
 									<tr class="text-center" data-num="${vo.num}">
 									   <td>${vo.num}</td>
-									   <td class="text-left"><span class="goDetail">${vo.title}</span></td> 
+									   <%-- <td class="text-left"><span class="goDetail">${vo.title}</span></td>  --%>
+									   <td class="text-left">
+										   <c:if test="${vo.repStep>0}"><%-- 답변글이면 --%>
+										   		<c:forEach begin="1" end="${vo.repIndent}"><%-- 답변의 계층번호에 따라 공백설정(기본값 공백3칸)--%>
+													&nbsp;&nbsp;&nbsp;
+						   						</c:forEach>
+						   						<img src="/image/re.png" style="width:15px;height:15px;"/><%-- 답변이미지 출력 --%>
+						   					</c:if>
+									   		<span class="goDetail">${vo.title}</span>
+									   </td>
 									   <td>${vo.author}</td>
 									   <td>${vo.writeday}</td>
 									   <td>${vo.readcnt}</td>

@@ -228,4 +228,102 @@ public class BoardDAO {
 		}
 		return success;
 	}//end delete
+	
+	/***********************************************************
+	 * boardPaswdChk() 메서드: 비밀번호 조회 메서드.
+	 * @param 게시물 번호, 비밀번호.
+	 * @return int 리턴 
+	 ***********************************************************/
+	public int boardPasswdChk(String num, String passwd) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try{
+			conn = getConnection();
+			StringBuffer query = new StringBuffer();
+			query.append("SELECT NVL((SELECT 1 FROM board WHERE num = ? ");
+			query.append("AND passwd = ?), 0) as result FROM dual");
+					
+			pstmt = conn.prepareStatement(query.toString());
+			pstmt.setInt(1, Integer.parseInt(num));	
+			pstmt.setString(2, passwd);	
+			pstmt.executeUpdate( );
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("result"); // 비밀번호 일치: 1 / 비밀번호 불일치: 0 반환
+			}
+		}catch( Exception e) { 
+				e.printStackTrace();
+		}finally{
+			close(rs);
+			close(pstmt);
+			close(conn);
+		}
+		return result;
+	}
+	
+	/***********************************************************
+	 * makeReply() 메서드: 답변글의 기존 repStep 1 증가
+	 ***********************************************************/
+	public void makeReply(int root , int step ){
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try{
+			conn = getConnection();
+
+			StringBuffer query = new StringBuffer();
+			query.append("UPDATE board SET repStep = repStep + 1 ");
+			query.append("WHERE repRoot = ? AND repStep > ? ");
+			
+			pstmt = conn.prepareStatement(query.toString());
+			pstmt.setInt(1, root);
+			pstmt.setInt(2, step);
+			pstmt.executeUpdate( );
+		}catch( Exception e){ 
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+			close(conn);
+		}
+	}
+
+	/***********************************************************
+	 * replyInsert() 메서드: 답변 입력 처리
+	 ***********************************************************/
+	public boolean replyInsert(BoardVO vo){
+		makeReply(vo.getRepRoot(), vo.getRepStep());
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean result = false;
+		try{
+			conn = getConnection();
+			
+			StringBuffer query = new StringBuffer();
+			query.append("INSERT INTO board(num, author, title, ");
+			query.append("content, repRoot, repStep, repIndent, passwd) ");
+			query.append("values( board_seq.nextval, ?, ?, ?, ?, ?, ?, ?)");
+			
+			pstmt = conn.prepareStatement(query.toString());
+			
+			pstmt.setString (1, vo.getAuthor());
+			pstmt.setString (2, vo.getTitle());
+			pstmt.setString (3, vo.getContent());
+			pstmt.setInt (4, vo.getRepRoot());
+			pstmt.setInt (5, vo.getRepStep() + 1);
+			pstmt.setInt (6, vo.getRepIndent() + 1);
+			pstmt.setString (7, vo.getPasswd());
+			int count = pstmt.executeUpdate();
+			
+			if(count == 1) result = true;
+		}catch( Exception e){ 
+			e.printStackTrace();
+			result = false;
+		}finally{
+			close(pstmt);
+			close(conn);
+		}
+		return result;
+	}//end reply
 }
