@@ -26,7 +26,7 @@ public class BoardDAO {
 	/***********************************************************
 	 * boardList() 메서드: 게시판 목록 조회(검색 처리 제외)
 	 * @return ArrayList<BoardVO> 리턴.
-	 ***********************************************************/
+	 ***********************************************************
 	public ArrayList<BoardVO> boardList(){
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null; 
@@ -65,7 +65,74 @@ public class BoardDAO {
 		}
 		return list;
 	}//end select
+	
+	*/
 
+	/***********************************************************
+	 * boardList() 메서드: 게시판 목록 조회(검색 처리 제외)
+	 * @return ArrayList<BoardVO> 리턴.
+	 ***********************************************************/
+	public ArrayList<BoardVO> boardList(BoardVO vo){
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		Connection conn = null; 
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{ 
+			conn = getConnection();
+			StringBuffer query = new StringBuffer();
+			query.append("SELECT  num, author, title,  ");
+			query.append("to_char(writeday, 'YYYY/MM/DD') writeday, ");
+			query.append("readcnt, repRoot, repStep, repIndent ");
+			query.append(" FROM board ");
+			
+			if("title".equals(vo.getSearch())) {
+				query.append(" WHERE title LIKE ? ");
+			}else if("author".equals(vo.getSearch())) {
+				query.append(" WHERE author LIKE ? ");
+			}else if("content".equals(vo.getSearch())) {
+				query.append(" WHERE content LIKE ? ");
+			}else if("all2".equals(vo.getSearch())) {
+				query.append(" WHERE (title LIKE ? OR author LIKE ? OR content LIKE ?) ");
+			}
+			query.append(" order by repRoot desc, repStep asc");
+			
+			pstmt = conn.prepareStatement(query.toString());
+			if(!"all".equals(vo.getSearch())) {
+				if("all2".equals(vo.getSearch())) {
+					pstmt.setString(1, "%"+vo.getKeyword() + "%");
+					pstmt.setString(2, "%"+vo.getKeyword() + "%");
+					pstmt.setString(3, "%"+vo.getKeyword() + "%");
+				}else {
+					pstmt.setString(1, "%"+vo.getKeyword() + "%");
+				}
+				
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			while( rs.next()){
+				BoardVO data = new BoardVO();
+				data.setNum(rs.getInt("num"));
+				data.setAuthor(rs.getString("author"));
+				data.setTitle(rs.getString("title"));
+				data.setWriteday(rs.getString("writeday"));
+				data.setReadcnt(rs.getInt("readcnt"));
+				data.setRepRoot(rs.getInt("repRoot"));
+				data.setRepStep(rs.getInt("repStep"));
+				data.setRepIndent(rs.getInt("repIndent"));
+				
+				list.add( data );
+			}//end while
+		}catch(Exception e){ 
+			e.printStackTrace();
+		}finally{
+			close(rs);
+			close(pstmt);
+			close(conn);
+		}
+		return list;
+	}//end select
+	
 	/***********************************************************
 	 * boardInsert() 메서드: 게시물 등록
 	 * @return boolean 리턴.

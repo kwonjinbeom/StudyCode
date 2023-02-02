@@ -18,10 +18,17 @@ public class BoardService {
 		return service;
 	}
 
-	public ArrayList<BoardVO> boardList() {
-		ArrayList<BoardVO> list = dao.boardList();
+	/*
+	 * public ArrayList<BoardVO> boardList() { ArrayList<BoardVO> list =
+	 * dao.boardList(); return list;
+	 * 
+	 * }
+	 */
+	// 검색처리
+	
+	public ArrayList<BoardVO> boardList(BoardVO vo){
+		ArrayList<BoardVO> list = dao.boardList(vo);
 		return list;
-		
 	}
 	public boolean boardInsert(BoardVO vo) {
 		boolean result = dao.boardInsert(vo);

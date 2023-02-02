@@ -25,15 +25,13 @@ public class HandlerMapping {
 		mappings.put("/board/insertForm.do", new insertFormController());
 		mappings.put("/board/insertBoard.do", new insertBoardController());
 		mappings.put("/board/detailBoard.do", new DetailBoardController());
-		
 		mappings.put("/board/passwdCheck.do", new PasswdCheckController());// 비밀번호 확인
-		
-		
 		mappings.put("/board/updateForm.do", new UpdateFormController());
 		mappings.put("/board/updateBoard.do", new UpdateBoardController());
 		mappings.put("/board/deleteBoard.do", new DeleteBoardController());
 		mappings.put("/board/replyForm.do", new ReplyFormController()); // 답변 등록 화면
 		mappings.put("/board/insertReply.do", new InsertReplyController()); // 답변 등록
+		
 		
 
 	}
