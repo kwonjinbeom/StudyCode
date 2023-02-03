@@ -11,17 +11,20 @@
 		<script type="text/javascript">
 			let buutonCheck =""; //buttonCheck는 수정버튼과 삭제버튼을 구별하기 위한 변수
 			$(function(){
+				/* 수정 버튼 클릭 시 처리 이벤트 */
 				$("#updateForm").click(function(){
-						$("#f_data").attr({
+						/* $("#f_data").attr({
 							"method":"post",
 							"action":"/board/updateForm.do"
 						});
-						$("#f_data").submit();
+						$("#f_data").submit(); */
 						
 						// 비밀번호 확인 후 처리
+						
 						$("#pwdChk").css("visibility", "visible");
 						$("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
 						buttonCheck = "updateButton";
+						console.log("수정버튼눌림");
 					});
 				
 				// 삭제 버튼 클릭 시 처리 이벤트 
@@ -36,6 +39,7 @@
 						$("#pwdChk").css("visibility", "visible");
 						$("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
 						buttonCheck = "deleteButton";
+						
 					});
 				
 				// 비밀번호 확인 버튼 클릭 시 처리 이벤트
@@ -78,15 +82,17 @@
 						}, // 정상적으로 실행이 되었을 경우
 						success : function(resultData){
 							let goUrl=""; // 이동할 경로를 저장할 변수
+							
 							if(resultData==0){ // 일치하지 않는 경우
 								$("#msg").text("작성시 입력한 비밀번호가 일치하지 않습니다.").css("color","red");
 								$("#passwd").select();
 							}else if(resultData==1){ // 일치할 경우
 								$("#msg").text("");
 								//console.log("비밀번호 일치");
-								
-								if(buttonCheck == "updataButton"){ // 수정버튼 클릭
-									goUrl = "/board/updataForm.do";
+								console.log("비밀번호 일치");
+								if(buttonCheck == "updateButton"){ // 수정버튼 클릭
+									console.log("if통과");
+									goUrl = "/board/updateForm.do";
 									$("#f_data").attr("action", goUrl);
 									$("#f_data").submit();
 								}else if(buttonCheck=="deleteButton"){ // 삭제버튼 클릭

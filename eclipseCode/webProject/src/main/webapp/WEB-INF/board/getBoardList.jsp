@@ -11,7 +11,7 @@
 				}
 				/* 입력 양식 enter 제거 또는 검색 기능 부여 */
 				$("#keyword").bind("keydown",function(event){
-					if(evnet.keyCode == 13){
+					if(event.keyCode == 13){
 						event.preventDefault(); // 아래부분이 주석이면 enter가 입력되어도 아무런 작업을 하지않음
 						$("#searchData").click(); // 이 부분 주석 해제하면 검색단어 입력 후 enter로 검색기능 가능하도록 설정.
 					}
