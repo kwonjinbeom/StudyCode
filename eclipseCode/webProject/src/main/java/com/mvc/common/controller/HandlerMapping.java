@@ -33,6 +33,12 @@ public class HandlerMapping {
 		mappings.put("/board/insertReply.do", new InsertReplyController()); // 답변 등록
 		
 		
+		
+		
+		
+		mappings.put("/board/login.do", new InsertReplyController()); // 답변 등록
+		
+		
 
 	}
 

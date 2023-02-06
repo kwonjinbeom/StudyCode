@@ -393,4 +393,42 @@ public class BoardDAO {
 		}
 		return result;
 	}//end reply
+	
+	
+	
+	/***********************************************************
+	 * test0206_idpwSameNum() 메서드: 비밀번호 조회 메서드.
+	 * @return int 리턴 
+	 ***********************************************************/
+	public int test0206_idpwSameNum(String id, String pw, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try{
+			StringBuffer query = new StringBuffer();
+			query.append("SELECT COUNT(*) as rowNum ");
+			query.append("WHERE id = ? AND pw = ? FROM LOGIN_TB ");
+					
+			pstmt = conn.prepareStatement(query.toString());
+			pstmt.setString(1, id);	
+			pstmt.setString(2, pw);	
+			pstmt.executeUpdate( );
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("rowNum"); 
+			}
+		}catch( Exception e) { 
+				e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }
