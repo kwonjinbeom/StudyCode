@@ -1,0 +1,10 @@
+package com.spring.polymorphism;
+
+public class LgTV {
+	public void turnOn() {
+		System.out.println("LgTV---전원 켠다.");
+	}
+	public void turnOff() {
+		System.out.println("LgTV---전원 끈다.");
+	}
+}

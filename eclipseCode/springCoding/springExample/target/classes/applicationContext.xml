@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+		<!-- <bean id="tv" class="com.spring.polymorphism.SamsungTV" /> -->
+		<!-- <bean id="tv" class="com.spring.polymorphism.LgTV" /> -->
+		<!-- bean에 class 속성 사용 시 인스턴스가 생성이 되고 참조변수가 tv가 된다. -->
+		
+		<!-- 
+		<bean id="tv" class="com.spring.polymorphism.SamsungTV" init-method="initMethod">
+		-->
+		
+		<!-- 지연 방식 lazy-init을 사용함으로써 인스턴스를 무조건 만들지 
+		않고 원하고자 할 때 생성할 수 있다 -->
+		<!-- <bean id="tv" class="com.spring.polymorphism.SamsungTV" lazy-init="true"/>
+		 -->
+		 
+		 <!-- 싱글턴 방식이기 때문에 3개를 만들어도 서로 같은 주소값을 가짐 -->
+		 <!-- <bean id="tv" class="com.spring.polymorphism.SamsungTV" scope="singleton"> -->
+		 <!-- <bean id="tv" class="com.spring.polymorphism.SamsungTV" scope="prototype"> -->
+		 
+		<!-- 
+		생성자를 통한 매개변수를 주는 방법과 Setter 인젝션으로 주는 방법이 있는데
+		property의 name에 speaker라고 주면 SetSpeaker 
+		이런식으로 Set+첫글자 대문자+ 나머지의 형태로 호출된다.
+		
+		생성자 매개변수
+			<constructor-arg ref="apple"></constructor-arg>
+			<constructor-arg value="55000"></constructor-arg>
+		
+		Setter 인젝션
+			<property name = "speaker" ref="apple"></property>
+			<property name = "price" value="55000"></property>
+		
+		</bean>
+		 -->
+		 
+		
+		<!-- p 네임스페이스 사용 구문 -->
+		<bean id="tv" class="com.spring.polymorphism.SamsungTV" p:speaker-ref="sony" p:price="55000" />
+	
+	
+	<bean id="sony" class="com.spring.polymorphism.SonySpeaker"/>
+	<bean id="apple" class="com.spring.polymorphism.AppleSpeaker"/>
+
+</beans>

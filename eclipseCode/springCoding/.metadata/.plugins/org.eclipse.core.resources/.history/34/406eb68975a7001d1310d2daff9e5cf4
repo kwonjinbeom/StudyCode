@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+		<!-- <bean id="tv" class="com.spring.polymorphism.SamsungTV" /> -->
+		<!-- <bean id="tv" class="com.spring.polymorphism.LgTV" /> -->
+		
+		<bean id="tv" class="com.spring.polymorphism.SamsungTV" init-method="initMethod">
+		<!-- 생성자 매개변수 -->
+			<!-- <constructor-arg ref="apple"></constructor-arg>
+			<constructor-arg value="55000"></constructor-arg> -->
+		<!-- Setter 인젝션 -->
+			<property name = "speaker" ref="apple"></property>
+			<property name = "price" value="55000"></property>
+		</bean>
+	<bean id="sony" class="com.spring.polymorphism.SonySpeaker"/>
+	<bean id="apple" class="com.spring.polymorphism.AppleSpeaker"/>
+
+</beans>
