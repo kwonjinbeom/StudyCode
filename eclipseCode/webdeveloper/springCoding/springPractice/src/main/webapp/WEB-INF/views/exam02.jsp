@@ -15,19 +15,10 @@
 		<!--[if lt IE 9]>
 		<script src="../js/html5shiv.js"></script>
 		<![endif]-->
-
+<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css" />
 		<script type="text/javascript" src="/resources/js/jquery-3.6.2.min.js"></script>
 		<script type="text/javascript">
-			$(function(){
-				$("#exam02ListBtn").click(function(){
-					$("#exam02ListForm").attr({
-						method:"get",
-						action:"/sample/exam02List"
-					});
-					$("#exam02ListForm").submit();
-				});
-				
-			})
 		</script>
 		
 	</head>
@@ -39,25 +30,6 @@
 			<label>나이</label> ${dto.age}
 		</div>
 		
-		<h5>매개변수 값을 List 타입에 대입 예제</h5>
-		<form id="exam02ListForm">
-			<label class="checkbox-inline">
-				<input type="checkbox" name ="language" value="java">java
-			</label>
-			<label class="checkbox-inline">
-				<input type="checkbox" name ="language" value="jsp">jsp
-			</label>
-			<label class="checkbox-inline">
-				<input type="checkbox" name ="language" value="oracle">oracle
-			</label>
-			<label class="checkbox-inline">
-				<input type="checkbox" name ="language" value="spring">spring
-			</label>
-			<label class="checkbox-inline">
-				<input type="checkbox" name ="language" value="jquery">jquery
-			</label>
-			<button type="button" id="exam02ListBtn" class="btn btn-success">exam02ListBtn 예제 확인</button>
-		</form>
 		
 	</body>
 </html>
