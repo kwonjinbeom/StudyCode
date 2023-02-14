@@ -26,6 +26,5 @@
     <!--
     <Manager pathname="" />
     -->
-<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/Oracle18c" password="java1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="javauser"/>
-    
+ <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/Oracle18c" password="java1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/xepdb1" username="javauser"/>
 </Context>
