@@ -10,11 +10,32 @@
 	<properties>
 		<java-version>11</java-version>
 		<org.springframework-version>5.3.18</org.springframework-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<org.aspectj-version>1.9.0</org.aspectj-version>
+		<org.slf4j-version>1.7.36</org.slf4j-version>
+		<tiles-version>3.0.8</tiles-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
+		
+		<!-- tiles -->
+		<dependency>
+					<groupId>org.apache.tiles</groupId>
+					<artifactId>tiles-extras</artifactId>
+					<version>${tiles-version}</version>
+		</dependency>		
+		
+		<dependency>
+					<groupId>org.apache.tiles</groupId>
+					<artifactId>tiles-servlet</artifactId>
+					<version>${tiles-version}</version>
+		</dependency>
+		
+		<dependency>
+					<groupId>org.apache.tiles</groupId>
+					<artifactId>tiles-jsp</artifactId>
+					<version>${tiles-version}</version>
+		</dependency>
+
 		<!-- 트랜잭션 설정을 위한 설정 -->
 		<dependency>
 					<groupId>org.springframework</groupId>
