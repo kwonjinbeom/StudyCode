@@ -24,6 +24,25 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 		
 	}
+
+	@Override
+	public int boardInsert(BoardVO boardVO) {
+		int result = boardDao.boardInsert(boardVO);
+		return result;
+	}
+
+	@Override
+	public void readCount(String num) {
+		boardDao.readCount(num);
+		
+	}
+
+	@Override
+	public BoardVO boardDetail(String num) {
+		BoardVO boardVO = boardDao.boardDetail(num);
+//		boardVO.setB_content(boardVO.getB_content().toString().replaceAll("\n","<br />"));
+		return boardVO;
+	}
 	
 	
 	

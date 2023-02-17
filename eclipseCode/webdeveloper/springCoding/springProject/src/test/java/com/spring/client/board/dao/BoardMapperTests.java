@@ -29,4 +29,17 @@ public class BoardMapperTests {
 		   log.info(vo);
 	   }
    }
+
+   @Test
+   public void testBoardInsert() {
+	   BoardVO board = new BoardVO();
+	   board.setB_name("김철수");
+	   board.setB_title("용기가 필요할 때");
+	   board.setB_content("도중에 포기하지말라. 망설이지 말라. 최후의 성공을 거둘 때까지 밀고 나가자.");
+	   board.setB_pwd("1234");
+	   
+	   int count = boardDao.boardInsert(board);
+	   log.info("입력된 행의 수 : "  + count);
+	   }
+   
 }

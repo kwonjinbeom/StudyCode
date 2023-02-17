@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.client.board.service.BoardService;
 import com.spring.client.board.vo.BoardVO;
@@ -34,5 +36,43 @@ public class BoardController {
 		List<BoardVO> boardList = boardService.boardList();
 		model.addAttribute("boardList",boardList);
 		return "board/boardList"; // /WEB-INF/views/board/boardList.jsp
+	}
+	
+//	@GetMapping("/writeForm")
+	@RequestMapping(value="/writeForm", method = RequestMethod.GET)
+	public String writeForm(Model model) {
+		log.info("writeForm 메서드 호출...");
+		
+		
+		return "board/writeForm";
+	}
+	
+//	@GetMapping("/boardInsert")
+	@RequestMapping(value="/boardInsert", method = RequestMethod.GET)
+	public String boardInsert(BoardVO boardVO) {
+		log.info("boardWrite 메서드 호출...");
+		
+//		같은 페이지에 존재하지 않았따면 아래와 같이 코딩
+		int result = 0;
+		String path ="";
+		result = boardService.boardInsert(boardVO);
+		if(result==1) {
+			path="/board/boardList";
+		}else {
+			path="/board/writeForm";
+		}
+		return "redirect:"+path;
+	}
+	
+//	@GetMapping("/boardDetail")
+	@RequestMapping(value="/boardDetail", method = RequestMethod.GET)
+	public String boardDetail(@RequestParam("num") String num,Model model) {
+		log.info("writeForm 메서드 호출...");
+		boardService.readCount(num);
+		
+		BoardVO data = boardService.boardDetail(num);
+		model.addAttribute("detail", data);
+		
+		return "board/boardDetail";
 	}
 }

@@ -10,6 +10,7 @@ public class BoardVO {
 	private String b_content="";
 	private String b_pwd="";
 	private String b_date;
+	private	int readcnt;     // 글 조회수
 	
 	
 }

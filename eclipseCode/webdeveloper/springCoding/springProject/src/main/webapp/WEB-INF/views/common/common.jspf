@@ -16,10 +16,10 @@
 		<!--[if lt IE 9]>
 		<script src="../js/html5shiv.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css" />
 		 
- 		<link rel="stylesheet" type="text/css" href="/resources/include/css/default.css" />
+ 		<!-- <link rel="stylesheet" type="text/css" href="/resources/include/css/default.css" /> -->
 		
-		<script type="text/javascript" src="/resources/js/jquery-3.6.2.min.js"></script>
-		<script type="text/javascript" src="/resources/dist/js/common.js"></script>
+		<script type="text/javascript" src="/resources/include/js/jquery-3.6.2.min.js"></script>
+		<script type="text/javascript" src="/resources/include/js/common.js"></script>

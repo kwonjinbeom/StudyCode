@@ -1,6 +1,6 @@
 -- 테이블 생성
 DROP TABLE SPRING_BOARD;
-
+DROP SEQUENCE SPRING_BOARD_SEQ;
 CREATE TABLE spring_board(
     b_num NUMBER NOT NULL,        
     b_name VARCHAR2(15) NOT NULL,
@@ -8,6 +8,7 @@ CREATE TABLE spring_board(
     b_content clob,
     b_pwd VARCHAR2(18) NOT NULL,
     b_date DATE DEFAULT SYSDATE,
+    readcnt  number(4) default 0,
     CONSTRAINT spring_board_pk PRIMARY KEY(b_num)
 );
 
