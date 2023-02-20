@@ -29,10 +29,56 @@
 		WHERE b_num= #{num}
 	</update>
 	
-	<!-- 게시판 리스트 기본 조회 -->
+	<!-- 게시판 리스트 기본 조회 
 	<select id="boardDetail" parameterType="java.lang.String" resultType="board">
 		SELECT b_num, b_name,b_content, b_title, to_char(b_date,'YYYY-MM-DD') as b_date, readcnt
 		FROM spring_board
 		WHERE b_num= #{num}
+	</select>-->
+	
+	<select id="boardDetail" parameterType="board" resultType="board">
+		SELECT b_num, b_name,b_content, b_title, to_char(b_date,'YYYY-MM-DD') as b_date, readcnt
+		FROM spring_board
+		WHERE b_num= #{b_num}
 	</select>
+<!-- 	<select id="boardDetail" parameterType="board" resultType="board">
+		SELECT b_num, b_name,b_content, b_title, to_char(b_date,'YYYY-MM-DD') as b_date, readcnt, b_thumb, b_file
+		FROM spring_board
+		WHERE b_num= #{b_num}
+	</select>
+ -->	
+	<!-- 해당 번호의 비밀먼호 확인 -->
+	<select id="pwdConfirm" parameterType="board" resultType="int">
+		SELECT NVL((
+				SELECT 1 FROM spring_board
+				WHERE b_num = #{b_num} AND b_pwd = #{b_pwd}
+				), 0) as state
+		FROM dual
+	</select>
+	<update id="boardUpdate" parameterType="board">
+		UPDATE spring_board 
+		SET b_title = #{b_title},
+			b_content = #{b_content},
+			b_date = sysdate
+			<if test="b_pwd != ''">
+				, b_pwd = #{b_pwd}
+			</if>
+		WHERE b_num = #{b_num}
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="boardDelete" parameterType="board">
+		DELETE FROM spring_board WHERE b_num = #{b_num}
+	</delete>
+	<!-- 게시물 삭제
+	<delete id="boardDelete" parameterType="int">
+		DELETE FROM spring_board WHREE b_num = #{b_num}
+	</delete>
+	 -->
+	 
+	 <!-- 게시판 리스트 엑셀 파일로 다운로드 시 사용할 쿼리문 -->
+	 <select id="boardListExcel" parameterType="board" resultType="board">
+	 	SELECT /*+ INDEX_DESC(spring_board spring_board_pk) */
+	 		b_num
+	 </select>
 </mapper>

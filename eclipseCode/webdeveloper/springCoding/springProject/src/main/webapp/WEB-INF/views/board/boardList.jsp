@@ -14,7 +14,8 @@
 				let num = $(this).parents("tr").attr("data-num");
 				//console.log("num = "+num);
 				
-				location.href="/board/boardDetail?num="+num;
+				location.href="/board/boardDetail?b_num="+num;
+				
 			})
 		}); // $ 함수 종료문
 	</script>

@@ -13,37 +13,37 @@
 			$(function(){
 				/* 수정 버튼 클릭 시 처리 이벤트 */
 				$("#updateForm").click(function(){
-						/* $("#f_data").attr({
+						/*  $("#f_data").attr({
 							"method":"post",
-							"action":"/board/updateForm.do"
+							"action":"/board/updateForm"
 						});
-						$("#f_data").submit(); */
+						$("#f_data").submit();  */
 						
 						// 비밀번호 확인 후 처리
 						
 						$("#pwdChk").css("visibility", "visible");
 						$("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
-						buttonCheck = "updateButton";
+						buttonCheck = "updateButton"; 
 						console.log("수정버튼눌림");
 					});
 				
 				// 삭제 버튼 클릭 시 처리 이벤트 
-				$("#boardDelete").click(function(){
-						/* $("#f_data").attr({
+				 $("#boardDelete").click(function(){
+						/*  $("#f_data").attr({
 							"method":"post",
-							"action":"/board/deleteBoard.do"
+							"action":"/board/boardDelete"
 						});
-						$("#f_data").submit(); */
+						$("#f_data").submit();   */
 						
 						// 비밀번호 확인 후 처리
-						$("#pwdChk").css("visibility", "visible");
+ 						$("#pwdChk").css("visibility", "visible");
 						$("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
-						buttonCheck = "deleteButton";
+						buttonCheck = "deleteButton"; 
 						
 					});
 				
 				// 비밀번호 확인 버튼 클릭 시 처리 이벤트
-				$("#pwdBut").click(function(event){
+ 				$("#pwdBut").click(function(event){
 					boardPwdConfirm();
 				});
 				
@@ -51,7 +51,7 @@
 					$("#b_pwd").val("");
 					$("#pwdChk").css("visibility", "hidden");
 					buttonCheck = "";
-				})
+				}) 
 				
 				/* 목록 버튼 클릭 시 처리 이벤트 */
 				$("#boardListBtn").click(function(){
@@ -73,7 +73,7 @@
 				if(!chkData('#b_pwd', "비밀번호를")) return;
 				else{
 					$.ajax({
-						url : "/board/b_pwdCheck.do", //전송 url
+						url : "/board/boardPasswdChk", //전송 url
 						type : "post", //전송 시 method 방식
 						data : $("#f_pwd").serialize(), // 폼전체 데이터 전송
 						dataType : "text",
@@ -92,12 +92,12 @@
 								console.log("비밀번호 일치");
 								if(buttonCheck == "updateButton"){ // 수정버튼 클릭
 									console.log("if통과");
-									goUrl = "/board/updateForm.do";
+									goUrl = "/board/updateForm";
 									$("#f_data").attr("action", goUrl);
 									$("#f_data").submit();
 								}else if(buttonCheck=="deleteButton"){ // 삭제버튼 클릭
 									if(confirm("정말 삭제하시겠습니까?")){
-										goUrl="/board/deleteBoard.do";
+										goUrl="/board/boardDelete";
 										$("#f_data").attr("action",goUrl);
 										$("#f_data").submit();
 									}
