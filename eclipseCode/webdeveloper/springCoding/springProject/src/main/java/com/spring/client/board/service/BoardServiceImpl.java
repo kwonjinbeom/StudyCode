@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.client.board.dao.BoardDao;
 import com.spring.client.board.vo.BoardVO;
+import com.spring.common.file.FileUploadUtil;
 
 import lombok.Setter;
 
@@ -16,7 +17,10 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private BoardDao boardDao;
-
+	
+//	@Setter(onMethod_=@Autowired)
+//	private ReplyDao replyDao;
+	
 	@Override
 	public List<BoardVO> boardList() {
 		// 글목록 구현
@@ -25,10 +29,31 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 		
 	}
+	@Override
+	public List<BoardVO> boardList(BoardVO bvo) {
+		// 글목록 구현
+		List<BoardVO> list = null;
+		list = boardDao.boardList(bvo);
+		return list;
+		
+	}
+	
+	//전체 레코드 수 구현
+	@Override
+	public int boardListCnt(BoardVO bvo) {
+		return boardDao.boardListCnt(bvo);
+	}
 
 	@Override
-	public int boardInsert(BoardVO boardVO) {
-		int result = boardDao.boardInsert(boardVO);
+	public int boardInsert(BoardVO bvo) throws Exception {
+		int result = 0;
+		if(bvo.getFile().getSize() > 0) {
+			String fileName = FileUploadUtil.fileUpload(bvo.getFile(), "board"); //board_~~.jpg
+			bvo.setB_file(fileName);
+			String thumbName = FileUploadUtil.makeThumbnail(fileName); //thumbnail_board_~~.jpg
+			bvo.setB_thumb(thumbName);
+		}
+		result = boardDao.boardInsert(bvo);
 		return result;
 	}
 
@@ -40,6 +65,9 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO boardDetail(BoardVO bvo) {
+		
+		BoardVO detail = null;
+//		boardDao.readCntUpdate(bvo); // 조회수 증가 메서드 호출
 		BoardVO boardVO = boardDao.boardDetail(bvo);
 //		boardVO.setB_content(boardVO.getB_content().toString().replaceAll("\n","<br />"));
 
@@ -64,15 +92,19 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int boardUpdate(BoardVO bvo) {
+	public int boardUpdate(BoardVO bvo) throws Exception {
 		int result = 0;
 		result = boardDao.boardUpdate(bvo);
 		return result;
 	}
 
 	@Override
-	public int boardDelete(BoardVO bvo) {
+	public int boardDelete(BoardVO bvo) throws Exception{
 		int result = 0;
+		if(!bvo.getB_file().isEmpty()) {
+			FileUploadUtil.fileDelete(bvo.getB_file());
+			FileUploadUtil.fileDelete(bvo.getB_thumb());
+		}
 		result = boardDao.boardDelete(bvo.getB_num());
 		return result;
 	}

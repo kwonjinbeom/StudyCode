@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix= "fn" uri= "http://java.sun.com/jsp/jstl/functions" %>  
 <%@ include file = "/WEB-INF/views/common/common.jspf" %>   
 		<style type="text/css">
 			#pwdChk{visibility:hidden;}
@@ -62,7 +63,7 @@
 				$("#boardReply").click(function(){
 					$("#f_data").attr({
 						"method":"post",
-						"action":"/board/replyForm.do"
+						"action":"/board/replyForm"
 					});
 					$("#f_data").submit();
 				})
@@ -117,6 +118,8 @@
 			<div class="text-center"><h3>게시판 상세화면</h3></div>
 			<form name="f_data" id="f_data" method="post">
 				<input type="hidden" name="b_num" value="${detail.b_num}">
+				<input type="hidden" name="b_file" value="${detail.b_file}">
+				<input type="hidden" name="b_thumb" value="${detail.b_thumb}">
 			</form>
 			
 			<%-- ========= 비밀번호 확인 버튼 및 버튼 추가 시작 ====== --%>
@@ -162,6 +165,18 @@
 						<tr class="table-height">
 							<td class="text-valign">글내용</td>
 							<td colspan="3" class="text-left">${detail.b_content}</td>
+						</tr>
+						<tr>
+							<td class="col-md-3">이미지</td>
+							<td colspan="3" class="col-md-9 text-left">
+								<c:if test="${not empty detail.b_file}">
+									<img src="/uploadStorage/board/${detail.b_file}"/>
+								</c:if>
+								<c:if test="${empty detail.b_file}">
+									<img src="/resources/images/common/nonimage.png"/>
+								</c:if>
+							</td>
+							
 						</tr>
 					</tbody>
 				</table>

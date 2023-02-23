@@ -39,3 +39,14 @@ function checkForm(item,msg){
 	}
 }
 
+
+function chkFile(item){
+	let ext = item.val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['gif', 'png', 'jpg']) == -1){
+		alert('gif, png, jpg 파일만 업로드 할 수 있습니다.');
+		item.val("");
+		return false;
+	}else{
+		return true;
+	}
+}

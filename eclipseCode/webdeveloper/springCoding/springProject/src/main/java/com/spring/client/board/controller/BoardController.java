@@ -10,20 +10,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.client.board.service.BoardService;
 import com.spring.client.board.vo.BoardVO;
+import com.spring.common.vo.PageDTO;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/board/*")
 @Log4j
+@AllArgsConstructor
 public class BoardController {
 	
-	@Setter(onMethod_ = @Autowired)
+//	@Setter(onMethod_ = @Autowired)
 	private BoardService boardService;
 	
 	
@@ -32,17 +36,24 @@ public class BoardController {
 	
 	@RequestMapping(value="/boardList", method = RequestMethod.GET)
 //	@GetMapping("/boardList")
-	public String boardList(Model model) {
+	public String boardList(@ModelAttribute("data") BoardVO bvo, Model model) {
 		log.info("boardList 호출 성공");
 		// 전체 레코드 조회
-		List<BoardVO> boardList = boardService.boardList();
+		List<BoardVO> boardList = boardService.boardList(bvo);
+		log.info(boardList);
 		model.addAttribute("boardList",boardList);
+		
+		// 전체 레코드수 구현
+		int total = boardService.boardListCnt(bvo);
+		log.info(total);
+		// 페이징 처리
+		model.addAttribute("pageMaker", new PageDTO(bvo, total));
 		return "board/boardList"; // /WEB-INF/views/board/boardList.jsp
 	}
 	
 //	@GetMapping("/writeForm")
-	@RequestMapping(value="/writeForm", method = RequestMethod.GET)
-	public String writeForm(Model model) {
+	@RequestMapping(value="/writeForm")
+	public String writeForm() {
 		log.info("writeForm 메서드 호출...");
 		
 		
@@ -50,14 +61,14 @@ public class BoardController {
 	}
 	
 //	@GetMapping("/boardInsert")
-	@RequestMapping(value="/boardInsert", method = RequestMethod.GET)
-	public String boardInsert(BoardVO boardVO) {
-		log.info("boardWrite 메서드 호출...");
+	@RequestMapping(value="/boardInsert", method = RequestMethod.POST)
+	public String boardInsert(BoardVO bvo, Model model) throws Exception{
+		log.info("boardInsert 메서드 호출...");
 		
-//		같은 페이지에 존재하지 않았따면 아래와 같이 코딩
+//		같은 페이지에 존재하지 않았다면 아래와 같이 코딩
 		int result = 0;
 		String path ="";
-		result = boardService.boardInsert(boardVO);
+		result = boardService.boardInsert(bvo);
 		if(result==1) {
 			path="/board/boardList";
 		}else {
@@ -74,6 +85,7 @@ public class BoardController {
 		
 		BoardVO data = boardService.boardDetail(bvo);
 		model.addAttribute("detail", data);
+		
 		
 		return "board/boardDetail";
 	}
@@ -147,21 +159,23 @@ public class BoardController {
 		
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/boardPasswdChk")
 	public String boardPasswdChk(@ModelAttribute BoardVO bvo) throws Exception{
-		log.info("passWdCheck 호출 성공");
+		log.info("boardPasswdChk 호출 성공");
 		
 		int result = boardService.boardPasswdChk(bvo);
-		String url = "";
 		
-		if(result == 1) {
+		
+		/*String url = "";
+		 * if(result == 1) {
 			url="/board/boardList";
 		}else {
 			url="/board/boardDetail?b_num=" + bvo.getB_num()+"&b_pwd=" + bvo.getB_pwd();
 		}
 		
-		return "redirect:" + url;
-		
+		return "redirect:" + url;*/
+		return String.valueOf(result);
 		
 	}
 	

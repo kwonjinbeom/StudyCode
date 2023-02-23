@@ -14,7 +14,12 @@
 	<logger name="com.spring.client">
 		<level value="info" />
 	</logger>
-	
+	<logger name="com.spring.common">
+		<level value="info" />
+	</logger>
+	<logger name="com.spring.admin">
+		<level value="info" />
+	</logger>
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
