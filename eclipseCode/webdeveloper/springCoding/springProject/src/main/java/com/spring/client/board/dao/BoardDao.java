@@ -23,5 +23,4 @@ public interface BoardDao {
 	public int boardDelete(int b_num);
 	
 	public List<BoardVO> boardListExcel(BoardVO bvo);
-	
 }

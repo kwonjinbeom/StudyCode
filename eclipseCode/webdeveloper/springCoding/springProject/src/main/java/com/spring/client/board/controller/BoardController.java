@@ -159,7 +159,12 @@ public class BoardController {
 		
 	}
 	
-	@ResponseBody
+	@ResponseBody //원래 주소에다가 BVO 객체를 넘기는 등으로 사용되는데 현재는 RETURN으로 메서드안에서의 보내고 싶은 내용을 보내려한다. (원래의 RETURN METHOD)이럴 때는
+	// RESPONSEBODY 를 사용해야함. 
+	/* 근데 이제 둘을 합친게 Controller + Responsebody = RestController 어노테이션이다. Controller는 rest방식을 처리하기 위함을 명시, (기존의 특정한 jsp와 같은
+	 * 뷰를 만들어내는 것이 목적이 아닌 rest 방식의 데이터 처리를 위해서 사용하는(데이터 자체를 반환) 어노테이션이다.
+	 * Responsebody는 일반적인 jsp와 같은 뷰로 전달하는 게 아니라 데이터 자체를 전달하기 위한 용도이다.
+	 *  */
 	@RequestMapping(value="/boardPasswdChk")
 	public String boardPasswdChk(@ModelAttribute BoardVO bvo) throws Exception{
 		log.info("boardPasswdChk 호출 성공");

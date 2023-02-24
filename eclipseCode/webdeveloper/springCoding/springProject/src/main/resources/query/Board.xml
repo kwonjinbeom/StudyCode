@@ -99,6 +99,12 @@
 			<if test="b_pwd != ''">
 				, b_pwd = #{b_pwd}
 			</if>
+			<if test="b_thumb != ''">
+				, b_thumb = #{b_thumb}
+			</if>
+			<if test="b_file != ''">
+				, b_file = #{b_file}
+			</if>
 		WHERE b_num = #{b_num}
 	</update>
 	

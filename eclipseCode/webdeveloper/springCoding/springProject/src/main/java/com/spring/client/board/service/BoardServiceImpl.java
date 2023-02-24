@@ -18,8 +18,6 @@ public class BoardServiceImpl implements BoardService {
 	@Setter(onMethod_ = @Autowired)
 	private BoardDao boardDao;
 	
-//	@Setter(onMethod_=@Autowired)
-//	private ReplyDao replyDao;
 	
 	@Override
 	public List<BoardVO> boardList() {
@@ -94,6 +92,17 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int boardUpdate(BoardVO bvo) throws Exception {
 		int result = 0;
+		if(!bvo.getFile().isEmpty()) {
+			if(!bvo.getB_file().isEmpty()) {
+				FileUploadUtil.fileDelete(bvo.getB_file());
+				FileUploadUtil.fileDelete(bvo.getB_thumb());
+			}
+			String fileName = FileUploadUtil.fileUpload(bvo.getFile(), "board"); //board_~~.jpg
+			bvo.setB_file(fileName);
+			
+			String thumbName = FileUploadUtil.makeThumbnail(fileName); //thumbnail_board_~~.jpg
+			bvo.setB_thumb(thumbName);
+		}
 		result = boardDao.boardUpdate(bvo);
 		return result;
 	}

@@ -1,6 +1,8 @@
 -- 인덱스(색인)
 -- create [UNIQUE] INDEXX 인덱스명 on 테이블명 ( 컬럼1, 컬럼2....);
-
+DESC SPRING_BOARD;
+ALTER TABLE SPRING_BOARD
+MODIFY(B_NAME VARCHAR2(100));
 select * from spring_reply order by b_num desc;
 select * from spring_board order by b_num desc;
 

@@ -12,18 +12,29 @@
 					alert(msg);
 				}
 				
-				/* 저장 버튼 클릭 시 처리 이벤트 */
+				/* 수정 버튼 클릭 시 처리 이벤트 */
 				$("#boardUpdate").click(function(){
 					//입력값 체크
 					if (!chkData("#b_title","제목을"))	return;
 					else if (!chkData("#b_content","작성할 내용을"))	return;
 					else {
+						if($("#file").val() != ""){
+							if(!chkFile($("#file"))) return;
+						}
 						$("#f_updateForm").attr({
 							"method":"post",
+							"enctype":"multipart/form-data",
 							"action":"/board/boardUpdate"
 						});
 						$("#f_updateForm").submit();
 					}
+				});
+				
+				/* 취소 버튼 클릭 시 처리 이벤트 */
+				$("#boardCancelBtn").click(function(){
+					$("#f_updateForm").each(function(){
+						this.reset();
+					});
 				});
 				
 				/* 목록 버튼 클릭 시 처리 이벤트 */
@@ -40,6 +51,9 @@
 			<div class="text-center">
 				<form id="f_updateForm" name="f_updateForm">
 				    <input type="hidden" name="b_num" id="b_num" value="${updateData.b_num}">
+				    <input type="hidden" name="b_file" id="b_file" value="${updateData.b_file}">
+				    <input type="hidden" name="b_thumb" id="b_thumb" value="${updateData.b_thumb}">
+				    
 					<table class="table table-bordered">
 						<tr>
 							<td class="text-center">글번호</td> 
@@ -66,6 +80,12 @@
 							<td colspan="3"><input type="password" name="b_pwd" id="b_pwd" 
 							class="form-control" placeholder="기존 비밀번호가 아니라 수정할 비밀번호를 입력해 주세요."/></td>
 						</tr>	
+						<tr>
+							<td>이미지파일첨부</td>
+							<td colspan="3" class="text-left"><input type="file" name ="file" id="file" />
+							</td>
+													
+						</tr>
 					</table>
 				</form>
 			</div>
@@ -73,6 +93,7 @@
 			<div class="text-right">
 				<button type="button" id="boardUpdate" class="btn btn-primary btn-sm">수정</button>
 				<button type="button" id="boardListBtn" class="btn btn-primary btn-sm">목록</button>
+				<button type="button" id="boardCancelBtn" class="btn btn-primary btn-sm">취소</button>
 			</div>
 		</div>	
 	</body>

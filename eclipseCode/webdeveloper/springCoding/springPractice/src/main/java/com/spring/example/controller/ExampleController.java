@@ -10,7 +10,8 @@ import com.spring.example.domain.ExampleVO;
 
 import lombok.extern.log4j.Log4j;
 
-@RestController
+@RestController //(@Conroller + @Responsebody)
+// Controller 가 rest 방식을 처리하기 위한 것임을 명시 .....
 @RequestMapping("/example/*")
 @Log4j
 public class ExampleController {

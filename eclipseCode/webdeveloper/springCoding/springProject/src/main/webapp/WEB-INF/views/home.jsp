@@ -1,8 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<%@ include file = "/WEB-INF/views/common/common.jspf" %> 
 <html>
-<head>
-	<title>Home</title>
+<script>
+	$(document).ready(function(){
+		location.href="/board/boardList";			
+	});
+</script>
 </head>
 <body>
 <h1>

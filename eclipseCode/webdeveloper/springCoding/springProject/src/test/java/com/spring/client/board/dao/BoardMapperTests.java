@@ -22,13 +22,13 @@ public class BoardMapperTests {
    private BoardDao boardDao;
    
 
-   @Test
-   public void testBoardList() {
-	   List<BoardVO> list = boardDao.boardList();
-	   for(BoardVO vo : list) {
-		   log.info(vo);
-	   }
-   }
+//   @Test
+//   public void testBoardList() {
+//	   List<BoardVO> list = boardDao.boardList();
+//	   for(BoardVO vo : list) {
+//		   log.info(vo);
+//	   }
+//   }
 
 //   @Test
 //   public void testBoardInsert() {
