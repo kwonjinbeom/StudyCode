@@ -62,7 +62,7 @@ VALUES(spring_reply_seq.nextval, 1, '±èÃ¶¼ö', '¹°¹æ¿ïÀÌ ¹ÙÀ§¸¦ ¶ÕÀ» ¼ö ÀÖ´Â ±× È
 select * from spring_reply;
 select count(r_num) from spring_reply where b_num = 1 ;
 
-
+commit;
 --SELECT b_num, b_name, b_title to
 --(select count(r_num) from spring_
 --from spring_board boardlist;
