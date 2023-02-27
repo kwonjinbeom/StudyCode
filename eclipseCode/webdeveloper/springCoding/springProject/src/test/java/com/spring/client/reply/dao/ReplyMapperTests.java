@@ -22,15 +22,26 @@ public class ReplyMapperTests {
    private ReplyDao replyDao;
    
 
+//   @Test
+//   public void testReplyList() {
+//	   List<ReplyVO> list = replyDao.replyList(1);
+//	   
+//	   for(ReplyVO vo : list) {
+//		   log.info(vo);
+//	   }
+//   }
+   
    @Test
-   public void testReplyList() {
-	   List<ReplyVO> list = replyDao.replyList(1);
+   public void testReplyInsert() {
+	   ReplyVO rvo = new ReplyVO();
+	   rvo.setB_num(1);
+	   rvo.setR_name("홍길동");
+	   rvo.setR_content("남을위해....");
+	   rvo.setR_pwd("1234");
+	   int result = replyDao.replyInsert(rvo);
 	   
-	   for(ReplyVO vo : list) {
-		   log.info(vo);
-	   }
+	   log.info("입력결과 : " + result);
    }
-
 
    
 }

@@ -17,9 +17,16 @@ public class ReplyServiceImpl implements ReplyService{
 	private ReplyDao replyDao;
 	
 	//글목록 구현
+	@Override
 	public List<ReplyVO> replyList(Integer b_num){
 		List<ReplyVO> list = null;
 		list = replyDao.replyList(b_num);
 		return list;
+	}
+	@Override
+	public int replyInsert(ReplyVO rvo) {
+		int result = 0;
+		result = replyDao.replyInsert(rvo);
+		return result;
 	}
 }

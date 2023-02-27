@@ -181,7 +181,8 @@
 					</tbody>
 				</table>
 			</div>
-			
+			<!-- 상세 정보 보여주기 종료 -->
+			<jsp:include page="reply.jsp"/>
 		</div>
 
 	</body>

@@ -10,5 +10,18 @@
 		ORDER BY r_num desc
 	</select> 
 
-
+	<!-- 댓글 쓰기 -->
+	<insert id="replyInsert" parameterType="reply">
+		INSERT INTO spring_reply(r_num, b_num, r_name, r_content, r_pwd)
+		VALUES(spring_reply_seq.nextval, #{b_num}, #{r_name}, #{r_content}, #{r_pwd})
+	</insert> 
+	
+	<!-- 해당 번호의 비밀먼호 확인 -->
+	<select id="pwdConfirm" parameterType="reply" resultType="int">
+		SELECT NVL((
+				SELECT 1 FROM spring_reply
+				WHERE r_num = #{r_num} AND r_pwd = #{r_pwd}
+				), 0) as state
+		FROM dual
+	</select>
 </mapper>
