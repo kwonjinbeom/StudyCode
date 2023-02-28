@@ -16,12 +16,31 @@
 		VALUES(spring_reply_seq.nextval, #{b_num}, #{r_name}, #{r_content}, #{r_pwd})
 	</insert> 
 	
-	<!-- 해당 번호의 비밀먼호 확인 -->
+	<!-- 비밀번호 확인 -->
 	<select id="pwdConfirm" parameterType="reply" resultType="int">
+		/* Reply - pwdConfirm */
 		SELECT NVL((
-				SELECT 1 FROM spring_reply
-				WHERE r_num = #{r_num} AND r_pwd = #{r_pwd}
-				), 0) as state
-		FROM dual
+			          SELECT 1 FROM spring_reply
+			          WHERE r_num = #{r_num} AND r_pwd = #{r_pwd}
+			       ), 0) as state
+		FROM dual 
 	</select>
+
+	 <!-- 댓글  수정 -->
+	 <update id="replyUpdate" parameterType="reply">
+	 	/* Reply - replyUpdate */
+	 	update spring_reply 
+	 	set r_content = #{r_content}
+			,r_date = sysdate
+		 	<if test="r_pwd != ''">
+			   ,r_pwd = #{r_pwd}
+			</if>
+		where r_num = #{r_num}
+	</update>
+
+	<!-- 댓글  삭제 -->
+	<delete id="replyDelete" parameterType="reply"> 
+		/* Reply - replyDelete */
+		delete from spring_reply where r_num = #{r_num}
+	</delete>
 </mapper>

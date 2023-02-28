@@ -29,4 +29,26 @@ public class ReplyServiceImpl implements ReplyService{
 		result = replyDao.replyInsert(rvo);
 		return result;
 	}
+	@Override
+	public int pwdConfirm(ReplyVO rvo) {
+		int result = 0;
+		result = replyDao.pwdConfirm(rvo);
+		return result;
+	}
+
+	// 글수정 구현
+	@Override
+	public int replyUpdate(ReplyVO rvo){
+		int result = 0;
+		result = replyDao.replyUpdate(rvo);
+		return result;
+	}
+
+	// 글삭제 구현
+	@Override
+	public int replyDelete(Integer r_num){
+		int result = 0;
+		result = replyDao.replyDelete(r_num);
+		return result;
+	}
 }

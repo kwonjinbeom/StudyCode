@@ -3,10 +3,15 @@ package com.spring.client.reply.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -87,4 +92,73 @@ public class ReplyController {
 		return (result==1) ? "SUCCESS" : "FAILURE";
 
 	}
+	
+	/**************************************************************
+	 * 댓글 비밀번호 확인
+	 * @return String
+	 * 참고 : 비밀번호 일치 시 1, 비빌번호 일치하지 않을 시 0 반환
+	 * 현재 요청 URL : http://localhost:8080/replies/pwdConfirm
+	 **************************************************************/
+	@RequestMapping(value="/pwdConfirm", produces = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> pwdConfirm(@ModelAttribute ReplyVO rvo) {
+		log.info("pwdConfirm 호출 성공");
+		
+		ResponseEntity<String> entity = null;
+		int result = 0;
+		
+		result = replyService.pwdConfirm(rvo);
+		entity = new ResponseEntity<String>(String.valueOf(result), HttpStatus.OK); 
+		return entity;
+	}
+		/**************************************************************
+	 * 댓글 수정 구현하기
+	 * @return 
+	 * 참고 : REST 방식에서 UPDATE 작업은 PUT, PATCH방식을 이용해서 처리.
+	 *       전체 데이터를 수정하는 경우에는 PUT을 이용하고, 
+	 *       일부의 데이터를 수정하는 경우에는 PATCH를 이용하나 일반적으로 PUT을 이용.
+	 * 현재 요청 URL : http://localhost:8080/replies/댓글번호
+	 **************************************************************/
+	 /*@RequestMapping(value = "/{r_num}", method = {RequestMethod.PUT, RequestMethod.PATCH}, consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE )*/
+	 /*@PutMapping(value = "/{r_num}", consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE )
+	 public ResponseEntity<String> replyUpdate(@PathVariable("r_num") Integer r_num, @RequestBody ReplyVO rvo) {
+		 log.info("replyUpdate 호출 성공");
+		 
+		 rvo.setR_num(r_num);
+		 int result = replyService.replyUpdate(rvo);
+		 return result==1 ? new ResponseEntity<String>("SUCCESS", HttpStatus.OK): new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	 }*/
+	 
+	 @PutMapping(value = "/{r_num}", consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE )
+	 public String replyUpdate(@PathVariable("r_num") int r_num, @RequestBody ReplyVO rvo) {
+		 log.info("replyUpdate 호출 성공");
+		 
+		 rvo.setR_num(r_num);
+		 int result = replyService.replyUpdate(rvo);
+		 return (result==1) ? "SUCCESS": "FAILURE"; 
+	 }
+
+	/**************************************************************
+	 * 댓글 삭제 구현하기
+	 * @return 
+	 * 참고 : REST 방식에서 삭제 작업은 DELETE 방식을 이용해서 처리.
+	 * 현재 요청 URL : http://localhost:8080/replies/댓글번호
+	 **************************************************************/
+	  /* @RequestMapping(value = "/{r_num}", method = RequestMethod.DELETE, produces = { MediaType.TEXT_PLAIN_VALUE }) */
+	  /*@DeleteMapping(value = "/{r_num}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	  public ResponseEntity<String> replyDelete(@PathVariable("r_num") Integer r_num) {
+		  log.info("replyDelete 호출 성공");
+		  log.info("r_num = " + r_num );
+		  
+		  int result = replyService.replyDelete(r_num);
+		  return result==1 ? new ResponseEntity<String>("SUCCESS", HttpStatus.OK): new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	  } */
+	  
+	  @DeleteMapping(value = "/{r_num}", produces =  MediaType.TEXT_PLAIN_VALUE )
+	  public String replyDelete(@PathVariable("r_num") int r_num) {
+		  log.info("replyDelete 호출 성공");
+		  log.info("r_num = " + r_num );
+		  
+		  int result = replyService.replyDelete(r_num);
+		  return (result==1) ? "SUCCESS": "FAILURE";  
+	  }
 }
