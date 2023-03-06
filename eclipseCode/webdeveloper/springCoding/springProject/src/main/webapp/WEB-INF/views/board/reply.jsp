@@ -62,10 +62,118 @@
 			dataReset();
 			$("form[name='pwdForm']").show();
 			let $pwdView = $("#pwdForm").clone().removeAttr('id');
-			$("form.")
-		 })
-		 }
+			$("form[name ='pwdForm']").hide();
+			
+			let dataArea = $(this).parents("div.panel .panel-heading .panel-title");
+			dataArea.append($pwdView);
+			btnKind = $(this).attr("data-btn");
+		 });
+		 
+		 /* 비밀번호 체크 화면에서 "취소" 버튼 클릭 처리 */
+			$(document).on("click", ".pwdResetBtn", function() {
+				formHide();
+			});
+			
+			/* 비밀번호 체크 화면에서 "확인" 버튼 클릭 처리 */
+			$(document).on("click", ".pwdCheckBtn", function() {
+				let panel = $(this).parents("div.panel")
+				let r_num = panel.attr("data-num");
+				let form = $(this).parents(".inline");
+				let pwd = form.find(".passwd");
+				let msg = form.find(".msg");
+				let value = 0;
+				
+				if (!checkForm(pwd, msg, "비밀번호를")) return;
+				else {	
+					$.ajax({
+						url : "/replies/pwdConfirm",  
+						type : "POST", 
+						data : "r_num="+r_num+"&r_pwd="+pwd.val(),
+						dataType : "text",
+						error : function(){ 
+								alert('시스템 오류 입니다. 관리자에게 문의 하세요');
+						}, 
+						success : function(resultData){ 
+							console.log("resultData : "+resultData);
+							if(resultData==0){            // 일치하지 않는 경우
+								msg.addClass("msg_error");
+								msg.text("비밀번호가 일치하지 않습니다.");
+								pwd.select();
+							}else if(resultData==1){      // 일치할 경우
+								if(btnKind=="upBtn"){
+									//console.log("수정 폼 출력");
+									updateForm(r_num, panel);
+									formHide();
+								}else if(btnKind=="delBtn"){
+									//console.log("삭제 처리");
+									deleteBtn(b_num, r_num);
+								}
+								btnKind="";
+							}
+						}
+					});
+				}
+			});
+		 
+	/** 수정 폼 화면 구현 함수 */
+	function updateForm(r_num, panel){
+		$("#replyForm .resetBtn").detach();
+	
+		$("#r_name").val(panel.find(".panel-title .name").html());
+		$("#r_name").prop("readonly", true);
+		
+		let content = panel.find(".panel-body").html();
+		content = content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+		$("#r_content").val(content);
+		
+		$("#replyForm button[type='button']").attr("id", "replyUpdateBtn");
+		$("#replyForm button[type='button']").attr("data-rnum", r_num);
+		$("#replyForm button[type='button']").html("수정");
+		
+		let resetButton = $("<button type='button' class='btn btn-success resetBtn'>");
+		resetButton.html("취소");
+		$("#replyForm .sendBtn").after(resetButton);
+	}
+	
+	/* 수정하기 클릭시 동적으로 생성된 "취소" 버튼 이벤트 처리 */
+	$(document).on("click", ".resetBtn", function(){ 
+		dataReset();
 	});
+	
+	/** 수정을 위한  Ajax 연동 처리 */
+	$(document).on("click", "#replyUpdateBtn", function(){
+		
+		let r_num = $(this).attr("data-rnum");	
+		$.ajax({
+			url:'/replies/'+r_num,
+			type:'put',
+			headers: { 
+				"Content-Type": "application/json",
+				"X-HTTP-Method-Override": "PUT" 
+			},
+			data:JSON.stringify({
+				r_content:$("#r_content").val(),
+				r_pwd:$("#r_pwd").val()
+			}), 
+			dataType:'text', 
+			error: function(xhr, textStatus, errorThrown) { 
+				alert(textStatus + " (HTTP-" + xhr.status + " / " + errorThrown + ")");
+				//alert("시스템에 문제가 있어 잠시 후 다시 진행해 주세요.");
+			}, 
+			beforeSend: function(){
+				if (!checkForm("#r_content","댓글내용을"))	return false;
+			},
+			success:function(result){
+				console.log("result: " + result);
+				if(result == "SUCCESS"){
+					alert("댓글 수정이 완료되었습니다.");
+					dataReset();
+					listAll(b_num);
+				}
+			}
+		}); 
+	}); 
+	}); /* 최상위 $ */
 	 
 	/* 댓글 목록 보여주는 함수 */
 		function listAll(b_num){
@@ -99,6 +207,52 @@
 			$element.find('.panel-body').html(r_content);
 			
 			$div.append($element);
+		}
+	
+		/* 입력 폼 초기화 */
+		function dataReset() {
+			$("#replyForm").each(function(){
+				this.reset();
+			});
+			
+			$("#r_name").prop("readonly", false);
+			$("#replyForm button[type='button']").removeAttr("data-rnum");
+			$("#replyForm button[type='button']").attr("id", "replyInsertBtn");
+			$("#replyForm button[type='button'].sendBtn").html("저장");
+			$("#replyForm button[type='button'].resetBtn").detach();
+		}
+		
+		/* 비밀번호 화면 초기화 */
+		function formHide(){
+			$("form[name='pwdForm']").hide(); 
+		}
+		
+		/** 글 삭제를 위한  Ajax 연동 처리 */
+		function deleteBtn(b_num, r_num){
+			if (confirm("선택하신 댓글을 삭제하시겠습니까?")) {
+				$.ajax({
+					//url : '/replies/' + b_num + '/' + r_num, 
+					url : '/replies/' + r_num, 
+					type : 'delete',   // method - get(조회)/post(입력)/put(수정)/delete(삭제) 존재         
+					headers : {
+						"X-HTTP-Method-Override" : "DELETE"
+					},
+					dataType : 'text',
+					error: function(xhr, textStatus, errorThrown) { //실행시 오류가 발생하였을 경우
+						alert(textStatus + " (HTTP-" + xhr.status + " / " + errorThrown + ")");
+						//alert("시스템에 문제가 있어 잠시 후 다시 진행해 주세요.");
+					},
+					success : function(result) {
+						console.log("result: " + result);
+						if (result == 'SUCCESS') {
+							alert("댓글 삭제가 완료되었습니다.");
+							listAll(b_num);
+						}
+					}
+				});
+			} else {
+				formHide();
+			}
 		}
 	</script>
 </head>

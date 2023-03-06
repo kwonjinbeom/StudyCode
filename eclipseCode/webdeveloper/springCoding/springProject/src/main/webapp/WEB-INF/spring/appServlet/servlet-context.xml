@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -35,6 +37,7 @@
     	<beans:property name="definitions"> 
     		<beans:list> 
     			<beans:value>/WEB-INF/tiles/tiles-setting.xml</beans:value>
+    			<beans:value>/WEB-INF/tiles/admin-setting.xml</beans:value>
     		</beans:list>
     	</beans:property>
     </beans:bean>
@@ -50,8 +53,10 @@
 		<beans:property name="order" value="2" />
 	</beans:bean> 
 	
+	
 	<context:component-scan base-package="com.spring.client" />
 	
-	
+	<!-- 자동으로 AspectJ 라이브 러리를 이용해서 Proxy 객체를 생성해 내는 용도로 사용 . -->
+	<aop:aspectj-autoproxy />
 	
 </beans:beans>

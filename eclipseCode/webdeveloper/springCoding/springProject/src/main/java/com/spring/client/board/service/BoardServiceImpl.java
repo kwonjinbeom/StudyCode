@@ -45,6 +45,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int boardInsert(BoardVO bvo) throws Exception {
 		int result = 0;
+		/* 예외를 발생시킬 코드 작성 */
+//		bvo.setB_num(0);
+//		if(bvo.getB_num() == 0){
+//		 throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
+//		}
+		
 		if(bvo.getFile().getSize() > 0) {
 			String fileName = FileUploadUtil.fileUpload(bvo.getFile(), "board"); //board_~~.jpg
 			bvo.setB_file(fileName);

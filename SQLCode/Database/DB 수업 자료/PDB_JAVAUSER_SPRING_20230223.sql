@@ -74,3 +74,28 @@ commit;
 --update spring_board
 --set r_cnt = (select count(r_num)
 --where b_num = spring_board.b_num)
+
+-- 2023.03.06
+
+-- 테이블 생성
+create table spring_admin(
+    a_id varchar2(15) not null,
+    a_pwd varchar2(20) not null,
+    a_name varchar2(21) not null,
+    a_phone varchar2(15) not null,
+    a_email varchar2(100) not null,
+    a_date date default sysdate,
+    constraint spring_admin_pk primary key(a_id)
+);
+
+comment on table spring_admin is '관리자 테이블 정보';
+comment on column spring_admin.a_id is '관리자 아이디';
+comment on column spring_admin.a_pwd is '관리자 비밀번호';
+comment on column spring_admin.a_name is '관리자 이름' ;
+comment on column spring_admin.a_phone is '관리자 핸드폰번호';
+comment on column spring_admin.a_email is '관리자 이메일';
+comment on column spring_admin.a_date is '관리자 등록일';
+
+-- spring_admin 테이블에 레코드 1을 입력해주세요
+insert into spring_admin(a_id, a_pwd, a_name, a_phone, a_email)
+values('manager', '1234', '관리자', '010-1234-5678', 'manager@naver.com');
