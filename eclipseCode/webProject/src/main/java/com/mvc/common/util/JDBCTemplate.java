@@ -39,6 +39,7 @@ public class JDBCTemplate {
 		}
 	}
 	
+	
 	public static void close(Statement stmt) {
 		try {
 			if(stmt != null && !stmt.isClosed()) {

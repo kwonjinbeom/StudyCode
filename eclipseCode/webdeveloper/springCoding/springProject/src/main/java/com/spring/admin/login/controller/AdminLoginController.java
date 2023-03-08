@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.admin.login.sevice.AdminLoginService;
@@ -66,5 +67,14 @@ public class AdminLoginController {
 			url="/admin/login";
 		}
 		return "redirect:"+url;
+	}
+
+	/* 로그아웃 처리 메서드
+	 * setComplete() 메서드를 활용하여 세션을 할당 해지 */
+	@RequestMapping("/logout")
+	public String logout(SessionStatus sessionStatus) {
+		log.info("admin 로그인 아웃 처리");
+		sessionStatus.setComplete();
+		return "redirect:/admin/login";
 	}
 }

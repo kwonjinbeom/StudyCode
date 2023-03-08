@@ -99,3 +99,4 @@ comment on column spring_admin.a_date is '관리자 등록일';
 -- spring_admin 테이블에 레코드 1을 입력해주세요
 insert into spring_admin(a_id, a_pwd, a_name, a_phone, a_email)
 values('manager', '1234', '관리자', '010-1234-5678', 'manager@naver.com');
+commit;
