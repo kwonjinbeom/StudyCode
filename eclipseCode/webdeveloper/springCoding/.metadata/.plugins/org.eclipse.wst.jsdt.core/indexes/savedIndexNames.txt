@@ -1,5 +1,4 @@
 INDEX VERSION 1.4+C:\Users\black\OneDrive\Desktop\±ÇÁø¹ü\GIT_FOLDER\eclipseCode\webdeveloper\springCoding\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-902277660.index
 3789134379.index
 3498412131.index
 1197519833.index

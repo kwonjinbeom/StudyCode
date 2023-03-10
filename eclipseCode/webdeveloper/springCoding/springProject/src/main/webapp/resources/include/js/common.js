@@ -50,3 +50,18 @@ function chkFile(item){
 		return true;
 	}
 }
+
+/* 함수명: getDateFormat(날자 데이터) 
+ * 설명 : dataValue의 값을 년-월-일 형식(예시: 2018-01-01)으로 반환.*/ 
+function getDateFormat(dateValue){
+	let year = dateValue.getFullYear();
+	
+	let month = dateValue.getMonth()+1;
+	month = (month<10) ? "0"+month : month;
+	
+	let day = dateValue.getDate();
+	day = (day<10) ? "0"+day : day;
+	
+	let result = year+"-"+month+"-"+day;
+	return result;
+}

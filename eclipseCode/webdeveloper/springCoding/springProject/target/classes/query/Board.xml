@@ -19,11 +19,14 @@
 		<if test="search=='b_name'">
 			<![CDATA[ b_name LIKE '%'||#{keyword}||'%']]>
 		</if>
+		<if test="search=='b_date'">
+			<![CDATA[ to_char(b_date,'YYYY-MM-DD') between #{start_date} and #{end_date}  ]]>	
+		</if>
 	</sql>
 	
 	 <select id="boardList" parameterType="board" resultType="board">
 		<![CDATA[
-			SELECT b_num, b_title, to_char(b_date, 'YYYY-MM-DD') as b_date ,readcnt, b_thumb, b_file
+			SELECT b_num, b_name, b_title, to_char(b_date, 'YYYY-MM-DD') as b_date ,readcnt, b_thumb, b_file
 			FROM(
 				SELECT /*+ INDEX_DESC(spring_board spring_board_pk) */
 					rownum as rnum, b_num, b_name, b_title, b_date, readcnt, b_thumb, b_file

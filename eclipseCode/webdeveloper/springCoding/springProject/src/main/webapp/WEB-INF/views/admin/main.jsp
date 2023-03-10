@@ -33,6 +33,6 @@
 		<button class="btn btn-lg btn-primary btn-block" type="button" id="loginBtn">로그인</button>
 	</form>
 </div>
-
+	<script src="/resources/include/dist/js/bootstrap.min.js"></script>
 	<script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>

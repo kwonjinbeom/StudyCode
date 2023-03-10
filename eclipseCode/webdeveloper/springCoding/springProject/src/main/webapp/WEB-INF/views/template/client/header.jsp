@@ -17,6 +17,7 @@
             <li class="active"><a href="/board/boardList">Home</a></li>
             <li><a href="/board/boardList">게시판</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="/admin/login">Login</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
