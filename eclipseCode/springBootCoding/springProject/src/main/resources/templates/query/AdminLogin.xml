@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.admin.login.dao.AdminLoginDao">
+
+	<!-- 댓글 전체 조회(해당 게시물번호에 대해 -->
+	<select id="loginProcess" parameterType="adminLogin" resultType="adminLogin">
+		/* 로그인 처리 쿼리*/
+		SELECT a_id, a_name, a_email
+		FROM spring_admin
+		where a_id = #{a_id} and a_pwd = #{a_pwd}
+	</select> 
+	
+</mapper>
