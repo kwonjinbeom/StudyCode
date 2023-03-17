@@ -25,6 +25,7 @@ public class TilesConfig {
         		new String[]{
         				"/WEB-INF/tiles/client-setting.xml",
         				"/WEB-INF/tiles/admin-setting.xml",
+        				"/WEB-INF/tiles/data-setting.xml",
         		}
         );
         configurer.setCheckRefresh(true);
