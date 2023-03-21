@@ -32,4 +32,5 @@
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
     <fullyQualifiedTypeName name="com.spring.openapi.data.vo.OpenApiDTO"/>
     <fullyQualifiedTypeName name="com.spring.common.openapi.URLConnectUtil"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
 </qualifiedTypeNameHistroy>

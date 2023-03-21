@@ -13,7 +13,12 @@ git remote add origin https://github.com/kwonjinbeom/StudyCode
 
 git push origin master 		// 로컬 저장소의 변경 사항을 GitHub에 있는 원격 저장소에 반영
 				// origin의 의미: remote repository의 URL short name  / 원격(origin)의
-
+------------------------------------------------------------------------------
+branch push하는 법
+똑같이 add commit 하고 
+git branch (브랜치 이름)
+git branch feature/ticket
+git push origin feature/ticket
 ------------------------------------------------------------------------------
 @ [Git] ! [rejected] master -> master (fetch first) 에러 해결
 git push origin +master // 강제 푸쉬
