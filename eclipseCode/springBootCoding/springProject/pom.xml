@@ -92,11 +92,11 @@
 			<artifactId>imgscalr-lib</artifactId>
 			<version>4.2</version>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>com.boot</groupId>
 			<artifactId>devProject</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
