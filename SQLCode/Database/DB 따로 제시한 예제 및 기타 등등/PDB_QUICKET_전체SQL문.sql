@@ -25,6 +25,7 @@ DROP TABLE seat;
 DROP TABLE hall;
 DROP SEQUENCE hall_seq;
 DROP TABLE ticket;
+DROP SEQUENCE TICKET_SEQ;
 DROP TABLE rank;
 DROP TABLE img;
 DROP SEQUENCE img_seq;
@@ -299,7 +300,7 @@ VALUES(rank_seq.nextval, to_date('2023-03-13','yyyy-MM-dd'), to_date('2023-03-19
 CREATE TABLE TICKET (
 	ti_num	NUMBER		NOT NULL,
 	seat_date	DATE	DEFAULT SYSDATE	NOT NULL,
-	ti_status	VARCHAR2(20)		NOT NULL,
+	ti_status	NUMBER		NOT NULL,
 	u_id	VARCHAR2(15)		NOT NULL,
 	ti_regdate	DATE	DEFAULT SYSDATE	NULL,
 	ti_update	DATE		NULL
@@ -322,6 +323,13 @@ COMMENT ON COLUMN TICKET.u_id IS '회원 아이디';
 COMMENT ON COLUMN TICKET.ti_regdate IS '예매 데이터 등록일';
 COMMENT ON COLUMN TICKET.ti_update IS '예매 데이터 수정일';
 
+CREATE SEQUENCE TICKET_SEQ
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+MAXVALUE 100000
+NOCYCLE
+CACHE 2;
 -- 공지사항 --------------------------------------------------------------
 CREATE TABLE NOTICE (
 	n_no	NUMBER(20)		NOT NULL,
@@ -609,7 +617,14 @@ cache 2;
 COMMENT ON COLUMN qna_reply.q_no IS 'QNA 글번호';
 COMMENT ON COLUMN qna_reply.q_r_no IS '답변 글번호';
 COMMENT ON COLUMN qna_reply.q_r_content IS '답변 내용';
-COMMENT ON COLUMN qna_reply.q_r_regdate IS '답변 등록일';
+CREATE TABLE FAQ (
+	f_no	NUMBER(20)		NOT NULL,
+	f_category	VARCHAR2(50)		NOT NULL,
+	f_title	VARCHAR2(100)		NOT NULL,
+	f_content	VARCHAR2(2000)		NOT NULL,
+	f_regdate	DATE	DEFAULT SYSDATE	NOT NULL,
+	f_update	DATE	DEFAULT SYSDATE	NOT NULL
+);
 COMMENT ON COLUMN qna_reply.q_r_update IS '답변 수정일';
 COMMENT ON COLUMN qna_reply.u_id IS '회원 아이디';
 
@@ -629,8 +644,7 @@ CREATE TABLE HALL (
     hall_end VARCHAR2(1000) NOT NULL,
     hall_regdate	DATE	DEFAULT SYSDATE	NULL,
 	hall_update	DATE		NULL,
-    th_num	NUMBER(20)		NOT NULL,
-    CONSTRAINT HALL_hall_date_UK UNIQUE(hall_date)
+    th_num	NUMBER(20)		NOT NULL
 );
 CREATE SEQUENCE HALL_SEQ
 START WITH 1
@@ -660,7 +674,8 @@ COMMENT ON COLUMN HALL.th_num IS '공연장 번호';
 -- 좌석 --------------------------------------------------------------
 CREATE TABLE SEAT (
 	seat_num	NUMBER		NOT NULL,
-	hall_id	VARCHAR2(100)		NOT NULL,
+    seat_name VARCHAR2(200) NOT NULL,
+	hall_id	NUMBER		NOT NULL,
 	seat_status	NUMBER  default 0   NOT NULL,
 	seat_age	VARCHAR2(20)		NULL,
 	seat_regdate	DATE	DEFAULT SYSDATE	NULL,
@@ -695,7 +710,7 @@ CREATE TABLE PAY (
 	pay_virtual_num	VARCHAR2(100)		NULL,
 	pay_cardNum	VARCHAR2(100)		NULL,
 	pay_cardPwd	NUMBER(20)		NULL,
-	pay_status	VARCHAR2(20)		NOT NULL,
+	pay_status	NUMBER		NOT NULL,
 	pay_regdate	DATE	DEFAULT SYSDATE	NULL,
 	pay_update	DATE		NULL,
 	c_num	VARCHAR2(10)	NULL,
@@ -737,7 +752,7 @@ COMMENT ON COLUMN PAY.c_num IS '쿠폰번호';
 CREATE TABLE TICKET_SEAT (
 	ti_num	NUMBER		NOT NULL,
 	seat_num	NUMBER		NOT NULL,
-	hall_id	VARCHAR2(100)		NOT NULL
+	hall_id	NUMBER		NOT NULL
 );
 
 ALTER TABLE TICKET_SEAT ADD CONSTRAINT FK_TICKET_TO_TICKET_SEAT_1 FOREIGN KEY (

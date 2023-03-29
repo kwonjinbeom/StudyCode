@@ -185,6 +185,8 @@
 				$(data).each(function(){
 					let r_num = this.r_num;
 					let r_name = this.r_name;
+					console.log(r_num);
+					console.log(r_name);
 					let r_content = this.r_content;
 					let r_date = this.r_date;
 					r_content = r_content.replace(/(\r\n|\r|\n)/g, "<br />");
