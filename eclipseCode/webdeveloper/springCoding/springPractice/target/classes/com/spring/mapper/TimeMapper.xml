@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.mapper.TimeMapper">
+<mapper namespace="member-mapper.xml">
 	
-	<select id="getTime2" resultType="java.lang.String">
-		select sysdate from dual
+	<select id="memberResultSet" parameterType="Member" resultType="Member">
+		SELECT memberId, memberPwd, member_nm
+		FROM MEMBER
+		where memberId = #{memberId} and memberPwd = #{memberPwd}
 	</select>
+	<select id="loginMember" parameterType="Member" resultType="Member">
+		SELECT memberId, memberPwd, member_nm
+		FROM MEMBER
+		where memberId = #{memberId} and memberPwd = #{memberPwd}
+	</select>
+	
 
 </mapper>

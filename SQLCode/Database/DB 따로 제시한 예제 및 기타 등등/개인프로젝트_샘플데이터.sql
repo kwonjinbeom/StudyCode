@@ -43,9 +43,9 @@ VALUES(HALL_SEQ.nextval, '1관', '2회차','20:00', 30, '2023-03-04', '2023-03-02',
 
 -- PL/SQL LOOP, FOR문  -- th_num=1 hall테이블 더미 날짜데이터 샘플 12?개 ----
 DECLARE
-    hall_date VARCHAR2(1000)    := '2023-04-0';
-    hall_start VARCHAR2(1000)   := '2023-04-09';
-    hall_end VARCHAR2(1000)     := '2023-04-25';
+    hall_date VARCHAR2(1000)    := '2023-03-0';
+    hall_start VARCHAR2(1000)   := '2023-03-02';
+    hall_end VARCHAR2(1000)     := '2023-03-16';
     th_num	NUMBER(20)          := 2;
 BEGIN
 	 FOR i IN 5 .. 16 LOOP
@@ -111,10 +111,65 @@ BEGIN
     ELSIF j <= 30 and j > 23 THEN
     INSERT INTO seat(seat_num, hall_id, seat_name)
     VALUES(j, hall_id, seat_n || i); 
+    
+        END IF;
+        EXIT WHEN j >30;
+	END LOOP;
+    COMMIT;
+END;
+
+
+DECLARE
+    hall_id	NUMBER   := 2;
+    i NUMBER := 0;
+    j NUMBER := 0;
+    k NUMBER := 0;
+    seat_n VARCHAR2(200) := 'a';
+BEGIN
+	 LOOP
+        i := i + 1;
+        j := j + 1;
+        k := k + 1;
+        
+    IF j <= 6 THEN seat_n := 'a-';
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);
+    
+    ELSIF j = 7 THEN seat_n := 'b-'; i := 1;
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);
+    
+    
+    ELSIF j <= 12 and j > 7 THEN 
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);    
+    
+    ELSIF j = 13 THEN seat_n := 'c-';  i := 1;
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);
+    
+    ELSIF j <= 22 and j > 13 THEN
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);    
+    
+        ELSIF j = 23 THEN seat_n := 'd-';  i := 1;
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);
  
+    ELSIF j <= 32 and j > 23 THEN
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i); 
+ 
+    ELSIF j = 33 THEN seat_n := 'e-';  i := 1;
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i);
+    
+     ELSIF j <= 40 and j > 32 THEN
+    INSERT INTO seat(seat_num, hall_id, seat_name)
+    VALUES(j, hall_id, seat_n || i); 
     
     END IF;
-        EXIT WHEN j >30;
+        EXIT WHEN j >40;
 	END LOOP;
     COMMIT;
 END;
@@ -134,7 +189,13 @@ set seat_status = 1
 where seat_num = 17 and hall_id = 1;
 update seat
 set seat_status = 1
-where seat_num = 13 and hall_id = 3;
+where seat_num = 13 and hall_id = 2;
+update seat
+set seat_status = 1
+where seat_num = 17 and hall_id = 2;
+update seat
+set seat_status = 1
+where seat_num = 30 and hall_id = 2;
 
 
 -- TICKET 테이블 샘플 데이터
