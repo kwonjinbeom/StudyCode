@@ -300,11 +300,13 @@ VALUES(rank_seq.nextval, to_date('2023-03-13','yyyy-MM-dd'), to_date('2023-03-19
 CREATE TABLE TICKET (
 	ti_num	NUMBER		NOT NULL,
 	seat_date	DATE	DEFAULT SYSDATE	NOT NULL,
-	ti_status	NUMBER		NOT NULL,
+	ti_status	NUMBER	default 0	NOT NULL,
+	pay_num VARCHAR2(200) NOT NULL,
 	u_id	VARCHAR2(15)		NOT NULL,
 	ti_regdate	DATE	DEFAULT SYSDATE	NULL,
 	ti_update	DATE		NULL
 );
+
 
 ALTER TABLE TICKET ADD CONSTRAINT PK_TICKET PRIMARY KEY (
 	ti_num
@@ -315,6 +317,14 @@ ALTER TABLE TICKET ADD CONSTRAINT FK_Q_USER_TO_TICKET_1 FOREIGN KEY (
 REFERENCES Q_USER (
 	u_id
 );
+
+ALTER TABLE TICKET ADD CONSTRAINT FK_PAY_TO_TICKET_1 FOREIGN KEY (
+	pay_num 
+)
+REFERENCES PAY(
+	pay_num 
+);
+
 
 COMMENT ON COLUMN TICKET.ti_num IS '예매번호';
 COMMENT ON COLUMN TICKET.seat_date IS '예매한 시간/날짜';
@@ -545,6 +555,12 @@ COMMENT ON COLUMN admin_coupon.c_regdate IS '쿠폰 등록일';
 COMMENT ON COLUMN admin_coupon.c_update IS '쿠폰 수정일';
 COMMENT ON COLUMN admin_coupon.c_update IS '쿠폰 수정일';
 
+INSERT INTO admin_coupon(c_num, c_name, c_discount, c_startdate, c_enddate, c_img, c_regdate, c_update)
+VALUES('ABCD1234', '가입환영쿠폰', 5, '2023-04-01', '2023-09-30', 'coupon.png', sysdate, sysdate);
+
+INSERT INTO admin_coupon(c_num, c_name, c_discount, c_startdate, c_enddate, c_img, c_regdate, c_update)
+VALUES('ABCD1235', '이벤트쿠폰', 10, '2023-04-01', '2023-09-30', 'coupon.png', sysdate, sysdate);
+
 -- 사용자 쿠폰 --------------------------------------------------------------
 CREATE TABLE user_coupon (
 	u_id	VARCHAR2(15)		NOT NULL,
@@ -557,11 +573,17 @@ ALTER TABLE user_coupon ADD CONSTRAINT pk_user_coupon PRIMARY KEY (u_id, c_num);
 --ALTER TABLE user_coupon ADD CONSTRAINT fk_q_user_to_user_coupon_1 FOREIGN KEY (u_id, c_num) REFERENCES q_user(u_id, c_num);
 ALTER TABLE user_coupon ADD CONSTRAINT fk_admin_coupon_to_user_coupon_1 FOREIGN KEY (c_num) REFERENCES admin_coupon (c_num);
 
+
+
 COMMENT ON COLUMN user_coupon.u_id IS '회원 아이디';
 COMMENT ON COLUMN user_coupon.c_num IS '쿠폰번호';
 COMMENT ON COLUMN user_coupon.uc_date IS '쿠폰 발급일';
 COMMENT ON COLUMN user_coupon.uc_state IS '0:미사용 1:사용완료 -1:기간만료';
 
+INSERT INTO user_coupon(u_id, c_num, uc_date, uc_state)
+VALUES('user02', 'ABCD1234', sysdate, 0);
+INSERT INTO user_coupon(u_id, c_num, uc_date, uc_state)
+VALUES('user02', 'ABCD1235', sysdate, 0);
 -- QNA --------------------------------------------------------------
 CREATE TABLE qna (
 	q_no	NUMBER(20)		NOT NULL,
@@ -703,23 +725,24 @@ COMMENT ON COLUMN SEAT.seat_update IS '좌석 데이터 수정일';
 
 -- 결제 --------------------------------------------------------------
 CREATE TABLE PAY (
-	ti_num	NUMBER(20)		NOT NULL,
-	pay_name	VARCHAR2(20)		NULL,
-	pay_phone	VARCHAR2(30)		NULL,
+	pay_num	NUMBER		NOT NULL,
+	pay_name	VARCHAR2(20)	NOT NULL,
+	pay_phone	VARCHAR2(30)	NOT NULL,
+    pay_email	VARCHAR2(200)	NOT NULL,
 	pay_amount	NUMBER		NOT NULL,
-	pay_virtual_num	VARCHAR2(100)		NULL,
-	pay_cardNum	VARCHAR2(100)		NULL,
-	pay_cardPwd	NUMBER(20)		NULL,
-	pay_status	NUMBER		NOT NULL,
+	pay_status	NUMBER	default 0	NOT NULL,
 	pay_regdate	DATE	DEFAULT SYSDATE	NULL,
 	pay_update	DATE		NULL,
 	c_num	VARCHAR2(10)	NULL,
-    u_id VARCHAR2(15) NOT NULL
+   	u_id VARCHAR2(15) NOT NULL
 );
 
+
+
 ALTER TABLE PAY ADD CONSTRAINT PK_PAY PRIMARY KEY (
-	ti_num
+	pay_num
 );
+
 
 ALTER TABLE PAY ADD CONSTRAINT FK_TICKET_TO_PAY_1 FOREIGN KEY (
 	ti_num

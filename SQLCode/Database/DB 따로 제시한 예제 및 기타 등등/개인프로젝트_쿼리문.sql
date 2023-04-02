@@ -107,8 +107,8 @@ select hall_id, count(seat_status) remaining_seatNum, s_name, hall_place, hall_t
 		where t.th_num = 1;
         
 -- payPage step2 메인 쿼리 (pay_step2_list)
-select hall_id, s_name, hall_place, hall_turn, hall_time,hall_date, TO_CHAR(s_opendate,'YYYY-MM-DD') s_opendate,TO_CHAR(s_closedate ,'YYYY-MM-DD') s_closedate,hall_seatNum
-		from (select h.hall_id ,s_name, h.hall_place, h.hall_turn, h.hall_seatNum, hall_date, hall_time, seat_num, seat_status, s_opendate,s_closedate 
+select th_num,hall_id, s_name, hall_place, hall_turn, hall_time,hall_date, TO_CHAR(s_opendate,'YYYY-MM-DD') s_opendate,TO_CHAR(s_closedate ,'YYYY-MM-DD') s_closedate,hall_seatNum
+		from (select h.hall_id ,s_name, h.hall_place, h.hall_turn, h.hall_seatNum, hall_date, hall_time, seat_num, seat_status, s_opendate,s_closedate , t.th_num
 				from theater t LEFT JOIN hall h
 				ON t.th_num = h.th_num
 				LEFT JOIN show s
@@ -118,7 +118,7 @@ select hall_id, s_name, hall_place, hall_turn, hall_time,hall_date, TO_CHAR(s_op
 		        where t.th_num = 1 and h.hall_id = 1 and hall_date = '2023-03-02'
 		        order by h.hall_id)
 		where seat_status = 0
-		group by hall_id,s_name, hall_place, hall_turn,hall_time,hall_date, s_opendate,s_closedate,hall_seatNum;
+		group by th_num,hall_id,s_name, hall_place, hall_turn,hall_time,hall_date, s_opendate,s_closedate,hall_seatNum;
 -- payPage step2 좌석정보 쿼리 (pay_step2_seat)
 select seat_num,seat_name, seat_status  
 from theater t LEFT JOIN hall h
@@ -137,3 +137,13 @@ select seat_num,seat_name, seat_status
 		LEFT JOIN seat se
 		ON h.hall_id = se.hall_id
 		where t.th_num = 1 and h.hall_id = 1 and hall_date = '2023-03-02';
+        
+-- payPage step3 쿠폰 리스트 쿼리 (pay_step3_coupon)
+-- 쿠폰번호, 사용여부(리스트에 미사용만 뜨기 위해), 쿠폰명, 할인율, 유효기간 시작일, 종료일
+SELECT a.c_num, c_name, c_discount, TO_CHAR(c_enddate,'YYYY-MM-DD') as c_enddate
+FROM admin_coupon a LEFT JOIN user_coupon u
+ON a.c_num = u.c_num
+WHERE u.uc_state = 0 AND u.u_id= 'user02';
+select * from user_coupon;
+
+
