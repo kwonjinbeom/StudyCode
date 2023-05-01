@@ -4,6 +4,7 @@ DROP TABLE inquiry;
 DROP SEQUENCE inquiry_seq;
 DROP TABLE statistics;
 DROP TABLE pay;
+DROP SEQUENCE pay_seq;
 DROP TABLE qna_reply;
 DROP SEQUENCE qna_reply_seq;
 DROP TABLE qna;
@@ -25,7 +26,6 @@ DROP TABLE seat;
 DROP TABLE hall;
 DROP SEQUENCE hall_seq;
 DROP TABLE ticket;
-DROP SEQUENCE TICKET_SEQ;
 DROP TABLE rank;
 DROP TABLE img;
 DROP SEQUENCE img_seq;
@@ -296,50 +296,7 @@ VALUES(rank_seq.nextval, to_date('2023-03-13','yyyy-MM-dd'), to_date('2023-03-19
 INSERT INTO rank(rank_id, rank_start, rank_end, rank_ticket, rank_rank, s_num)
 VALUES(rank_seq.nextval, to_date('2023-03-13','yyyy-MM-dd'), to_date('2023-03-19','yyyy-MM-dd'), 15.0, 1, 2);
 
--- 예매 --------------------------------------------------------------
-CREATE TABLE TICKET (
-	ti_num	NUMBER		NOT NULL,
-	seat_date	DATE	DEFAULT SYSDATE	NOT NULL,
-	ti_status	NUMBER	default 0	NOT NULL,
-	pay_num VARCHAR2(200) NOT NULL,
-	u_id	VARCHAR2(15)		NOT NULL,
-	ti_regdate	DATE	DEFAULT SYSDATE	NULL,
-	ti_update	DATE		NULL
-);
 
-
-ALTER TABLE TICKET ADD CONSTRAINT PK_TICKET PRIMARY KEY (
-	ti_num
-);
-ALTER TABLE TICKET ADD CONSTRAINT FK_Q_USER_TO_TICKET_1 FOREIGN KEY (
-	u_id
-)
-REFERENCES Q_USER (
-	u_id
-);
-
-ALTER TABLE TICKET ADD CONSTRAINT FK_PAY_TO_TICKET_1 FOREIGN KEY (
-	pay_num 
-)
-REFERENCES PAY(
-	pay_num 
-);
-
-
-COMMENT ON COLUMN TICKET.ti_num IS '예매번호';
-COMMENT ON COLUMN TICKET.seat_date IS '예매한 시간/날짜';
-COMMENT ON COLUMN TICKET.ti_status IS '예매상태';
-COMMENT ON COLUMN TICKET.u_id IS '회원 아이디';
-COMMENT ON COLUMN TICKET.ti_regdate IS '예매 데이터 등록일';
-COMMENT ON COLUMN TICKET.ti_update IS '예매 데이터 수정일';
-
-CREATE SEQUENCE TICKET_SEQ
-START WITH 1
-INCREMENT BY 1
-MINVALUE 1
-MAXVALUE 100000
-NOCYCLE
-CACHE 2;
 -- 공지사항 --------------------------------------------------------------
 CREATE TABLE NOTICE (
 	n_no	NUMBER(20)		NOT NULL,
@@ -733,7 +690,6 @@ CREATE TABLE PAY (
 	pay_status	NUMBER	default 0	NOT NULL,
 	pay_regdate	DATE	DEFAULT SYSDATE	NULL,
 	pay_update	DATE		NULL,
-	c_num	VARCHAR2(10)	NULL,
    	u_id VARCHAR2(15) NOT NULL
 );
 
@@ -744,12 +700,13 @@ ALTER TABLE PAY ADD CONSTRAINT PK_PAY PRIMARY KEY (
 );
 
 
-ALTER TABLE PAY ADD CONSTRAINT FK_TICKET_TO_PAY_1 FOREIGN KEY (
-	ti_num
+ALTER TABLE PAY ADD CONSTRAINT FK_Q_USER_TO_PAY_1 FOREIGN KEY (
+	u_id
 )
-REFERENCES TICKET (
-	ti_num
+REFERENCES Q_USER(
+	u_id
 );
+
 
 -- 열목록에 대해 일치하는 고유 또는 기본 키가 없습니다. -> u_id 부적합한 식별자
 ALTER TABLE PAY ADD CONSTRAINT FK_USER_COUPON_TO_PAY_1 FOREIGN KEY (
@@ -759,40 +716,70 @@ REFERENCES USER_COUPON (
 	u_id, c_num
 );
 
-COMMENT ON COLUMN PAY.ti_num IS '예매번호';
+COMMENT ON COLUMN PAY.pay_num IS '결제번호';
 COMMENT ON COLUMN PAY.pay_name IS '결제자 이름';
 COMMENT ON COLUMN PAY.pay_phone IS '결제자 전화번호';
 COMMENT ON COLUMN PAY.pay_amount IS '결제금액';
-COMMENT ON COLUMN PAY.pay_virtual_num IS '가상계좌번호';
-COMMENT ON COLUMN PAY.pay_cardNum IS '카드번호';
-COMMENT ON COLUMN PAY.pay_cardPwd IS '카드비밀번호';
 COMMENT ON COLUMN PAY.pay_status IS '결제상태';
 COMMENT ON COLUMN PAY.pay_regdate IS '결제 데이터 등록일';
 COMMENT ON COLUMN PAY.pay_update IS '결제 데이터 수정일';
 COMMENT ON COLUMN PAY.c_num IS '쿠폰번호';
 
+CREATE SEQUENCE PAY_SEQ
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+MAXVALUE 100000
+NOCYCLE
+CACHE 2;
+
+-- 예매 --------------------------------------------------------------
+CREATE TABLE TICKET (
+	pay_num	NUMBER		NOT NULL,
+	ti_date	DATE	DEFAULT SYSDATE	NOT NULL,
+	ti_status	NUMBER	default 1	NOT NULL,
+	u_id	VARCHAR2(15)		NOT NULL,
+	ti_regdate	DATE	DEFAULT SYSDATE	NULL,
+	ti_update	DATE		NULL
+);
+
+
+ALTER TABLE TICKET ADD CONSTRAINT PK_TICKET PRIMARY KEY (
+	pay_num
+);
+ALTER TABLE TICKET ADD CONSTRAINT FK_Q_USER_TO_TICKET_1 FOREIGN KEY (
+	u_id
+)
+REFERENCES Q_USER (
+	u_id
+);
+
+
+
+COMMENT ON COLUMN TICKET.pay_num IS '예매번호';
+COMMENT ON COLUMN TICKET.ti_date IS '예매한 시간/날짜';
+COMMENT ON COLUMN TICKET.ti_status IS '예매상태';
+COMMENT ON COLUMN TICKET.u_id IS '회원 아이디';
+COMMENT ON COLUMN TICKET.ti_regdate IS '예매 데이터 등록일';
+COMMENT ON COLUMN TICKET.ti_update IS '예매 데이터 수정일';
 -- 예매좌석 --------------------------------------------------------------
 CREATE TABLE TICKET_SEAT (
-	ti_num	NUMBER		NOT NULL,
 	seat_num	NUMBER		NOT NULL,
-	hall_id	NUMBER		NOT NULL
+	hall_id	NUMBER		NOT NULL,
+    pay_num NUMBER		NOT NULL
 );
+ALTER TABLE TICKET_SEAT ADD CONSTRAINT pk_TICKET_SEAT PRIMARY KEY (seat_num, hall_id);
 
 ALTER TABLE TICKET_SEAT ADD CONSTRAINT FK_TICKET_TO_TICKET_SEAT_1 FOREIGN KEY (
-	ti_num
+	pay_num
 )
 REFERENCES TICKET (
-	ti_num
+	pay_num
 );
 
-ALTER TABLE TICKET_SEAT ADD CONSTRAINT FK_SEAT_TO_TICKET_SEAT_1 FOREIGN KEY (
-	seat_num, hall_id
-)
-REFERENCES SEAT (
-	seat_num, hall_id
-);
 
-COMMENT ON COLUMN TICKET_SEAT.ti_num IS '예매번호';
+
+COMMENT ON COLUMN TICKET_SEAT.pay_num IS '결제번호';
 COMMENT ON COLUMN TICKET_SEAT.seat_num IS '좌석번호';
 COMMENT ON COLUMN TICKET_SEAT.hall_id IS '공연장정보ID';
 
