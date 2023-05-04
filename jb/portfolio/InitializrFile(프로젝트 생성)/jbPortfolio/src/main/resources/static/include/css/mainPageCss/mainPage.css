@@ -1,0 +1,168 @@
+/* 폰트 */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+a, li, span, h1, h2, h3, td{
+    font-family: 'Pretendard-Regular';
+}
+
+body{
+    width:100vw;
+    height: 100vh;/* vw와 vh는 뷰포트를 고려한 100퍼센트 */
+    margin:0;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* 스크롤 */
+.scroll_hidden{
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+.scroll_hidden::-webkit-scrollbar{
+    display:none;
+}
+
+/* 헤더 nav*/
+nav{
+    position:fixed; /* 스크롤 중 상단바 header 고정 */
+    z-index:20; /* 스크롤 시 가려짐 방지 */
+}
+nav > ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    height:30px;
+    
+}
+nav > ul > li {
+    color: white;
+    margin-right: 30px;
+    font-size: 20px;
+    transition-duration: 0.2s;
+    
+}
+
+/* Home */
+#home{
+    width:100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: #7FC4F8;
+    display: flex;
+    flex-wrap: wrap;
+}
+#homeMain > h1{
+    font-size: 64px;
+    color:#F5F765;
+    /* F7DB65 보류 */
+}
+#homeMain > h2{
+    font-size: 28px;
+    color:#F5F765;
+}
+#homeMain > h3{
+    font-size: 21px;
+    color:white;
+    font-weight: 100;
+}
+#homebox1{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#homeMain{
+    width: 600px;
+    height: 470px;
+    margin-bottom: 50px;
+}
+#homeMain > a{
+    color:#F5F765;
+    text-decoration: none;
+}
+#myPic > img{
+    width: 600px;
+    height: 470px;
+}
+
+/*  me */
+#Me{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#MeSubTitle{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#MeSubTitle > h1{
+    font-size: 64px;
+    /* F7DB65 보류 */
+}
+#MeMainBox{
+	width:100%;
+	display:flex;
+	
+}
+.MeMain{
+    width: 80%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+.MeMain > table{
+    width: 100%;
+    height: 300px;
+}
+.MeMain > #MeMainTable1 tr:nth-child(1),tr:nth-child(3){
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.MeMain > table tr td{
+    text-align: center;
+    width:70px;
+    color:black;
+}
+/*  skills */
+#skills{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: burlywood;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+/*  projects */
+#projects{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: violet;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+/*  career */
+#career{
+    width: 100%;
+    height: 100%;
+    padding: 0px 200px;
+    background-color: tomato;
+    display: flex;
+    flex-wrap: wrap;
+
+}
