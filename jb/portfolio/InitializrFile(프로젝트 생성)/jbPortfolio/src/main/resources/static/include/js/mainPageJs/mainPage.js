@@ -1,12 +1,13 @@
 $(function(){
 	/* 메뉴 선택 시 스크롤 이동 */
-	let home = $("#home").offset().top;
-	let Me = $("#Me").offset().top;
-	let skills = $("#skills").offset().top;
-	let projects = $("#projects").offset().top;
-	let career = $("#career").offset().top;
-	let navClickArray = [home, Me, skills, projects, career];
+	let Home = $("#home").offset().top;
+	let Education = $("#Education").offset().top;
+	let Skills = $("#Certificate").offset().top;
+	let Certificate = $("#Skills").offset().top;
+	let Projects = $("#Projects").offset().top;
+	let navClickArray = [Home, Education, Certificate, Skills, Projects];
 	const navLi = $("nav > ul > li"); /* nav > ul > li query */
+	
 	$(navLi[0]).click(function(){
 	    window.scrollTo({left:0, top:navClickArray[0], behavior:"smooth"})
 	    for(let i = 0; i < navLi.length; i++){
@@ -50,6 +51,22 @@ $(function(){
 	const body = document.querySelector("body"); /* body query */
 	body.classList.add('scroll_hidden');
 	body.classList.add('scroll_hidden::-webkit-scrollbar');
+	/*logo, 아래 화살표, home 버튼 클릭 시 기본 이벤트*/
+	$("#logo").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[0], behavior:"smooth"})
+			})
+	$("#homeImage").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[0], behavior:"smooth"})
+			})
+	if(($(window).scrollTop() >= 0) && ($(window).scrollTop() < navClickArray[1]-15)){
+			 $("#downArrowImage").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[1], behavior:"smooth"})
+			})
+         }
+     /*아래화살표 클릭 시 기본 이벤트 끝*/
+	body.classList.add('scroll_hidden');
+	body.classList.add('scroll_x_hidden');
+	body.classList.add('scroll_hidden::-webkit-scrollbar');/*메인화면 스크롤바 숨기기*/
 	$(window).scroll(function(){
 	    let scrollHeight = $(this).scrollTop();
 	    
@@ -61,27 +78,48 @@ $(function(){
 	        body.classList.add('scroll_hidden');
 	        body.classList.add('scroll_hidden::-webkit-scrollbar');
 	    }
-	    /* 편하게 스크롤 (잘안돼서(메뉴 선택시 스크롤과 충돌이남) 보류*/
-	    let Me = document.getElementById("Me").offsetTop;
-	    let skills = document.getElementById("skills").offsetTop;
-	    let projects = document.getElementById("projects").offsetTop;
-	    let career = document.getElementById("career").offsetTop;
-	    
-	    // if(scrollCrash == true){
-	    //     console.log(scrollCrash);
-	    //     if((scrollHeight >= 200) && (scrollHeight <= 400)){
-	    //         window.scrollTo({left:0, top:Me, behavior:"smooth"});
-	    //     }else if((scrollHeight >= Me + 200) && (scrollHeight <= Me + 400)){
-	    //         window.scrollTo({left:0, top:skills, behavior:"smooth"});
-	    //     }else if((scrollHeight > skills + 200) && (scrollHeight <= skills + 400)){
-	    //         window.scrollTo({left:0, top:projects, behavior:"smooth"});
-	    //     }else if((scrollHeight > projects + 200) && (scrollHeight <= projects + 400)){
-	    //         window.scrollTo({left:0, top:career, behavior:"smooth"});
-	    //     }
-	    // }
-	
+	    /* 스크롤 시 nav바 색상 변경 */
+         if((scrollHeight >= 0) && (scrollHeight < navClickArray[1]-15)){
+			 $("#downArrowImage").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[1], behavior:"smooth"})
+			})
+             for(let i = 0; i < navLi.length; i++){
+				 $(navLi[i]).css("color","#5C5C5C");
+		    	}
+		    	$(navLi[0]).css("color","#8BC0FF");
+         }else if((scrollHeight >= navClickArray[1]-10) && (scrollHeight < navClickArray[2]-15)){
+			 $("#downArrowImage").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[2], behavior:"smooth"})
+			})
+             for(let i = 0; i < navLi.length; i++){
+				 $(navLi[i]).css("color","#5C5C5C");
+		    	}
+		    	$(navLi[1]).css("color","#8BC0FF");
+         }else if((scrollHeight >= navClickArray[2]-10) && (scrollHeight < navClickArray[3]-15)){
+			 $("#downArrowImage").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[3], behavior:"smooth"})
+			})
+			 for(let i = 0; i < navLi.length; i++){
+				 $(navLi[i]).css("color","#5C5C5C");
+		    	}
+		    	$(navLi[2]).css("color","#8BC0FF");
+         }else if((scrollHeight >= navClickArray[3]-10) && (scrollHeight < navClickArray[4]-15)){
+			 $("#downArrowImage").click(function(){
+				 window.scrollTo({left:0, top:navClickArray[4], behavior:"smooth"})
+			})
+			 for(let i = 0; i < navLi.length; i++){
+				 $(navLi[i]).css("color","#5C5C5C");
+		    	}
+		    	$(navLi[3]).css("color","#8BC0FF");
+         }else if((scrollHeight >= navClickArray[4]-10)){
+			 for(let i = 0; i < navLi.length; i++){
+				 $(navLi[i]).css("color","#5C5C5C");
+		    	}
+		    	$(navLi[4]).css("color","#8BC0FF");
+         }
+         /* 스크롤 시 nav바 색상 변경 끝 */
+
 	})
-	/* 스크롤 상단 시 스크롤 숨기기 및 편하게 스크롤 끝 */
 	
 	/* nav 밑줄 애니메이션 및 스크롤 이동 */
 	/* 밑줄 */

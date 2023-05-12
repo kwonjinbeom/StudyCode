@@ -5,7 +5,13 @@
     font-weight: 400;
     font-style: normal;
 }
-a, li, span, h1, h2, h3, td{
+@font-face {
+    font-family: 'PatuaOne-Regular';
+    src: url('/resources/font/PatuaOne-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+a, li, span, h1, h2, h3, td, thead, caption{
     font-family: 'Pretendard-Regular';
 }
 
@@ -22,50 +28,72 @@ body{
     -ms-overflow-style:none;
 }
 .scroll_hidden::-webkit-scrollbar{
-    display:none;
+	background:white;
+    /* display:none; */
+}
+.scroll_x_hidden{
+	overflow-x: hidden;
 }
 
+
 /* 헤더 nav*/
-nav{
-    position:fixed; /* 스크롤 중 상단바 header 고정 */
+#logo{
+	position:fixed;
+	top:-5%;
+	left:10%;
+	width:250px;
+	height:auto;
+}
+header{
+	width:100%;
+	height:15%;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	position:fixed; /* 스크롤 중 상단바 header 고정 */
     z-index:20; /* 스크롤 시 가려짐 방지 */
+}
+nav{
+	position:fixed;
+	top:5%;
+	left:50%;
 }
 nav > ul {
     list-style: none;
     display: flex;
     padding-left: 0;
-    height:30px;
+    margin-top:1.8%;
     
 }
 nav > ul > li {
-    color: white;
+	font-family: 'PatuaOne-Regular';
+    color: #5C5C5C;
     margin-right: 30px;
-    font-size: 20px;
+    font-size: 23px;
     transition-duration: 0.2s;
     
 }
 
-/* Home */
+/* home */
 #home{
     width:100%;
     height: 100%;
-    padding: 0px 200px;
-    background-color: #7FC4F8;
+    padding: 10% 20% 0 20%;
+    /* background-color: #7FC4F8; */
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
 }
 #homeMain > h1{
     font-size: 64px;
-    color:#F5F765;
+    /* color:#F5F765; */
     /* F7DB65 보류 */
 }
 #homeMain > h2{
     font-size: 28px;
-    color:#F5F765;
+    color:#8BC0FF;/* #3897FF */
 }
 #homeMain > h3{
     font-size: 21px;
-    color:white;
+    /* color:white; */
     font-weight: 100;
 }
 #homebox1{
@@ -81,7 +109,7 @@ nav > ul > li {
     margin-bottom: 50px;
 }
 #homeMain > a{
-    color:#F5F765;
+    color:#8BC0FF;
     text-decoration: none;
 }
 #myPic > img{
@@ -89,79 +117,118 @@ nav > ul > li {
     height: 470px;
 }
 
-/*  me */
-#Me{
+/*  Education */
+#Education{
     width: 100%;
     height: 100%;
-    padding: 0px 200px;
+    padding: 10% 20% 0 20%;
     background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-#MeSubTitle{
+#EducationSubTitle{
     width: 100%;
-    height: 350px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#MeSubTitle > h1{
+#EducationSubTitle > h1{
     font-size: 64px;
     /* F7DB65 보류 */
 }
-#MeMainBox{
+#EducationMainBox{
 	width:100%;
 	display:flex;
-	
 }
-.MeMain{
-    width: 80%;
-    height: 500px;
+.EducationMain{
+    width: 100%;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: baseline;
 }
-.MeMain > table{
+.EducationMain > table{
     width: 100%;
     height: 300px;
 }
-.MeMain > #MeMainTable1 tr:nth-child(1),tr:nth-child(3){
-    font-size: 30px;
+#EducationMainTable1 tr:nth-child(1),#EducationMainTable1 tr:nth-child(3){
+    font-size: 25px;
     font-weight: bold;
 }
 
-.MeMain > table tr td{
+#EducationMainTable1 tr td{
     text-align: center;
-    width:70px;
+    width:90px;
     color:black;
 }
-/*  skills */
-#skills{
+/*  Skills */
+#Skills{
     width: 100%;
     height: 100%;
-    padding: 0px 200px;
-    background-color: burlywood;
-    display: flex;
-    flex-wrap: wrap;
-
-}
-/*  projects */
-#projects{
-    width: 100%;
-    height: 100%;
-    padding: 0px 200px;
+    padding: 10% 20% 0 20%;
     background-color: violet;
     display: flex;
     flex-wrap: wrap;
 
 }
-/*  career */
-#career{
+/*  Certificate */
+#Certificate{
     width: 100%;
     height: 100%;
-    padding: 0px 200px;
-    background-color: tomato;
+    padding: 10% 20% 0 20%;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:flex-start;
+}
+#CertificateMainBox{
+	width:100%;
+	display:flex;
+}
+.CertificateMain{
+	width:100%;
+}
+.CertificateTable{
+	width:100%;
+}
+.CertificateTable caption{
+	color:#494949;
+	font-weight:bold;
+	font-size:25px;
+}
+.CertificateTable thead{
+	border-top:2px solid #666666;
+	background:#F7F7F7;
+	color:#494949;
+	font-size:16px;
+	height:45px;
+}
+.CertificateTable thead th{
+	text-align:center;
+	
+}
+.CertificateTable tr td:nth-child(1), .CertificateTable tr td:nth-child(2){
+	text-align:center;
+}
+.CertificateTable tr td:nth-child(1), .CertificateTable tr td:nth-child(2),
+ .CertificateTable tr td:nth-child(3), .CertificateTable tr td:nth-child(4),
+ .CertificateTable tr td:nth-child(5){
+	vertical-align: middle;
+}
+.CertificateTable td{
+	color:#55524F;
+	height:50px;
+	font-size:15px;
+}
+/*  Projects */
+#Projects{
+    width: 100%;
+    height: 100%;
+    padding: 10% 20% 0 20%;
+    background-color: violet;
     display: flex;
     flex-wrap: wrap;
 
